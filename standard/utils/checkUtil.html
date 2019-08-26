@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.propertys {
+		    width: 940px;
+		}
+		.propertys th {
+		    white-space: nowrap;
+		}
+		.methods .explain .expList {
+		    width: 762px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>源码路径： <b>/static/js/utils/checkUtil.js</b></p>
+				<P>
+					PS：该对象在CY.<b>checkUtil</b> 对象下；<br/>
+					2、图形校验码服务和短信校验码服务；<br/>
+					3、checkUtil.js内部依赖ajaxUtil.js；<br/>
+				</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 290px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 265px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import checkUtil from "cy_static/checkUtil";
+								// ====使用====
+							        <b>checkUtil.gverify</b>({// 图片校验事件绑定
+							            elemID: ".gverify",
+							            onChange: function (data) {
+							                checkSms.setAjaxBody({
+							                    key: data.key
+							                });
+							            }
+							        });
+							</pre>
+							</dd>
+							<dd style="height: 1000px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 980px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["checkUtil"], function(checkUtil) {
+										    <b>var</b> checkSms = <b>checkUtil.sms</b>({// 短信校验码事件绑定
+										            phoneID: "#mobile",
+										            btnID: "#codeBtn",
+										            imgCodeId: "#imgcode",
+										            downText: "{0}秒后重发",
+										            beforeSend: function(data) {
+										                var msg;
+										                data.round = data.key;
+										                data.imgValue = data.imgcode;
+										                data.mobileid = data.phone;
+										                if (!data.round || !data.imgValue) {
+										                    msg = "请输入图形校验码";
+										                }
+										                if (!/^1\d{10,10}$/.test(data.mobileid)) {
+										                    msg = "手机格式不对！";
+										                }
+										                msg && requirejs(["dialog"], function(ui) {
+										                    ui.toast(msg);
+										                });
+										                return !msg
+										            }
+										        });
+										        
+										        // 示例图片校验1
+										        <b>checkUtil.gverify</b>({// 图片校验事件绑定
+										            elemID: ".gverify",
+										            onChange: function (data) {
+										                checkSms.setAjaxBody({
+										                    key: data.key
+										                });
+										            }
+										        });
+										        // 示例图片校验2
+										        <b>checkUtil.gverify</b>({// 图片校验事件绑定
+										            elemID: ".gverify"
+										        }).change( function (data) {
+										        	checkSms.setAjaxBody({
+								                			key: data.key
+								                  		});
+										        });
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 1000px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 980px;">
+									&lt;script type="text/javascript" src="/static/js/libs/CryptoJS.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/browser.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/ajax.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/ajaxUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/checkUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+									    <b>var</b> checkSms = <b>CY.checkUtil.sms</b>({// 短信校验码事件绑定
+									            phoneID: "#mobile",
+									            btnID: "#codeBtn",
+									            imgCodeId: "#imgcode",
+									            downText: "{0}秒后重发",
+									            beforeSend: function(data) {
+									                var msg;
+									                data.round = data.key;
+									                data.imgValue = data.imgcode;
+									                data.mobileid = data.phone;
+									                if (!data.round || !data.imgValue) {
+									                    msg = "请输入图形校验码";
+									                }
+									                if (!/^1\d{10,10}$/.test(data.mobileid)) {
+									                    msg = "手机格式不对！";
+									                }
+									                msg && requirejs(["dialog"], function(ui) {
+									                    ui.toast(msg);
+									                });
+									                return !msg
+									            }
+									        });
+									        // 示例图片校验1
+									        <b>CY.checkUtil.gverify</b>({// 图片校验事件绑定
+									            elemID: ".gverify",
+									            onChange: function (data) {
+									                checkSms.setAjaxBody({
+									                    key: data.key
+									                });
+									            }
+									        });
+									        // 示例图片校验2
+									        <b>CY.checkUtil.gverify</b>({// 图片校验事件绑定
+									            elemID: ".gverify"
+									        }).change( function (data) {
+									        	checkSms.setAjaxBody({
+							                			key: data.key
+							                  		});
+									        });
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>sms方法参数</h3>
+				<ul class="methods">
+					<li>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>phoneID</td>
+										<td>Object|String</td>
+										<td>""</td>
+										<td>手机号输入框元素OR选择器</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>btnID</td>
+										<td>Object|selector</td>
+										<td>""</td>
+										<td>发送按钮输入框元素OR选择器</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>imgCodeId</td>
+										<td>Object|selector</td>
+										<td>""</td>
+										<td>图形校验码输入框元素OR选择器</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>time</td>
+										<td>Number</td>
+										<td>60</td>
+										<td>倒计时时间</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>downText</td>
+										<td>String</td>
+										<td>"{0}秒后重新发送校验码"</td>
+										<td>倒计时文本</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>disabledCss</td>
+										<td>String</td>
+										<td>disabled</td>
+										<td>倒计时样式</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>ajaxType</td>
+										<td>String</td>
+										<td>"ajaxUtil"</td>
+										<td>Ajax请求类型：ajaxUtil|ajax</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>ajaxUrl</td>
+										<td>String</td>
+										<td>"/pointgate/activityRegister/sendAuthCodeV2"</td>
+										<td>短信校验码接口地址</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>ajaxData</td>
+										<td>Object</td>
+										<td>
+											{<br>
+												method:"POST",<br>
+												headers:{<br>
+													"Content-Type":"application/x-www-form-urlencoded"<br>
+												},<br>
+												body : {}<br>
+											}<br>
+										</td>
+										<td>短信校验码接口参数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>beforeSend</td>
+										<td>Function</td>
+										<td>function(body, params) {}</td>
+										<td>AJAX发送数据前回调方法：回调参数body, params</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onAfter</td>
+										<td>Function</td>
+										<td>function(data) {}</td>
+										<td>接口服务返回数据后回调方法</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>sms实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>setDisabled</a>(state:Boolean) : <a>Void</a></p>
+						<p>启动|禁用发送校验码功能；</p>
+					</li>
+					<li>
+						<p><a>countdown</a>() : <a>Void</a></p>
+						<p>倒计时开始倒计；</p>
+					</li>
+					<li>
+						<p><a>setAjaxBody</a>(data : Objcet) : <a>Void</a></p>
+						<p>设置接口body参数；</p>
+					</li>
+					
+					<li>
+						<p><a>send</a>() : <a>Void</a></p>
+						<p>发送校验码；</p>
+					</li>
+				</ul>
+				<h3>gverify方法参数</h3>
+				<ul class="methods">
+					<li>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>elemID</td>
+										<td>Object|String</td>
+										<td>""</td>
+										<td>手机号输入框元素OR选择器</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>ajaxUrl</td>
+										<td>String</td>
+										<td>"/pointgate/Validate/queryPicValidate"</td>
+										<td>图形校验码接口地址</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>ajaxData</td>
+										<td>Object</td>
+										<td>
+											{}
+										</td>
+										<td>图形校验码接口参数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onChange</td>
+										<td>Function</td>
+										<td>function(data) {}</td>
+										<td>图形校验码变更时的回调方法</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>gverify实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>getCode</a>() : <a>Object</a></p>
+						<p>获取图形校验码返回的数据：{url:"",key:""}；</p>
+					</li>
+					<li>
+						<p><a>change</a>(fun : Function) : <a>Void</a></p>
+						<p>与onChange回调事件有相同的功能；</p>
+					</li>
+					<li>
+						<p><a>updateImg</a>(url : String) : <a>Void</a></p>
+						<p>更改图片地址；</p>
+					</li>
+					<li>
+						<p><a>refresh</a>() : <a>Void</a></p>
+						<p>重新发送短信校验码；</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

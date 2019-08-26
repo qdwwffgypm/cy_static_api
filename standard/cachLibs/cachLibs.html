@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="cachLibs.js" class="bold uline  tag" target="_blank">/static/js/libs/cachLibs.js</a></p>
+				<p>
+					1、默认调用测试stg库；<br/>
+					2、只能缓存同域CSS，JS资源；<br/>
+					3、页面加载完成1.5秒后后台开始缓存操作；<br/>
+					4、如果在客户端里，则自动调用客户端资源<br/>
+					5、加载CSS资源时；CSS里的图片要写绝对路径；不然找不到图片；<br/>
+				</p>
+				<div style="padding: 0 10px;">
+					<div class="prettyprint plain">
+						<div class="leftNum">
+							<span class="gray">1</span>
+							<span class="gray">2</span>
+							<span class="gray">3</span>
+							<span class="gray">4</span>
+							<span class="gray">5</span>
+							<span class="gray">6</span>
+							<span class="gray">7</span>
+							<span class="gray">8</span>
+							<span class="gray">9</span>
+							<span class="gray">10</span>
+							<span class="gray">11</span>
+							<span class="gray">12</span>
+							<span class="gray">13</span>
+						</div>
+						<div class="prettyprint"><span class="tag">&lt;script <span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span>   <span class="atn">src</span><span class="pun">=</span><span class="atv">"https://m.changyoyo.com/static/js/libs/cachLibs.js"</span>&gt;</span><span class="tag">&lt;/script&gt;</span></div>
+						<div class="prettyprint"><span class="tag">&lt;script <span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span>&gt;</span>
+							<div class="methods">
+								<div class="explain">
+									<dl class="expList">
+										<dd style="height: 150px;width: 47%;">
+											<pre class="prettyprint" data-lang="script" style="height: 115px;">
+											// 示例1
+											window.cachLibs.load([ {
+												url : "/static/js/common/spm.js"
+											}, {
+												url : "/static/js/libs/zepto.min.js"
+											} ])
+											</pre>
+										</dd>
+										<dd style="height: 150px;width: 47%;">
+											<pre class="prettyprint" data-lang="script">
+											// 示例2
+											window.cachLibs.load([ {
+												time : 1000 * 60 * 60 * 24 * 3,
+												url : "/static/js/common/spm.js"
+											}, {
+												url : "/static/js/libs/zepto.min.js"
+											} ])
+											</pre>
+										</dd>
+									</dl>
+								</div>
+							</div>
+						<span class="tag">&lt;/script&gt;</span></div>
+					</div>
+					<div class="br"></div>
+				</div>
+				<h3>APP已有缓存的类库</h3>
+				<p>
+			        1、 "/static/js/common/spm.js"<br/>
+			        2、 "/static/js/libs/vue.2.5.7.min.js"<br/>
+			        3、 "/static/js/libs/vue.2.5.9.min.js"<br/>
+			        4、 "/static/js/libs/vue-router.3.0.1min.js"<br/>
+			        5、 "/static/js/libs/vuex.3.0.1.min.js"<br/>
+			        6、 "/static/js/libs/mui/mui.min.js"<br/>
+			        7、 "/static/js/libs/zepto.min.js"<br/>
+			        8、 "/static/js/libs/CryptoJS/md5.js"<br/>
+			        9、 "/static/js/common/common.js"<br/>
+			        10、 "/static/js/common/tfd.js"<br/>
+				</p>
+				<h3>属性</h3>
+				<ul class="methods">
+					<li>
+						<p><a>storage</a> : <a>Boolean</a></p>
+						<p>是否支持本地存储；</p>
+					</li>
+					<li>
+						<p><a>webp</a> : <a>Boolean</a></p>
+						<p>当前环境是否支持webp格式图片；</p>
+					</li>
+				</ul>
+				<h3>方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>load</a> (arr : Array) : <a>Void</a></p>
+						<p>在引进脚本处添加或读取缓存类库；</p>
+						<div class="explain isShow">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+											<th colspan="4">arr参数：Object</th>
+										</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>url</td>
+										<td>String</td>
+										<td>类库地址url；（需要同域）</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>time</td>
+										<td>Number</td>
+										<td>缓存时间，单位毫秒；</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>isPreload</td>
+										<td>Boolean</td>
+										<td>预加载其他页面用到的类库</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+										<dd style="height: 190px;width: 47%;">
+											<pre class="prettyprint" data-lang="script" style="height: 190px;">
+											// 示例1
+											window.cachLibs.load([ {
+												url : "/static/js/common/spm.js"
+											}, {
+												url : "/static/js/libs/zepto.min.js"
+											}, {
+												url : "/static/js/libs/zepto.css"
+											}  ])
+											</pre>
+										</dd>
+										<dd style="height: 190px;width: 47%;">
+											<pre class="prettyprint" data-lang="script" style="height: 190px;">
+											// 示例2
+											window.cachLibs.load([ {
+												time : 1000 * 60 * 60 * 24 * 3,
+												url : "/static/js/common/spm.js"
+											}, {
+												url : "/static/js/libs/zepto.min.js"
+											} ])
+											</pre>
+										</dd>
+									</dl>
+								
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

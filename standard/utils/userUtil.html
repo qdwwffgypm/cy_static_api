@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.propertys {
+		    width: 725px;
+		}
+		.methods .explain .expList {
+		    width: 762px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="userUtil.source.js" class="bold uline  tag" target="_blank">/static/js/utils/userUtil.js</a></p>
+				<P>
+					PS：该对象在CY对象下；<br/>
+					1、浏览器内核标识。依据 navigator.userAgent 判断；<br/>
+					2、userUtil.js内部依赖browser.js，CryptoJS.js，stringUtil.js，cache.js，ajax.js，ajaxUtil.js和nativeUtil.js；<br/>
+				</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 210px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 185px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import userUtil from "cy_static/userUtil";
+								// ====使用====
+								userUtil.checkLogin({
+									url : "xxx.html",
+									callback : function () {}
+								});
+							</pre>
+							</dd>
+							<dd style="height: 355px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 330px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["userUtil"], function(userUtil) {
+										    userUtil.checkLogin({
+												url : "xxx.html",
+												callback : function () {}
+											});
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 355px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 330px;">
+									&lt;script type="text/javascript" src="/static/js/libs/browser.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/CryptoJS.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/stringUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/cache.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/browser.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/ajax.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/ajaxUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/nativeUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/userUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											<b>CY.</b>userUtil.checkLogin({
+												url : "xxx.html",
+												callback : function () {}
+											});
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>set</a>(token:String) : <a>Void</a></p>
+						<p>设置登录token；会话中有效；</p>
+					</li>
+					<li>
+						<p><a>get</a>() : <a>String</a></p>
+						<p>获取登录token；</p>
+					</li>
+					<li>
+						<p><a>check_v1</a>(callback:Function) : <a>Promise</a></p>
+						<p>验证登录token是否有效；有效返回当前token否是返回""</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>回调函数：返回当前用户token</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd style="height: 140px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 120px;">
+										// 示例1
+										<b>CY.</b>userUtil.check_v1( function () {
+											// code
+										});
+										</pre>
+									</dd>
+									<dd style="height: 140px;width: 47%;">
+										<pre class="prettyprint" data-lang="script" style="height: 120px;">
+										// 示例2
+										<b>CY.</b>userUtil.check_v1().then( function () {
+											// code
+										});
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>checkLogin</a>(param:Object) : <a>Void</a></p>
+						<p>验证用户登录状态下方可执行的行为操作；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<p>
+									1、url与callback并存时；优先执行callback当返回<span class="atn"> false </span>；时取消url跳转；<br/>
+									2、url和callback可直接当参数传递；
+								</p>
+								<table class="propertys">
+									<tr>
+										<th colspan="3">param参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+									</tr>
+									<tr>
+										<td>url</td>
+										<td>String</td>
+										<td>跳转URL：如果用户已经登录跳转到该URL；<br/>没有登录调用APP登录或H5登录并跳转URL；</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>回调函数：如果已经登录调用回调函数；（参数token, url）；<br/>没有登录调出APP登录（触发回调）或H5登录（不触发回调）；</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd style="height: 150px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 136px;">
+										// 示例1
+										<b>CY.</b>userUtil.checkLogin("xxx.html");
+										
+										// 示例2
+										<b>CY.</b>userUtil.checkLogin( function () {});
+										</pre>
+									</dd>
+									<dd style="height: 150px;width: 47%;">
+										<pre class="prettyprint" data-lang="script">
+										// 示例3
+										<b>CY.</b>userUtil.checkLogin({
+											url : "xxx.html",
+											callback :  function () {}
+										});
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>checkLink</a>() : <a>Void</a></p>
+						<p>验证a标签RUL是否要登录；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<p>
+									添加方式有2种形式:<br/>
+									1、在a标签的href属性添加<span class="atn"> needlogin=true</span>；<br/>
+									2、在a标签添加<span class="atn"> needlogin </span>属性；<br/>
+									2、一个路由只需调用一次；</p>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd style="height: 150px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 115px;">
+										// 示例 html代码
+										&lt;a href="xxx.html?needlogin=true"&gt;我的钱包&lt;/a&gt;
+										
+										&lt;a href="xxx.html" needlogin="true"&gt;我的钱包&lt;/a&gt;
+										</pre>
+									</dd>
+									<dd style="height: 150px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 115px;">
+										// 示例 script调用
+										&lt;script type="text/javascript"&gt;
+											<b>CY.</b>userUtil.checkLink();
+										&lt;/script&gt;
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="pullRefresh.source.js" class="bold uline  tag" target="_blank">/static/js/libs/pullRefresh.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<p>将加载更多的功能添加在指定的元素内</p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 410px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 385px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import pullRefresh from "cy_static/pullRefresh";
+								// ====使用====
+								// 加载数据
+								var pageNum = 1;
+								var __run = function () {};
+								var pullRefresh = CY.pullRefresh({
+									appElem : dom
+								});
+								// 触发滚动时分页参数+1
+								pullRefresh.callback(function() {
+									pageNum++;
+									__run();
+								});
+								// 告诉程序数据是否已经全部结束
+								pullRefresh.endPull(data.length < that.data.pageSize ? true : false);
+
+
+							</pre>
+							</dd>
+							<dd style="height: 410px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 390px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+								    requirejs([ "pullRefresh" ], function() {
+										// 加载数据
+										var pageNum = 1;
+										var __run = function () {};
+										var pullRefresh = <b>CY.</b>pullRefresh({
+											appElem : dom
+										});
+										// 触发滚动时分页参数+1
+										pullRefresh.callback(function() {
+											pageNum++;
+											__run();
+										});
+										// 告诉程序数据是否已经全部结束
+										pullRefresh.endPull(data.length < that.data.pageSize ? true : false);
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 410px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 390px;">
+									&lt;script type="text/javascript" src="/static/js/libs/pullRefresh.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										// 加载数据
+										var pageNum = 1;
+										var __run = function () {};
+										var pullRefresh = <b>CY.</b>pullRefresh({
+											appElem : dom
+										});
+										// 触发滚动时分页参数+1
+										pullRefresh.callback(function() {
+											pageNum++;
+											__run();
+										});
+										// 告诉程序数据是否已经全部结束
+										pullRefresh.endPull(data.length < that.data.pageSize ? true : false);
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>pullRefresh</a>(params : Object) : <a>Object</a></p>
+						<p>将加载更多的功能添加在指定的元素内</p>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>height</td>
+										<td>String</td>
+										<td>130</td>
+										<td>内容离底部大于该距离开始加载</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onShowCss</td>
+										<td>String</td>
+										<td>"onShow"</td>
+										<td>点击加载更多样式</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onLoadCss</td>
+										<td>String</td>
+										<td>"onLoad"</td>
+										<td>加载中样式</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onEndCss</td>
+										<td>String</td>
+										<td>"onEnd"</td>
+										<td>加载结束样式</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onShow</td>
+										<td>String</td>
+										<td>"点击加载更多"</td>
+										<td>点击加载更多显示文本</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onLoad</td>
+										<td>String</td>
+										<td>"正在加载..."</td>
+										<td>加载中显示文本</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onEnd</td>
+										<td>String</td>
+										<td>"已经到底啦!"</td>
+										<td>加载结束显示文本</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>appElem</td>
+										<td>dom|String</td>
+										<td>"body"</td>
+										<td>加载更多的文本添加在该元素内</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>scrollElem</td>
+										<td>dom|String</td>
+										<td>"body"</td>
+										<td>滚动元素</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>callback</a>(func : Function) : <a>Void</a></p>
+						<p>每次滚动时回调</p>
+					</li>
+					<li>
+						<p><a>onShow</a>() : <a>Void</a></p>
+						<p>主动显示加载更多文本</p>
+					</li>
+					<li>
+						<p><a>onLoad</a>() : <a>Void</a></p>
+						<p>主动显示加载文本</p>
+					</li>
+					<li>
+						<p><a>endPull</a>(isEnd : Boolean) : <a>Void</a></p>
+						<p>存在异步请求时告知程序是否还有下一页</p>
+					</li>
+					<li>
+						<p><a>onEnd</a>(func : Function) : <a>Void</a></p>
+						<p>主动显示结束文本</p>
+					</li>
+					<li>
+						<p><a>refresh</a>() : <a>Void</a></p>
+						<p>主动触发滚动事件</p>
+					</li>
+					<li>
+						<p><a>unbind</a>() : <a>Void</a></p>
+						<p>解除滚动事件</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

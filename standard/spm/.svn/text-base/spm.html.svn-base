@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title>目录结构说明</title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.prettyprint {padding: 0px 10px;}
+			.isNeed {color: #009f5d;position: absolute;right: 30px;top: 15px;}
+			.isNeed b{font-weight: normal;}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看：<a class="link" href="http://test-m-stg.ppppoints.com/static/spm/index.html#1">SPM埋点说明</a></p>
+				<p>
+					<b>埋点分外部页面和内部页面：</b><br/>
+					1、外部页面并非统计他们页面PV与UV（该功能暂不开放），而是统计该连接来源于哪个平台、页面、模块和渠道等；<br/>
+					2、内部页面主要统计页面/栏目/平台的PV与UV；模块和按钮点击量；接口出错率等信息；<br/>
+					3、所有页面需手调用 spm.push([<span class="atv">'_trackPageview'</span>, <span class="atn">url</span> ])方法；触发PV统计；
+				</p>
+				<h3>外投连接统计</h3>
+				<ul class="methods">
+					<li>
+						<p>在外投URL后面直接加参数：spm=站点.平台.页面.模块.位置.0.渠道；</p>
+						<p>如：xxxx.html<a>?spm=8.1.666.22.1.0.02000000</a>；</p>
+					</li>
+					<li>
+						<p>只统计渠道，可在URL后页面直接加参数：channel_source=渠道；</p>
+						<p>如：xxxx.html<a>?channel_source=02000000</a>；</p>
+					</li>
+				</ul>	
+				<h3>畅由页面埋点</h3>
+				<ul class="methods">
+					<li>
+						<p><a>平台.站点标记</a>：在meta标签加属性name="data-spm"，属性 content="平台.站点"；不添加默认 3.1</p>
+						<p>示例：<span class="prettyprint">&lt;meta <span class="atn">name</span><span class="pun">=</span><span class="atv">"data-spm"</span> <span class="atn">content</span><span class="pun">=</span><span class="atv">"3.1"</span> /&gt;</span></p>
+						<span class="isNeed">必须：<b class="atn">Y</b></span>
+					</li>
+					<li>
+						<p><a>页面标记</a>：在body标签加属性 data-spm="页面code"</p>
+						<p>示例：<span class="prettyprint">&lt;body <span class="atn">data-spm</span><span class="pun">=</span><span class="atv">"201"</span> &gt;</span></p>
+						<span class="isNeed">必须：<b class="atn">Y</b></span>
+					</li>
+					<li>
+						<p><a>模块统计埋点</a>：在统计模块标签加属性 data-spm="模块code"</p>
+						<p>示例：<span class="prettyprint">&lt;ul <span class="atn">data-spm</span><span class="pun">=</span><span class="atv">"111"</span> &gt;</span></p>
+						<span class="isNeed">必须：<b class="atn">N</b></span>
+					</li>
+					<li>
+						<p><a>模块子模块统计埋点</a>：在模块标签内部元素上加上属性 data-spm="标记如ID"</p>
+						<p>示例：<span class="prettyprint">&lt;ul <span class="atn">data-spm</span><span class="pun">=</span><span class="atv">"111"</span> &gt;</span><span class="prettyprint">&lt;li <span class="atn">data-spm</span><span class="pun">=</span><span class="atv">"1323"</span>&gt;</span></p>
+						<span class="isNeed">必须：<b class="atn">N</b></span>
+					</li>
+					<li>
+						<p><a>按钮统计埋点</a>：在统计模块标签加属性 data-spm="模块code"</p>
+						<p>示例：<span class="prettyprint">&lt;span <span class="atn">data-spm</span><span class="pun">=</span><span class="atv">"111"</span> &gt;</span></p>
+						<span class="isNeed">必须：<b class="atn">N</b></span>
+					</li>
+					<li>
+						<p><a>接口统计埋点</a>：接口统计调用的是模块统计；接口路径作为模块code，事件为02/click，接口返回的code作为描述信息；</p>
+						<p>示例：spm.push([ <span class="atv">'_trackEvent'</span>, <span class="atv">'/butler/cmcc/busy'</span>, <span class="atv">'02'</span>, <span class="atn">_data.code</span> ]);</p>
+						<span class="isNeed">必须：<b class="atn">N</b></span>
+					</li>
+					<li>
+						<p><a>栏目或平台标记</a>：只要在URL后面加上column参数即可；统计到从该连接开始访问的PV、UV、模块和按钮等信息</p>
+						<p>示例：xxxx.html<a>?column=666</a></p>
+						<span class="isNeed">必须：<b class="atn">N</b></span>
+					</li>
+				</ul>
+				
+				
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

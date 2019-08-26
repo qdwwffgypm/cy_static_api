@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.methods .explain .expList dd pre {
+		    margin-left: -608px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="shareUtil.source.js" class="bold uline  tag" target="_blank">/static/js/utils/shareUtil.js</a></p>
+				<p>
+					PS：该对象在CY对象下；<br/>
+					1、该方法集：微信，QQ，Qzone分享于一休；按需加载相关的分享文件；<br/>
+					2、只需设置分享文本即可，不需额外引用JS文件；<br/>
+					3、所有参数不限：官方文档是什么参数就设置什么数据；<br/>
+					4、shareUtil.js内部依赖browser.js和ajax.js；<br/>
+				</p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 260px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 235px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import shareUtil from "cy_static/shareUtil";
+								// ====使用====
+								shareUtil.setShareInfo({
+							        title: "分享标题",
+							        desc: "分享描述",
+							        imgUrl: "分享图标",
+							        link: "分享链接",
+							        success: function() {}
+							    })
+							</pre>
+							</dd>
+							<dd style="height: 315px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 290px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["shareUtil"], function(shareUtil) {
+										    shareUtil.setShareInfo({
+										        title: "分享标题",
+										        desc: "分享描述",
+										        imgUrl: "分享图标",
+										        link: "分享链接",
+										        success: function() {}
+										    })
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 315px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 290px;">
+									&lt;script type="text/javascript" src="/static/js/libs/browser.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/ajax.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/shareUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											<b>CY.</b>shareUtil.setShareInfo({
+											    title: "分享标题",
+											    desc: "分享描述",
+											    imgUrl: "分享图标",
+											    link: "分享链接",
+											    success : function () {}
+											})
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>setShareInfo</a>(param : Object) : <a>Void</a></p>
+						<p>设置分享文本；</p>
+						<div class="explain isShow">
+								<div class="title">示例</div>
+								<div class="detail">
+									<table class="propertys" style="width: 908px;">
+										<tr>
+											<th colspan="4">param参数</th>
+										</tr>
+										<tr>
+											<th>参数名</th>
+											<th>类型</th>
+											<th>描述</th>
+											<th>必需</th>
+										</tr>
+										<tr>
+											<td>title</td>
+											<td>String</td>
+											<td>分享标题</td>
+											<td>Y</td>
+										</tr>
+										<tr>
+											<td>desc</td>
+											<td>String</td>
+											<td>分享描述</td>
+											<td>Y</td>
+										</tr>
+										<tr>
+											<td>imgUrl</td>
+											<td>String</td>
+											<td>分享图标</td>
+											<td>Y</td>
+										</tr>
+										<tr>
+											<td>link</td>
+											<td>String</td>
+											<td>分享链接</td>
+											<td>Y</td>
+										</tr>
+										<tr>
+											<td>success</td>
+											<td>Function</td>
+											<td>成功回调方法</td>
+											<td>N</td>
+										</tr>
+										<tr>
+											<td>weixin</td>
+											<td>Object</td>
+											<td>weixin时的私有参数；会覆盖一级参数</td>
+											<td>N</td>
+										</tr>
+										<tr>
+											<td>qq</td>
+											<td>Object</td>
+											<td>qq时的私有参数；会覆盖一级参数</td>
+											<td>N</td>
+										</tr>
+										<tr>
+											<td>qzone</td>
+											<td>Object</td>
+											<td>qzone时的私有参数；会覆盖一级参数</td>
+											<td>N</td>
+										</tr>
+									</table>
+									<div class="br"></div>
+									<dl class="expList">
+										<dd style="height: 320px;">
+											<pre class="prettyprint" data-lang="script" style="height: 304px;">
+											// 示例1
+											<b>CY.</b>shareUtil.setShareInfo({
+											    title: "分享标题",
+											    desc: "分享描述",
+											    imgUrl: "分享图标",
+											    link: "分享链接",
+											    success : function () {}
+											})
+											</pre>
+										</dd>
+										<dd style="height: 320px;">
+											<pre class="prettyprint" data-lang="script" style="height: 304px;">
+											// 示例2 
+											<b>CY.</b>shareUtil.setShareInfo({
+											    title: "分享标题",
+											    desc: "分享描述",
+											    imgUrl: "分享图标",
+											    link: "分享链接",
+											    weixin : {
+											    	othTitle: "weixin专属标题"
+											    }
+											})
+											</pre>
+										</dd>
+										<dd style="height: 320px;">
+											<pre class="prettyprint" data-lang="script">
+											// 示例3 
+											<b>CY.</b>shareUtil.setShareInfo({
+											    title: "分享标题",
+											    desc: "分享描述",
+											    imgUrl: "分享图标",
+											    link: "分享链接",
+											    weixin : {
+											    	othTitle: "weixin专属标题"
+											    },
+											    qq : {
+											    	othTitle: "QQ分享标题"
+											    }
+											})
+											</pre>
+										</dd>
+									</dl>
+								</div>
+							</div>
+					</li>
+								
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

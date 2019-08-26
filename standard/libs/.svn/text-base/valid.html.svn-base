@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.methods .explain .expList dd {width: 48%;}
+		.methods .explain .expList dd pre {
+		    margin-left: -605px;
+		}
+		.methods .explain .expList dd pre {
+		    margin-left: -556px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -495px;
+		    line-height: 18px;
+		}
+		.propertys {
+		    width: 925px;
+		}
+		</style>
+
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>	PS：该对象在CY.<b>Valid</b> 对象下；<br/>
+					1、针对input、textarea、select控件的字符长度、值范围、选择个数的控制；<br/>
+					2、valid.js里的ajaxType校验依赖ajaxUtil.js；<br/>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 650px;">
+								<p>
+									引用方式一、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 650px;">
+									&lt;script type="text/javascript" src="/static/js/libs/valid.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											// 配置
+											<b>CY.valid.config</b>({
+											    form: "#form",
+											    submitBtn: "#btn",
+											    alertMeg: true
+											});
+											// 各项校验规则
+											<b>CY.valid("#name")</b>.initValid({
+											    tipId: "#nameTip",
+											    onShow: "请输入你的大号",
+											    onFocus: "用户名3个字哦！",
+											    oncorrect: "大号忘记输入了",
+											}).inputValid({
+											    min: "5",
+											    max: "10",
+											    onError: "不长心啊，请输入5-10个字"
+											})
+											
+											<b>CY.valid("#email")</b>.initValid({
+											    tipId: "#nameTip",
+											    onShow: "请输入你的Email",
+											    onFocus: "Email格式:xxx@qq.com",
+											    oncorrect: "格式不对啦",
+											}).inputValid({
+											    min: "5",
+											    max: "10",
+											    onError: "不长心啊，请输入5-10个字"
+											})
+											// Js方式提交
+											<b>CY.valid</b>.submitForm();
+									&lt;/script&gt;
+								</pre>
+							</dd>
+							<dd style="height: 650px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 650px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["Valid"], function(valid) {
+										    var valid = <b>valid.config</b>({
+											    form: "#form",
+											    submitBtn: "#btn",
+											    alertMeg: true
+											});
+											// 各项校验规则
+											<b>valid("#name")</b>.initValid({
+											    tipId: "#nameTip",
+											    onShow: "请输入你的大号",
+											    onFocus: "用户名3个字哦！",
+											    oncorrect: "大号忘记输入了",
+											}).inputValid({
+											    min: "5",
+											    max: "10",
+											    onError: "不长心啊，请输入5-10个字"
+											})
+											
+											<b>valid("#email")</b>.initValid({
+											    tipId: "#nameTip",
+											    onShow: "请输入你的Email",
+											    onFocus: "Email格式:xxx@qq.com",
+											    oncorrect: "格式不对啦",
+											}).inputValid({
+											    min: "5",
+											    max: "10",
+											    onError: "不长心啊，请输入5-10个字"
+											})
+											// Js方式提交
+											<b>valid</b>.submitForm();
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>serialize</a>(form : Object|String = null) : <a>String</a></p>
+						<p>输出序列化表单值的结果；</p>
+					</li>
+					<li>
+						<p><a>serializeArray</a>(form : Object|String = null) : <a>Array</a></p>
+						<p>输出以数组形式序列化表单值的结果；</p>
+					</li>
+					<li>
+						<p><a>initValid</a>(params : Object = {}) : <a>object</a></p>
+						<p>初始化组件获得|失去焦点默认值：必须项；</p>
+					</li>
+					<li>
+						<p><a>inputValid</a>(params : Object = {}) : <a>object</a></p>
+						<p>组件值<b>最大&最小</b>范围校验 ；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>type</td>
+										<td>String</td>
+										<td>"size"</td>
+										<td>
+											(对select无效)<br/>
+											"size":表示比较长度； <br/>
+											"number":数值型比较；<br/>
+											"string":字符型比较；<br/>
+											"date":短日期类型；<br/>
+											"datetime":长日期类型
+										</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>min</td>
+										<td>String</td>
+										<td>0</td>
+										<td>
+											最小长度/值	0<br/>
+											输入框比较的是关系；<br/>
+											单|多选校验选项个数
+										</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>max</td>
+										<td>String</td>
+										<td>99999999999999</td>
+										<td>
+											最大长度/值	<br/>
+											输入框比较的是关系；<br/>
+											单|多选校验选项个数
+										</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onError</td>
+										<td>String</td>
+										<td>"输入错误"</td>
+										<td>错误时的提示语</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onErrorMin</td>
+										<td>String</td>
+										<td>""</td>
+										<td>比min属性小的提示</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onErrorMax</td>
+										<td>String</td>
+										<td>""</td>
+										<td>比max属性大的提示</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>empty</td>
+										<td>object</td>
+										<td>
+											{<br>
+											    leftEmpty: true,<br>
+											    rightEmpty: true,<br>
+											    emptyError: null<br>
+											};
+										</td>
+										<td>
+											leftEmpty:左边是否允许为空；<br>
+											rightEmpty:右边是否允许为空； <br>
+											emptyError：没有提示语时，显示onError提示语
+										</td>
+										<td>N</td>
+									</tr>
+									
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+										<dd style="height: 250px;">
+											<pre class="prettyprint" data-lang="script" style="height: 250px;">
+											// 示例1
+											<b>CY.valid</b>.config({form: "#form"});
+											
+											// 
+											<b>CY.valid</b>("#name").initValid({}).inputValid({
+											    min: "5",
+											    max: "10",
+											    onError: "值范围不对",
+											    onErrorMin: "最小输入5个汉字",
+											    onErrorMax: "最小输入10个汉字"
+											})
+											</pre>
+										</dd>
+										<dd style="height: 250px;">
+											<pre class="prettyprint" data-lang="script" style="height: 250px;">
+											// 示例2
+											<b>CY.valid</b>.config({form: "#form"});
+											
+											// 
+											<b>CY.valid</b>("#name").initValid({}).inputValid({
+											    min: "5",
+											    max: "10",
+											    empty : false,
+											    onError: "值范围5-10个汉字"
+											})
+											</pre>
+										</dd>
+									</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>regType</a>(params : Object = {}) : <a>object</a></p>
+						<p>组件值进行<b>正则</b>表达式校验  ；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>regExp</td>
+										<td>String|Array</td>
+										<td>""</td>
+										<td>
+											正则表达式或regexEnum对象的属性名
+										</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>dataType</td>
+										<td>String</td>
+										<td>"string"</td>
+										<td>
+											"string":自定义的表达式；<br>
+											"enum":regexEnum属性名
+										</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>operateor</td>
+										<td>String</td>
+										<td>""</td>
+										<td>
+											多个表达式时的运算符类型；<br>
+											"||"或的关系   "&&"并列
+										</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onError</td>
+										<td>String</td>
+										<td>"输入错误"</td>
+										<td>错误时的提示语</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+										<dd style="height: 220px;">
+											<pre class="prettyprint" data-lang="script" style="height: 220px;">
+											// 示例1
+											<b>CY.valid</b>.config({form: "#form"});
+											
+											// 
+											<b>CY.valid</b>("#name").initValid({}).regType({
+											    regExp: /\d/,
+											    onError: "输入值需是数字",
+											})
+											</pre>
+										</dd>
+										<dd style="height: 220px;">
+											<pre class="prettyprint" data-lang="script" style="height: 220px;">
+											// 示例2
+											<b>CY.valid</b>.config({form: "#form"});
+											
+											// 
+											<b>CY.valid</b>("#name").initValid({}).regType({
+											    regExp: ["num","intege"],
+											    dataType : "enum",
+											    onError: "输入值需是数字且是整数"
+											})
+											</pre>
+										</dd>
+									</dl>
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>funType</a>(params : Object = {}) : <a>object</a></p>
+						<p>组件值进行<b>函数</b>表达式校验  ；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>fun</td>
+										<td>Function</td>
+										<td>function(){}</td>
+										<td>
+											外部函数名<br/>
+											参数1:元素的值；<br/>
+											参数2:元素对象；<br/>
+											返回string为自定义错误
+										</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>onError</td>
+										<td>String</td>
+										<td>"输入错误"</td>
+										<td>
+											函数返回false错误的提示;
+										</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+										<dd style="height: 250px;">
+											<pre class="prettyprint" data-lang="script" style="height: 250px;">
+											// 示例1
+											<b>CY.valid</b>.config({form: "#form"});
+											
+											// 
+											<b>CY.valid</b>("#name").initValid({}).funType({
+											    fun: function (val, dom) {
+											    	// code
+											    	return "自定义错误提示";
+											    },
+											    onError: "输入错误",
+											})
+											</pre>
+										</dd>
+										<dd style="height: 250px;">
+											<pre class="prettyprint" data-lang="script" style="height: 250px;">
+											// 示例2
+											<b>CY.valid</b>.config({form: "#form"});
+											
+											// 
+											<b>CY.valid</b>("#name").initValid({}).funType({
+											    fun: function (val, dom) {
+											    	// code
+											    	return false;
+											    },
+											    onError: "输入错误"
+											})
+											</pre>
+										</dd>
+									</dl>
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>ajaxType</a>(params : Object = {}) : <a>object</a></p>
+						<p>组件值进行<b>ajax</b>异步校验 ；</p>
+					</li>
+					<li>
+						<p><a>compareType</a>(params : Object = {}) : <a>object</a></p>
+						<p>组件值进行<b>关系比较</b>校验；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>desID</td>
+										<td>string|object</td>
+										<td>""</td>
+										<td>要跟源目标进行比较的目标组件（选择器|对象）</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>operateor</td>
+										<td>string</td>
+										<td>""</td>
+										<td>
+											比较符号：=、!=、>、>=、<、<=
+										</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>dataType</td>
+										<td>string</td>
+										<td>"string"</td>
+										<td>值："string"、"number","datetime","date"</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onError</td>
+										<td>String</td>
+										<td>"输入错误"</td>
+										<td>错误时的提示语</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+										<dd style="height: 220px;">
+											<pre class="prettyprint" data-lang="script" style="height: 220px;">
+											// 示例1 配置
+											<b>CY.valid</b>.config({form: "#form"});
+											
+											// 组件规则
+											<b>CY.valid</b>("#name").initValid({}).compareType({
+											    desID: "#lastname",
+											    operateor : "=",
+											    onError: "两次名称不相等"
+											})
+											</pre>
+										</dd>
+										<dd style="height: 220px;">
+											<pre class="prettyprint" data-lang="script" style="height: 220px;">
+											// 示例2 配置
+											<b>CY.valid</b>.config({form: "#form"});
+											
+											// 组件规则
+											<b>CY.valid</b>("#stime").initValid({}).compareType({
+											    desID: "#ntime",
+											    operateor : "<",
+											    onError: "结束时间必需大于开始时间"
+											})
+											</pre>
+										</dd>
+									</dl>
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>unValid</a>(selector : String|object, valid : Object = {}) : <a>Void</a></p>
+						<p>取消已绑定组件校验；selector选择器|对象；valid校验组实例，默认最新一组;</p>
+					</li>
+				</ul>
+				<h3>静态方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>config</a>(params : Object = {}) : <a>Object</a></p>
+						<p>配置验证表单</p>
+					</li>
+					<li>
+						<p><a>getValid</a>(num : Number = null) : <a>Object</a></p>
+						<p>获取表单验证实例</p>
+					</li>
+					<li>
+						<p><a>addValidItem</a>(dom : Object|String  = null) : <a>Void</a></p>
+						<p>添加的验证元素；</p>
+					</li>
+					<li>
+						<p><a>getValidItem</a>(num : Number = null) : <a>Object</a></p>
+						<p>获取num||最后添加的验证元素；</p>
+					</li>
+					<li>
+						<p><a>addValidItemRule</a>(rule : Object, dom : Object|String  = null) : <a>Void</a></p>
+						<p>为验证项增加验证规则；dom为空时为最后的一项元素增加;</p>
+					</li>
+					<li>
+						<p><a>clear</a>(params : Object = {}) : <a>Void</a></p>
+						<p>清空所有表单验证</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

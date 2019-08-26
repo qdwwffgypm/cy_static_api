@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.list{line-height: 28px;}
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -495px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="cache.source.js" class="bold uline  tag" target="_blank">/static/js/libs/cache.js</a></p>
+				<p>	PS：该对象在CY对象下；<br/>
+					1、cache对象主要是对数据的缓存处理；<br/>
+					2、缓存方式localStorage；不支持或无痕模式下采用对象形式；<br/>
+					3、默认缓存时间30分钟；<br/>
+					4、进入页面时执行一次清除过期数据；
+				</p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 195px;">
+								<p>
+									引用方式一、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 170px;">
+									&lt;script type="text/javascript" src="/static/js/libs/cache.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											<b>CY.</b>cache.set("key", "value", 3600);
+									&lt;/script&gt;
+								</pre>
+							</dd>
+							<dd style="height: 195px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 170px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["cache"], function(cache) {
+										    cache.set("key", "value", 3600);
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>属性</h3>
+				<ul class="methods">
+					<li>
+						<p><a>debug</a> : <a>Boolean</a></p>
+						<p>是否开启测试模式；测试模式不缓存数据；默认<a>false</a>；</p>
+					</li>
+					<li>
+						<p><a>localStorage</a> : <a>Boolean</a></p>
+						<p>检测当前环境是否支持localStorage存储；</p>
+					</li>
+				</ul>
+				<h3>数据存储方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>set </a>(key:String, val:Any, time:Number=1800000) : <a>Void</a></p>
+						<p>设置要要缓存的数据；time毫秒数</p>
+						<div class="methDetail">
+						</div>
+					</li>
+					<li>
+						<p><a>get </a>(key:String) : <a>Any</a></p>
+						<p>获取缓存数据；</p>
+					</li>
+					<li>
+						<p><a>runClear</a>() : <a>Void</a></p>
+						<p>手动执行清除已过期的数据；</p>
+					</li>
+					<li>
+						<p><a>del </a>(key:String) : <a>Void</a></p>
+						<p>删除缓存数据；</p>
+					</li>
+				</ul>
+				<h3>图像存储方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>toCacheImg </a>(img:Image, time:Number=1800000) : <a>Boolean</a></p>
+						<p>缓存图片对象；</p>
+					</li>
+					<li>
+						<p><a>getBase64Img </a>(img:Image) : <a>String</a></p>
+						<p>将图片对象对为base64位字符串；</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

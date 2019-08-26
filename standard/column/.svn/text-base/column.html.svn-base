@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title>目录结构说明</title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.cTree{margin-left:45px;position:relative;line-height: 20px;}
+			.cTree li{padding:2px 0;list-style:none;position:relative}
+			.cTree li.open{}
+			.cTree li.open>.cTree:before{content:" ";position:absolute;top:10px;bottom:17px;left:4px;display:block;width:1px;border-left:1px dotted #999}
+			.cTree:before{content:" ";position:absolute;top:10px;bottom:17px;left:4px;display:block;width:1px;border-left:1px dotted #999}
+			.cTree:first-child:after{content:" ";position:absolute;bottom:15px;left:4px;display:block;height:1px;width:34px;border-bottom:1px dotted #999}
+			.cTree a{padding-left:7px;color:#333;position:relative}
+			.type0,.type1,.type2,.type3{overflow:hidden;position:relative;display:inline-block;width:15px;height:14px;background-repeat:no-repeat;background-position:0 center;background-image:url(../img/Treeview_00.jpg)}
+			.type1{background-image:url(../img/Treeview_01.jpg)}
+			.type2{background-image:url(../img/Treeview_02.jpg)}
+			.type2:after{content:" ";position:absolute;top:6px;left:10px;display:block;height:1px;width:34px;border-bottom:1px dotted #999}
+			.type3{background-image:url(../img/Treeview_03.jpg)}
+			
+			.des {position:absolute;left: 196px;top: -43px;}
+			.des em{position:absolute;border-bottom:2px solid #FF2851;width: 120px;transform: rotate(-18deg);top: 37px;left: -115px;}
+			.des em:before{content:" ";color:transparent;border-top:2px solid #FF2851;border-right:2px solid #FF2851;transform:rotate(59deg);width:6px;height:6px;position:absolute;left: 113px;top:-3px;}
+			.des font{border-bottom:1px dashed #ccc;display:inline-block}
+			.des_1 {top: 40px;}
+			.des_1 em {transform: rotate(18deg);top: -4px;}
+			.des_2 {top: 13px;}
+			.des_2 em {transform: rotate(8deg);top: 8px}
+			.des_3 {top: -14px}
+			.des_3 em {transform: rotate(1deg);top: 27px;}
+			.des_4 {top: -14px}
+			.des_4 em:before {transform: rotate(49deg);}
+			.des_4 em {transform: rotate(-1deg);top: 28px;}
+			.des_4 font {position: relative;top: 11px;}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>1、每个包按其功能存放相关文件，不可穿插；如把路由定义在View视图目录</p>
+				<p>2、所有公共包如需添加方法或类库需把里面的功能方法在本文档中添加说明与举例；</p>
+				<p>3、不要创建新的公用目录；要建只能建在自己开发的当前路由文件夹下；</p>
+				<br />
+				<h3 class="conTitle">静态资源目录结构</h3>
+				<ul class="cTree">
+					<li class="open">
+						<i class="type3"></i><i class="type0"></i><a>static</a>
+						<ul class="cTree">
+							<li>
+								<p class="des des_4"><em></em><font>js脚本文件</font></p>
+								<i class="type2"></i><i class="type0"></i><a>js</a>
+							</li>
+							<li>
+								<p class="des des_4"><em></em><font>css样式文件</font></p>
+								<i class="type2"></i><i class="type0"></i><a>css</a>
+							</li>
+							<li>
+								<p class="des des_4"><em></em><font>img图片文件</font></p>
+								<i class="type2"></i><i class="type0"></i><a>img</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<h3 class="conTitle">基本项目结构</h3>
+				<ul class="cTree">
+					<li class="open">
+						<i class="type3"></i><i class="type0"></i><a>src</a>
+						<ul class="cTree">
+							<li class="open">
+								<i class="type3"></i><i class="type0"></i><a>assets</a>
+								<ul class="cTree">
+									<li class="open">
+										<p class="des"><em></em><font>config：存放公共配置文件如推荐位key（方便一次性返回所有数据），接口地址；</font></p>
+										<i class="type3"></i><i class="type0"></i><a>config</a>
+										<ul class="cTree">
+											<li><i class="type1"></i>keys.js</li>
+											<li><i class="type1"></i>apiurl.js</li>
+										</ul>
+									</li>
+									<li>
+										<p class="des"><em></em><font>css：页面使用统一的全局CSS文件；（不可修改）</font></p>
+										<i class="type3"></i><i class="type0"></i><a>css</a>
+										<ul class="cTree">
+											<li><i class="type1"></i>global.css</li>
+										</ul>
+									</li>
+									<li><i class="type2"></i><i class="type0"></i><a>img</a></li>
+									<li>
+										<p class="des"><em></em><font>libs：存放无依赖其他文件的JS类库文件；<br/>（如需添加方法或类库需把里面的功能方法在本文档中添加说明与举例）</font></p>
+										<i class="type3"></i><i class="type0"></i><a>libs</a>
+									</li>
+									<li>
+										<p class="des des_3"><em></em><font>utils：存放一些公共帮忙类JS类库文件；<br/>（如需添加方法或类库需把里面的功能方法在本文档中添加说明与举例）</font></p>
+										<i class="type3"></i><i class="type0"></i><a>utils</a>
+									</li>
+									<li>
+										<p class="des des_2"><em></em><font>plugins：存放其他插件；(可按类存放)</font></p>
+										<i class="type2"></i><i class="type0"></i><a>plugins</a>
+									</li>
+									<li>
+										<p class="des des_2"><em></em><font>uis：存放公共效果相关；如弹窗，收货地址等；<br/>（如需添加方法或类库需把里面的功能方法在本文档中添加说明与举例）</font></p>
+										<i class="type2"></i><i class="type0"></i><a>uis</a>
+									</li>
+								</ul>
+							</li>
+							<li class="open">
+								<p class="des des_1" style="left: 245px;"><em></em><font>components：存放公共组件如：头部导航<br/>（如需添加方法或类库需把里面的功能方法在本文档中添加说明与举例）</font></p>
+					
+								<i class="type3"></i><i class="type0"></i><a>components</a>
+								<ul class="cTree">
+									<li>
+										<i class="type1"></i><a>header.vue</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<p class="des des_1"><em></em><font>router：存放路由</font></p>
+								<i class="type2"></i><i class="type0"></i><a>router</a>
+							</li>
+							<li>
+								<p class="des des_1"><em></em><font>service：存放接口服务</font></p>
+								<i class="type2"></i><i class="type0"></i><a>service</a>
+							</li>
+							<li>
+								<p class="des des_1"><em></em><font>store：存放状态存储相关</font></p>
+								<i class="type2"></i><i class="type0"></i><a>store</a>
+							</li>
+							<li>
+								<p class="des des_1"><em></em><font>view：存放视图</font></p>
+								<i class="type2"></i><i class="type0"></i><a>view</a>
+							</li>
+						</ul>
+					</li>
+					<li class="open">
+						<p class="des des_1"><em></em><font>项目资料或需求文档；</font></p>
+						<i class="type3"></i><i class="type0"></i><a>doc</a>
+					</li>
+					<li class="open">
+						<p class="des des_1"><em></em><font>static：不需要ES6编译文件；</font></p>
+						<i class="type3"></i><i class="type0"></i><a>static</a>
+						<ul class="cTree">
+							<li>
+								<i class="type2"></i><i class="type0"></i><a>js</a>
+							</li>
+							<li>
+								<i class="type2"></i><i class="type0"></i><a>css</a>
+							</li>
+							<li>
+								<i class="type2"></i><i class="type0"></i><a>img</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

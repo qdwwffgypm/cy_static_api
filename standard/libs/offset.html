@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="offset.source.js" class="bold uline  tag" target="_blank">/static/js/libs/offset.js</a></p>
+				<p>PS：该方法在CY对象下；</p>
+				<P>获取元素位置信息</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 230px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 205px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import offset from "cy_static/offset";
+								// ====使用====
+								var pos = offset("#test");
+								// 获得元素离顶部距离
+								pos.top
+								// 获得元素离左边距离
+								pos.left
+
+							</pre>
+							</dd>
+							<dd style="height: 255px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 230px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs(["offset"], function() {
+									       var pos = offset("#test");
+										// 获得元素离顶部距离
+										pos.top
+										// 获得元素离左边距离
+										pos.left																				    
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 255px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 230px;">
+									&lt;script type="text/javascript" src="/static/js/libs/offset.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+									       var pos = <b>CY.</b>offset("#test");
+										// 获得元素离顶部距离
+										pos.top
+										// 获得元素离左边距离
+										pos.left																					    
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>offset</a>(dom : dom|String) : <a>Object</a></p>
+						<p>添加迭代器加载模块</p>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="3">返回值对象含义</th>
+									</tr>
+									<tr>
+										<th>key</th>
+										<th>说明</th>
+									</tr>
+									<tr>
+										<td>top</td>
+										<td>远素离窗口top距离</td>
+									</tr>
+									<tr>
+										<td>left</td>
+										<td>远素离窗口left距离</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

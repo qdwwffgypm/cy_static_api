@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.methods .explain .expList dd {width: 48%;}
+		.methods .explain .expList dd pre {
+		    margin-left: -605px;
+		}
+		.methods .explain .expList dd pre {
+		    margin-left: -556px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		    line-height: 18px;
+		}
+		.propertys {
+		    width: 925px;
+		}
+		.propertys table td{padding: 2px 5px;white-space: nowrap;}
+		</style>
+
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="tooltip.source.js" class="bold uline  tag" target="_blank">/static/js/libs/tooltip.js</a></p>
+				<p>	PS：该对象在CY.<b>tooltip</b> 对象下；<br/>
+					1、给指定元素绑定提示层；<br/>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 200px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 170px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import tooltip from "cy_static/tooltip";
+								// ====使用====
+								CY.tooltip("#test", {
+								    content: "如需帮助请打10086",
+								    eventType: "click"
+								})								
+							</pre>
+							</dd>
+							<dd style="height: 200px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 180px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs([ "/static/js/libs/tooltip.js" ], function(tooltip) {
+										tooltip("#test", {
+										    content: "如需帮助请打10086",
+										    eventType: "click"
+										})
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 200px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 180px;">
+									&lt;script type="text/javascript" src="/static/js/libs/tooltip.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										<b>CY.tooltip</b>.tooltip("#test", {
+										    content: "如需帮助请打10086",
+										    eventType: "click"
+										});	
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>tooltip</a>(dom : selector|String, params : Object) : <a>Object</a></p>
+						<p>给元素绑定提示层；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>dom</td>
+										<td>Object|String</td>
+										<td>要绑定提示层的元素</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>params</td>
+										<td>Object</td>
+										<td>提示层相关参数</td>
+										<td>Y</td>
+									</tr>
+								</table>
+								<table class="propertys br">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>content</td>
+										<td>dom|String</td>
+										<td>""</td>
+										<td>提示层内容</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>delay</td>
+										<td>Number</td>
+										<td>"0"</td>
+										<td>延迟时间</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>width</td>
+										<td>Number</td>
+										<td>100</td>
+										<td>提示层宽</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>offset</td>
+										<td>Array</td>
+										<td>[0, 0]</td>
+										<td>位置的偏移量</td>
+										<td>B</td>
+									</tr>
+									<tr>
+										<td>disabled</td>
+										<td>Boolean</td>
+										<td>false</td>
+										<td>是否可用</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>eventType</td>
+										<td>String</td>
+										<td>"hover"</td>
+										<td>事件类型hover|click</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>placement</td>
+										<td>String</td>
+										<td>"bottom"</td>
+										<td>出现位置 :
+										<table>
+											<tr>
+												<td>
+													<div>top</div>
+													<div>right</div>
+													<div>bottom</div>
+													<div>left</div>
+												</td>
+												<td>
+													<div>top left</div>
+													<div>top center</div>
+													<div>top right</div>
+												</td>
+												<td>
+													<div>right top</div>
+													<div>right center</div>
+													<div>right bottom</div>
+												</td>
+												<td>
+													<div>bottom left</div>
+													<div>bottom center</div>
+													<div>bottom right</div>
+												</td>
+												<td>
+													<div>left top</div>
+													<div>left center</div>
+													<div>left bottom</div>
+												</td>
+											</tr>
+										</table>
+										</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>className</td>
+										<td>String</td>
+										<td>""</td>
+										<td>样式名</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>timeout</td>
+										<td>Number</td>
+										<td>500</td>
+										<td>离开隐藏间隔时间</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>function(win) {}</td>
+										<td></td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onShow</td>
+										<td>Function</td>
+										<td>function(win) {}</td>
+										<td>显示时触发的函数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onHide</td>
+										<td>Function</td>
+										<td>function(win) {}</td>
+										<td>隐藏时触发的函数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onClose</td>
+										<td>Function</td>
+										<td>function(win) {}</td>
+										<td>销毁时触发的函数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onClick</td>
+										<td>Function</td>
+										<td>function(win) {}</td>
+										<td>点击时触发的函数</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>show</a>() : <a>String</a></p>
+						<p>显示图层；</p>						
+					</li>
+					<li>
+						<p><a>hide</a>() : <a>String</a></p>
+						<p>隐藏图层；</p>						
+					</li>
+					<li>
+						<p><a>close</a>() : <a>String</a></p>
+						<p>销毁图层；</p>						
+					</li>
+					<li>
+						<p><a>setDisabled</a>(disabled : Boolean) : <a>String</a></p>
+						<p>开户与禁用提示层；</p>						
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

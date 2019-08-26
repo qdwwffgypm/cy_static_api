@@ -1,0 +1,179 @@
+<h2 class="html"><strong>HTML</strong>代码规范</h2>
+<ul class="items">
+	<li>
+		<h3>HTML基础配置</h3>
+        <p>1.<em>文档声明 </em>		文件应以“&lt;!DOCTYPE ......&gt;”首行顶格开始，推荐使用“&lt;!DOCTYPE html&gt;”。</p>
+        <p>2.<em>文档编码</em>		必须申明文档的编码charset，且与文件本身编码保持一致，推荐使用UTF-8编码&lt;meta charset="utf-8"/&gt;。</p>
+        <p>3.<em>当前时间</em>		添加当前时间统计页面加载时间。</p>
+        <p>4.<em>页面标题</em>		页面title是极为重要的不可缺少的一项。</p>
+        <p>5.<em>seo相关</em>		根据页面内容和需求填写适当的keywords和description。</p>
+        <p>6.<em>内容配置</em>		页面内容配置适应终端：<em>“width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no”</em>。</p>
+        <p>7.<em>基类库</em>	包含一些常用的功能方法。</p>
+        <p>8.<em>统计</em>	PV和UV统计。</p>
+        <pre class="prettyprint plain" data-lang="script">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset="utf-8" /&gt;
+		&lt;script type="text/javascript"&gt;var __startTime = new Date().getTime();&lt;/script&gt;
+		&lt;title&gt;畅由首页&lt;/title&gt;
+		&lt;meta name="keywords" content=" " /&gt;
+		&lt;meta name="description" content=" " /&gt;
+		&lt;meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" /&gt;
+		&lt;link rel="stylesheet" href="css/style.css" /&gt;
+		&lt;link rel="shortcut icon" href="img/favicon.ico" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+	
+		&lt;script src="/static/js/common/spm.js">&lt;/script&gt;
+		&lt;script src="/static/js/libs/require2.3.6.js">&lt;/script&gt;
+		&lt;script type="text/javascript"&gt;
+	    		spm.push(["_trackPageview"]);
+	    	&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+	
+	
+		<h3 class="br">结构顺序和视觉顺序基本保持一致</h3>
+		<ol>
+			<li>按照从上至下、从左到右的视觉顺序书写HTML结构。</li>
+			<li>有时候为了便于搜索引擎抓取，我们也会将重要内容在HTML结构顺序上提前。</li>
+			<li>用div代替table布局，可以使HTML更具灵活性，也方便利用CSS控制。</li>
+			<li>table不建议用于布局，但表现具有明显表格形式的数据，table还是首选。</li>
+		</ol>
+		<h3 class="br">结构、表现、行为三者分离，避免内联</h3>
+		<ol>
+			<li>使用link将css文件引入(特别是公共样式)，并置于head中。</li>
+			<li>使用script将js文件引入(特别是公共类库)，并置于body底部。</li>
+		</ol>
+		<h3 class="br">保持良好的简洁的树形结构</h3>
+		<ol>
+			<li>每一个块级元素都另起一行，每一行都使用Tab缩进对齐。删除冗余的行尾的空格。</li>
+			<li>使用4个空格代替1个Tab（大多数编辑器中可设置）。</li>
+			<li>对于内容较为简单的表格，建议将tr写成单行。</li>
+			<li>你也可以在大的模块之间用空行隔开，使模块更清晰。</li>
+		</ol>
+	</li>
+	<li>
+		<h3>内容语义</h3>
+		<ol>
+			<li>根据内容类型决定需要使用的语义标签。</li>
+			<li>加强“资源型”内容的可访问性和可用性，加入描述文案，比如给img添加alt属性，在audio内加入文案和链接等等。</li>
+			<li>加强“不可见”内容的可访问性。如背景图上的文字应该同时写在html中，并使用css使其不可见，有利于搜索引擎抓取你的内容，也可以在css失效的情况下看到内容。</li>
+			<li>适当使用实体，以实体名代替与HTML语法相同的字符，避免浏览解析错误。</li>
+		</ol>
+		<h4>常用标签使用建议</h4>
+		<table>
+			<thead>
+				<tr>
+					<th width="100">标签</th>
+					<th width="100">语义</th>
+					<th>使用说明</th>
+				</tr> 
+			</thead>
+			<tbody>
+				<tr>
+					<td>h1/…/h6</td>
+					<td>各级标题</td>
+					<td>
+						从h1到h6，各级标题标签中均不可嵌套块级元素。<br/>
+						h1/h2在页面上只能出现一次，通常用于标识页面标题，内容页面标题一致。<br/>
+						h3/h4/h5/h6则可以分别用于不同层级的内容标题，如h3通用用于定义模块标题， 如果一个大模块内又嵌套了多个小模块，则小模块标题可以用h4来定义。
+					</td>
+				</tr>
+				<tr>
+					<td>p</td>
+					<td>段落</td>
+					<td>不能嵌套块级元素(如div)</td>
+				</tr>	
+				<tr>
+					<td>a</td>
+					<td>超链接/锚</td>
+					<td>a不可嵌套a，也不建议嵌套div/p等block标签。</td>
+				</tr>
+				<tr>
+					<td>span</td>
+					<td>内联容器</td>
+					<td>通常用于包裹特定名称、按钮、表达元素等行内元素。span中不能嵌套块级元素(如div)</td>
+				</tr>
+				<tr>
+					<td>strong/em</td>
+					<td>强调文本</td>
+					<td>strong和em通用用于内容强调，其他strong默认为将相应文字内容加粗，而em默认为将相应文字内容变成斜体。</td>
+				</tr>
+				<tr>
+					<td>b/i</td>
+					<td>加粗/斜体</td>
+					<td>对于需要加粗或设置斜体的文字内容，使用时用strong/eml来代替。 b/i在html中，通常用于定义相应的占位图标，作为内容的辅助显示使用。</td>
+				</tr>
+				<tr>
+					<td>del</td>
+					<td>文本删除</td>
+					<td>通常定义价格，用于市场价</td>
+				</tr>
+				<tr>
+					<td>ul&gt;li</td>
+					<td>无序列表</td>
+					<td>
+						用于列表内容的显示（如用于显示图文商品列表、链接内容列表等），ul下只能嵌套li标签，不要在其中嵌套div标签。<br/>
+						当ul用于浮动内容列表时，class属性中需要加上clearfix样式，用于在列表结束时清除浮动。<br/>
+						列表内容中包含图片时（如带图片的商品列表），图片需要做延迟滚动加载处理。
+					</td>
+				</tr>
+				<tr>
+					<td>ol&gt;li</td>
+					<td>有序列表</td>
+					<td>用于有序列表内容的显示，通常用于带序号的文字说明列表内容中。ol下也只能嵌套li标签。</td>
+				</tr>
+				<tr>
+					<td>dl&gt;dt/dd</td>
+					<td>定义列表</td>
+					<td>dl通常用于描述一个标题和一段描述说明类型的内容，dl下只能嵌套dt和dd标签。</td>
+				</tr>
+				<tr>
+					<td>table</td>
+					<td>表格</td>
+					<td>
+						用于多列内容的数据列表的显示。<br/>
+						使用时，表头内容需要放在&lt;thead&gt;中，且使用th标签，不使用td标签。数据列表则放在&lt;tbody&gt;中，使用td标签。
+					</td>
+				</tr>
+			</tbody> 
+		</table>
+		<h4>常用HTML字符实体</h4>
+		<table>
+			<thead> 
+				<tr><th width="100">显示</th><th width="200">说明</th><th width="100">实体名称</th><th width="100">实体编号</th></tr>
+			</thead> 
+			<tbody>
+				<tr align="center"><td>&nbsp;</td><td>空格</td><td>&amp;nbsp;</td><td>&amp;#160;</td></tr> 
+				<tr align="center"><td>&lt;</td><td>左尖括号（小于号）</td><td>&amp;lt;</td><td>&amp;#60;</td></tr> 
+				<tr align="center"><td>&gt;</td><td>右尖括号（大于号）</td><td>&amp;gt;</td><td>&amp;#62;</td></tr> 
+				<tr align="center"><td>&amp;</td><td>&amp;符</td><td>&amp;amp;</td><td>&amp;#38;</td></tr>
+				<tr align="center"><td>"</td><td>双引号</td><td>&amp;quot;</td><td>&amp;#34;</td></tr> 
+				<tr align="center"><td>&yen;</td><td>元</td><td>&amp;yen;</td><td>&amp;#165;</td></tr> 
+			</tbody> 
+		</table>
+		<h4>常用特殊字符实体</h4>
+		<table>
+			<thead> 
+				<tr><th width="100">字符</th><th width="200">名称</th><th width="100">实体名</th><th width="100">实体数</th></tr> 
+			</thead>
+			<tbody>
+				<tr align="center"><td>&brvbar;</td><td>断竖线</td><td>&amp;brvbar;</td><td>&amp;#166;</td></tr>
+				<tr align="center"><td>&copy;</td><td>版权</td><td>&amp;copy;</td><td>&amp;#169;</td></tr> 
+				<tr align="center"><td>&reg;</td><td>注册商标R</td><td>&amp;reg;</td><td>&amp;#174;</td></tr> 
+				<tr align="center"><td>&trade;</td><td>商标TM</td><td>&amp;trade;</td><td>&amp;#8482;</td></tr> 
+				<tr align="center"><td>&bull;</td><td>圆点</td><td>&amp;bull;</td><td>&amp;#8226;</td></tr> 
+				<tr align="center"><td>&middot;</td><td>间隔符</td><td>&amp;middot;</td><td>&amp;#183;</td></tr> 
+				<tr align="center"><td>&laquo;</td><td>左双尖括号</td><td>&amp;laquo;</td><td>&amp;#171;</td></tr> 
+				<tr align="center"><td>&raquo;</td><td>右双尖括号</td><td>&amp;raquo;</td><td>&amp;#187;</td></tr>
+				<tr align="center"><td>&deg;</td><td>度</td><td>&amp;deg;</td><td>&amp;#176;</td></tr> 
+				<tr align="center"><td>&times;</td><td>乘</td><td>&amp;times;</td><td>&amp;#215;</td></tr> 
+				<tr align="center"><td>&divide;</td><td>除</td><td>&amp;divide;</td><td>&amp;#247;</td></tr> 
+				<tr align="center"><td>&permil;</td><td>千分比</td><td>&amp;permil;</td><td>&amp;#8240;</td></tr> 
+			</tbody> 
+		</table>
+		<p><a href="http://114.xixik.com/character/" target="_blank">更多字符实体</a></p>
+	</li>
+</ul>

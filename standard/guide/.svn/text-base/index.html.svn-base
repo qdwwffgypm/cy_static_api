@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title>移动基础框架介绍</title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.cTree{margin-left:45px;position:relative}
+			.cTree li{padding:2px 0;list-style:none;overflow:hidden;position:relative}
+			.cTree li.open{}
+			.cTree li.open>.cTree:before{content:" ";position:absolute;top:10px;bottom:17px;left:4px;display:block;width:1px;border-left:1px dotted #999}
+			.cTree:before{content:" ";position:absolute;top:10px;bottom:17px;left:4px;display:block;width:1px;border-left:1px dotted #999}
+			.cTree:first-child:after{content:" ";position:absolute;bottom:15px;left:4px;display:block;height:1px;width:34px;border-bottom:1px dotted #999}
+			.cTree a{padding-left:7px;color:#333;position:relative}
+			.type0,.type1,.type2,.type3{overflow:hidden;position:relative;display:inline-block;width:15px;height:14px;background-repeat:no-repeat;background-position:0 center;background-image:url(../img/Treeview_00.jpg)}
+			.type1{background-image:url(../img/Treeview_01.jpg)}
+			.type2{background-image:url(../img/Treeview_02.jpg)}
+			.type2:after{content:" ";position:absolute;top:6px;left:10px;display:block;height:1px;width:34px;border-bottom:1px dotted #999}
+			.type3{background-image:url(../img/Treeview_03.jpg)}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod"><h3 class="conTitle"></h3></div>
+			<ul class="cTree">
+				<li class="open">
+					<i class="type3"></i><i class="type0"></i><a>src</a>
+					<ul class="cTree">
+						<li class="open">
+							<i class="type3"></i><i class="type0"></i><a>assets</a>
+							<ul class="cTree">
+								<li><i class="type2"></i><i class="type0"></i><a>config</a></li>
+								<li><i class="type2"></i><i class="type0"></i><a>css</a></li>
+								<li><i class="type2"></i><i class="type0"></i><a>img</a></li>
+								<li>
+									<i class="type2"></i><i class="type0"></i><a>libs</a>
+									<ul class="cTree">
+										<li><i class="type1"></i>rem.js</li>
+										<li><i class="type1"></i>browser.js</li>
+										<li><i class="type1"></i>cache.js</li>
+										<li><i class="type1"></i>stringUtil.js</li>
+									</ul>
+								</li>
+								<li>
+									<i class="type2"></i><i class="type0"></i><a>utils</a>
+									<ul class="cTree">
+										<li><i class="type1"></i>ajaxUtil.js</li>
+										<li><i class="type1"></i>nativeUtil.js</li>
+										<li><i class="type1"></i>userUtil.js</li>
+										<li><i class="type1"></i>shareUtil.js</li>
+										<li><i class="type1"></i>maskUtil.js</li>
+									</ul>
+								</li>
+								<li><i class="type2"></i><i class="type0"></i><a>uis</a></li>
+							</ul>
+						</li>
+						<li><i class="type2"></i><i class="type0"></i><a>components</a></li>
+						<li><i class="type2"></i><i class="type0"></i><a>router</a></li>
+						<li><i class="type2"></i><i class="type0"></i><a>service</a></li>
+						<li><i class="type2"></i><i class="type0"></i><a>store</a></li>
+						<li><i class="type2"></i><i class="type0"></i><a>view</a></li>
+					</ul>
+				</li>
+			</ul>
+			
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title>目录结构说明</title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.list{line-height: 28px !important;}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p class="list">
+					1、所有页面head标签内第一行需内嵌下面这行代码；以便对页面加载时间进行监控；<br/>
+					<span class="prettyprint"><span class="tag">&lt;script <span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span>&gt;</span><span class="atn">var</span> __startTime = <span class="atn">new</span> Date().getTime();<span class="tag">&lt;/script&gt;</span></span><br/>
+					2、所有页面需外链spm.js（别打包）并调用PV统计方法 spm.push([<span class="atv">'_trackPageview'</span>])；<a class="link" href="http://test-m-stg.ppppoints.com/static/spm/index.html#1">SPM.js埋点说明</a><br/>
+					2、禁止外连js, css；<br/>
+					3、禁止引用全局样式（js, css）;<br/>
+					4、需动态加载js，css组件；禁止静态页面index.html里引用或修改样式;<br/>
+					5、样式需设置作用域在本路由上有效（不能影响全局的变量/样式）;<br/>
+					6、影响页面渲染或性能的插件，尽量采用AMD规范方式加载如：Banner图，tab切换图等；应在页面渲染成功后再加载与调用；<br/>
+					7、组件不能重复使用就会失去本质上的意义，如把样式放在组件里，除非他们共用否则无意义;<br/>
+					8、不要随便加cookie；需要加时不是全局的要添加作用域;<br/>
+					8、用storage时要先判断是否支持(如无痕模式下);<br/>
+				</p>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.propertys {
+		    width: 940px;
+		}
+		.propertys th {
+		    white-space: nowrap;
+		}
+		.methods .explain .expList {
+		    width: 762px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>源码路径： <b>/static/js/libs/searchModule.js</b></p>
+				<P>
+					PS：该对象在CY.<b>searchModule</b> 对象下；<br/>
+					2、生成固定的搜索模块HTML结构；<br/>
+					3、根据实例方法，扩展相关功能；<br/>
+				</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 380px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 355px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import searchModule from "cy_static/searchModule";
+								// ====使用====
+								var iSearch = <b>searchModule</b>("#searchModule6634599");
+								iSearch.onKeyup(function(value) {
+								});
+								iSearch.onCancel(function(value) {
+								    history.go(-1);
+								});
+								iSearch.onSubmit(function(value) {
+								    iHistory.hide();
+								});
+								iSearch.onFocus(function(value) {
+								    iHistory.show();
+								});
+							</pre>
+							</dd>
+							<dd style="height: 455px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 430px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs([ "searchModule" ], function(searchModule) {
+										var iSearch = <b>CY.searchModule</b>("#searchModule6634599");
+										iSearch.onKeyup(function(value) {
+										});
+										iSearch.onCancel(function(value) {
+										    history.go(-1);
+										});
+										iSearch.onSubmit(function(value) {
+										    iHistory.addItem({
+										        text: value
+										    });
+										    iHistory.hide();
+										});
+										iSearch.onFocus(function(value) {
+										    iHistory.show();
+										});
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 455px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 430px;">
+									&lt;script type="text/javascript" src="/static/js/libs/searchModule.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										var iSearch = <b>CY.searchModule</b>("#searchModule6634599");
+										iSearch.onKeyup(function(value) {
+										});
+										iSearch.onCancel(function(value) {
+										    history.go(-1);
+										});
+										iSearch.onSubmit(function(value) {
+										    iHistory.addItem({
+										        text: value
+										    });
+										    iHistory.hide();
+										});
+										iSearch.onFocus(function(value) {
+										    iHistory.show();
+										});
+										
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>searchModule</a>(dom : selector|String, params : Object) : <a>Object</a></p>
+						<p>生成固定的搜索模块HTML结构；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>默认值</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>value</td>
+										<td>String</td>
+										<td>默认显示的值</td>
+										<td>""</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>placeholder</td>
+										<td>String</td>
+										<td>输入框提示语</td>
+										<td>请输入搜索内容</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>maxlength</td>
+										<td>String</td>
+										<td>输入框最大值</td>
+										<td>30</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>paddingTop</td>
+										<td>String</td>
+										<td>模块上边距</td>
+										<td>0</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>paddingBottom</td>
+										<td>String</td>
+										<td>模块下边距</td>
+										<td>0</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>moduleSpm</td>
+										<td>String</td>
+										<td>模块SPM编码</td>
+										<td>""</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onBefore</td>
+										<td>Function</td>
+										<td>渲染前处理</td>
+										<td>function(data, params, dom) {}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onAfter</td>
+										<td>Function</td>
+										<td>渲染后处理</td>
+										<td>function(data, params, dom) {}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onFocus</td>
+										<td>Function</td>
+										<td>输入框获得焦点回调</td>
+										<td>function(value) {}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onKeyup</td>
+										<td>Function</td>
+										<td>输入框键盘弹起时回调</td>
+										<td>function(value) {}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onCancel</td>
+										<td>Function</td>
+										<td>点击取消时回调</td>
+										<td>function(value) {}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onSubmit</td>
+										<td>Function</td>
+										<td>按回车键时回调</td>
+										<td>function(value) {}</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>setValue</a>(value:String = "") : <a>Void</a></p>
+						<p>设置输入框的值</p>
+					</li>
+					<li>
+						<p><a>onFocus</a>(func:Function) : <a>Void</a></p>
+						<p>设置输入框获得焦点时触发函数，与params参数里的回调方法一致</p>
+					</li>
+					<li>
+						<p><a>onKeyup</a>(func:Function) : <a>Void</a></p>
+						<p>设置输入框键盘弹起时触发函数，与params参数里的回调方法一致</p>
+					</li>
+					<li>
+						<p><a>onCancel</a>(func:Function) : <a>Void</a></p>
+						<p>设置点击取消||返回时触发函数，与params参数里的回调方法一致</p>
+					</li>
+					<li>
+						<p><a>onSubmit</a>(func:Function) : <a>Void</a></p>
+						<p>设置按回车键时触发函数，与params参数里的回调方法一致</p>
+					</li>
+				</ul>	
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

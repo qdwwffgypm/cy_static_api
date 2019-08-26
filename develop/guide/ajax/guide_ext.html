@@ -1,0 +1,85 @@
+<h2 class="ext">延伸内容</h2>
+<ul class="items">
+	<li>
+		<h3>检查工具</h3>
+		<ol>
+			<li>
+				HTML校验：
+				<a href="http://validator.w3.org/nu/" target="_blank">W3C HTML Validator</a>
+			</li>
+			<li>
+				CSS校验：
+				<a href="http://jigsaw.w3.org/css-validator/" target="_blank">W3C CSS Validator</a>
+				<span class="sep">|</span>
+				<a href="http://csslint.net/" target="_blank">CSSLint</a>
+			</li>
+			<li>
+				JavaScript校验：
+				<a href="http://www.jshint.com/" target="_blank">JSHint</a>
+			</li>
+		</ol>
+	</li>
+	<!--
+	<li>
+		<h3>常用处理</h3>
+		<p>待整理……</p>
+	</li>
+	-->
+	<li>
+		<h3>性能优化</h3>
+		<p><a href="http://browserdiet.com/zh/" target="_blank">权威的前端性能指南</a></p>
+		<p>YSlow 23条Web性能最佳实践和规则，<a href="http://baike.baidu.com/view/3383166.htm" target="_blank">了解更多YSlow百科</a></p>
+		<ol class="block3 clearfix">
+			<li>尽可能减少HTTP请求次数</li>
+			<li>使用CDN</li>
+			<li>避免空src和href标签</li>
+			<li>加入Expires或Cache-Control Header</li>
+			<li>使用Gzip压缩</li>
+			<li>在html文件顶部放置样式表</li>
+			<li>在html文件底部放置JavaScript脚本</li>
+			<li>避免使用CSS表达式</li>
+			<li>使用外部JavaScript和CSS外部文件</li>
+			<li>减少使用DNS查找次数</li>
+			<li>精简JavaScript和CSS</li>
+			<li>避免重定向</li>
+			<li>移除重复的脚本</li>
+			<li>配置ETag</li>
+			<li>缓存AJAX</li>
+			<li>使用GET完成AJAX请求</li>
+			<li>减少DOM元素数量</li>
+			<li>避免404</li>
+			<li>减少Cookie大小</li>
+			<li>使用无Cookie的域</li>
+			<li>避免使用滤镜</li>
+			<li>不要在HTML中缩放图片</li>
+			<li>使用小favicon.ico文件，并让其可缓存</li>
+		</ol>
+	</li>
+	<!--
+	<li>
+		<h3>测试发布</h3>
+		<p>全站JS/CSS的修改，需要经过仔细的测试。</p>
+	</li>
+	-->
+	<li>
+		<h3>注意事项</h3>
+		<ol>
+			<li>无论是新增加的页面，还是旧页面的改版，都必须在3个环境（dev、beta、生产）进行测试，3个环境的静态资源必须保持一致；</li>
+			<li>如在旧页面改版时发现dev和beta有静态资源缺失，必须从生产取得相关文件上传到dev和beta；</li>
+			<li>如有涉及到全局或业务流程的js修改，必须提交QA测试；</li>
+			<li>如有涉及到全局的css修改，必须提交QA测试；</li>
+			<li>
+				关于不同环境静态资源的引用：<br/>
+				1)、页面引用的静态资源请大家务必仔细检查，每个环境只能引用本环境的资源，不得出现交叉引用，比如：在生产引用dev或beta，甚至post服务器的文件；<br/>
+				2)、提交给PD的静态页面所引用的静态资源环境必须保持一致，不得引用post服务器的任何资源；<br/>
+				3)、部分PD在开发时会偶尔引用错误，所以dev和beta测试程序页面时必须检查静态资源环境是否一致；<br/>
+				4)、程序页面的全局静态资源是统一管理的，部分PD在开发时会重复引用一些全局资源，在测试时要注意检查；<br/>
+				5)、由于不同环境的数据不完全一致，部分静态资源（主要是js）在不同环境可能会有所差异，修改时要注意差异化。<br/>
+				如发现以上第3、4情况，需告知相关的DM，避免今后出现同样的错误。
+			</li>
+			<li>提交给PD的静态页面所引用的静态资源统一为生产环境！</li>
+			<li>css文件中引用的图片必须为相对路径，避免https页面弹出安全信息；</li>
+			<li>https页面不得出现http请求；</li>
+		</ol>
+	</li>
+</ul>

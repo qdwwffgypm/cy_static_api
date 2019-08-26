@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="inpNumber.source.js" class="bold uline  tag" target="_blank">/static/js/libs/inpNumber.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<p>输入框加减UI</p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 200px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 175px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import inpNumber from "cy_static/inpNumber";
+								// ====使用====
+								inpNumber("#test", {
+								    min: 1,
+								    max: 5
+								});
+							</pre>
+							</dd>
+							<dd style="height: 220px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 200px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									require(["/static/js/libs/inpNumber.js"], function() {
+									    inpNumber("#test", {
+									        min: 1,
+									        max: 5
+									    })
+									})
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 220px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 200px;">
+									&lt;script type="text/javascript" src="/static/js/libs/inpNumber.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+									    <b>CY.</b>inpNumber("#test", {
+									        min: 1,
+									        max: 5
+									    })
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>inpNumber</a>(dom : Object|selector,params : Object) : <a>Void</a></p>
+						<p>输入框加减UI</p>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>min</td>
+										<td>Number</td>
+										<td>1</td>
+										<td>最小值</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>max</td>
+										<td>Number</td>
+										<td>10</td>
+										<td>最大值</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>step</td>
+										<td>Number</td>
+										<td>1</td>
+										<td>每次增减步长</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>disabled</td>
+										<td>String</td>
+										<td>"l-disabled"</td>
+										<td>超过最大值时禁用的样式</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>placeholder</td>
+										<td>String</td>
+										<td>""</td>
+										<td>输入提示文字</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>conPosition</td>
+										<td>String</td>
+										<td>""</td>
+										<td>排序效果（还没实现）</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>change</td>
+										<td>Function</td>
+										<td>function() {}</td>
+										<td>改变时触发</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>blur</td>
+										<td>Function</td>
+										<td>function() {}</td>
+										<td>失去焦点时触发</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>focus</td>
+										<td>Function</td>
+										<td>function() {}</td>
+										<td>获得焦点时触发</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+				
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

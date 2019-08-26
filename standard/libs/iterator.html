@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="iterator.source.js" class="bold uline  tag" target="_blank">/static/js/libs/iterator.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<P>迭代器加载模块</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 525px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 500px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import iterator from "cy_static/iterator";
+								// ====使用====
+								var iterator = new iterator();
+								  // 加载第一个模块
+								  iterator.push(function(status) {
+								     console.log("加载第一个模块");
+								  })
+								  // 加载第二个模块---存在异步
+								  var num = 0;
+								  iterator.push(function(status) {
+								      num++;
+								      setTimeout(function() {
+								          status.isEnd = num > 5 ? true : "isBack";
+								      }, 2000)
+								      console.log("加载第二个模块第" + num + "次");
+								      return false;
+								  })
+								  // 加载示例
+								  setInterval(function() {
+								     iterator.next();
+								  }, 1000)	
+							</pre>
+							</dd>
+							<dd style="height: 610px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 590px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["iterator"], function() {
+										    var iterator = new <b>CY.</b>iterator();
+										    // 加载第一个模块
+										    iterator.push(function(status) {
+										        console.log("加载第一个模块");
+										    })
+										    // 加载第二个模块---存在异步
+										    var num = 0;
+										    iterator.push(function(status) {
+										        num++;
+										        setTimeout(function() {
+										            status.isEnd = num > 5 ? true : "isBack";
+										        }, 2000)
+										        console.log("加载第二个模块第" + num + "次");
+										        return false;
+										    })
+										    // 加载第三个模块
+										    iterator.push(function(status) {
+										        console.log("加载第三个模块");
+										    })										
+										    // 加载示例
+										    setInterval(function() {
+										        iterator.next();
+										    }, 1000)																				    
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 610px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 590px;">
+									&lt;script type="text/javascript" src="/static/js/libs/iterator.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											var iterator = new <b>CY.</b>iterator();
+										    // 加载第一个模块
+										    iterator.push(function(status) {
+										        console.log("加载第一个模块");
+										    })
+										    // 加载第二个模块---存在异步
+										    var num = 0;
+										    iterator.push(function(status) {
+										        num++;
+										        setTimeout(function() {
+										            status.isEnd = num > 5 ? true : "isBack";
+										        }, 2000)
+										        console.log("加载第二个模块第" + num + "次");
+										        return false;
+										    })
+										    // 加载第三个模块
+										    iterator.push(function(status) {
+										        console.log("加载第三个模块");
+										    })										
+										    // 加载示例
+										    setInterval(function() {
+										        iterator.next();
+										    }, 1000)																				    
+										});
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>属性</h3>
+				<ul class="methods">
+					<li>
+						<p><a>push</a>(func : Function) : <a>Void</a></p>
+						<p>添加迭代器加载模块</p>
+						<div class="explain isShow">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="3">func函数返回值含义</th>
+									</tr>
+									<tr>
+										<th>返回值</th>
+										<th>说明</th>
+									</tr>
+									<tr>
+										<td>false</td>
+										<td>表示没结束执行中(有异步)</td>
+									</tr>
+									<tr>
+										<td>undefined</td>
+										<td>表示该方法已结束(默认)</td>
+									</tr>
+									<tr>
+										<td>string</td>
+										<td>可以进到下一轮(异步已返回)</td>
+									</tr>
+									<tr>
+										<td>true</td>
+										<td>表示该方法已结束(主动结束)</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>next</a>() : <a>Object</a></p>
+						<p>加载迭代模块，返回迭代状态对象</p>
+						<div class="explain isShow">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="3">代状态对象含义</th>
+									</tr>
+									<tr>
+										<th>key</th>
+										<th>说明</th>
+										<th>说明</th>
+									</tr>
+									<tr>
+										<td>value</td>
+										<td>Function</td>
+										<td>当前函数</td>
+									</tr>
+									<tr>
+										<td>done</td>
+										<td>Boolean</td>
+										<td>模块是否已加载完</td>
+									</tr>
+									<tr>
+										<td>isEnd</td>
+										<td>Boolean</td>
+										<td>当前模块加载完成状态</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>end</a>() : <a>Void</a></p>
+						<p>主动设置当前模块迭代完成</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

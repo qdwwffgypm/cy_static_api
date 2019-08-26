@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.propertys {
+		    width: 940px;
+		}
+		.propertys th {
+		    white-space: nowrap;
+		}
+		.methods .explain .expList {
+		    width: 762px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -495px;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>源码路径： <b>/static/js/uis/navChModule.js</b></p>
+				<P>
+					PS：该对象在CY.<b>navChModule</b> 对象下；<br/>
+					2、根据数据生成浮动领航；<br/>
+					3、navChModule.js内部依赖offset.js、floatNav.js；<br/>
+				</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 540px;">
+								<p>
+									引用方式一、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 515px;">
+									&lt;script type="text/javascript" src="/static/js/libs/offset.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/floatNav.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/uis/navChModule.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+									    <b>CY.navChModule</b>(dom, {
+												data : [{
+											        "text": "综合",
+											        "value": "flsModule02997694044755368"
+											    }, {
+											        "text": "销量",
+											        "value": "flsModule02997694044755368"
+											    }, {
+											        "text": "价格",
+											        "value": "flsModule02997694044755368"
+											    }], 
+												onClick : function (item, data, items) {
+													// 处理数据
+												},
+												onRender : function(data, params, dom) {
+													// 渲染结束处理数据
+												}
+											});
+									&lt;/script&gt;
+								</pre>
+							</dd>
+							<dd style="height: 540px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height:515px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										var dom = document.createElement("div");
+										requirejs([ "navChModule" ], function(navChModule) {
+											<b>CY.navChModule</b>(dom, {
+												data : [{
+											        "text": "综合",
+											        "value": "flsModule02997694044755368"
+											    }, {
+											        "text": "销量",
+											        "value": "flsModule02997694044755368"
+											    }, {
+											        "text": "价格",
+											        "value": "flsModule02997694044755368"
+											    }], 
+												onClick : function (item, data, items) {
+													// 处理数据
+												},
+												onRender : function(data, params, dom) {
+													// 渲染结束处理数据
+												}
+											});
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>方法参数</h3>
+				<ul class="methods">
+					<li>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>默认值</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>data</td>
+										<td>Array</td>
+										<td>菜单数组</td>
+										<td>""</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>width</td>
+										<td>String</td>
+										<td>宽度百分比</td>
+										<td>25</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>height</td>
+										<td>String</td>
+										<td>导航高度</td>
+										<td>40</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>switchMenu</td>
+										<td>String</td>
+										<td>菜单切换方式</td>
+										<td>""</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>color</td>
+										<td>String</td>
+										<td>字体的颜色</td>
+										<td>#333333</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>top</td>
+										<td>String</td>
+										<td>离顶部距离px</td>
+										<td>0</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>backgroundColor</td>
+										<td>String</td>
+										<td>模块背景色</td>
+										<td>#ff0000</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>currCss</td>
+										<td>String</td>
+										<td>默认选中样式</td>
+										<td>curr</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onBefore</td>
+										<td>Function</td>
+										<td>渲染前处理</td>
+										<td>function(data, params, dom) {}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onAfter</td>
+										<td>Function</td>
+										<td>渲染后处理</td>
+										<td>function(data, params, dom) {}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onClick</td>
+										<td>Function</td>
+										<td>点击事件回调</td>
+										<td>function(dom, data, items) {}</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

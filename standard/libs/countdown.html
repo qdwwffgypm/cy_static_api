@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.methods .explain .expList dd {width: 48%;}
+		.methods .explain .expList dd pre {
+		    margin-left: -605px;
+		}
+		.methods .explain .expList dd pre {
+		    margin-left: -556px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		    line-height: 18px;
+		}
+		.propertys {
+		    width: 925px;
+		}
+		</style>
+
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="countdown.source.js" class="bold uline  tag" target="_blank">/static/js/libs/countdown.js</a></p>
+				<p>	PS：该对象在CY.<b>countdown</b> 对象下；<br/>
+					1、根据秒数生成倒计时HTML模板字符串；<br/>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 300px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 275px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import countdown from "cy_static/countdown";
+								// ====使用====
+								countdown.run({
+									time : 60*60,
+									downText : "距离结束还有{1}时{2}分{3}秒",
+									onChange : function(html) {
+										console.log(html);
+									},
+									callback : function() {
+										console.log("倒计时结束");
+									},
+								});
+							</pre>
+							</dd>
+							<dd style="height: 320px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 300px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs([ "/static/js/libs/countdown.js" ], function(countdown) {
+										countdown.run({
+											time : 60*60,
+											downText : "距离结束还有{1}时{2}分{3}秒",
+											onChange : function(html) {
+												console.log(html);
+											},
+											callback : function() {
+												console.log("倒计时结束");
+											},
+										});
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 320px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 300px;">
+									&lt;script type="text/javascript" src="/static/js/libs/countdown.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										<b>CY.countdown</b>.run({
+											time : 60*60,
+											downText : "距离结束还有{1}时{2}分{3}秒",
+											onChange : function(html) {
+												console.log(html);
+											},
+											callback : function() {
+												console.log("倒计时结束");
+											},
+										});	
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>format</a>(str : String, arr : Array) : <a>String</a></p>
+						<p>输出模版字符串；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>str</td>
+										<td>String</td>
+										<td></td>
+										<td>"字符串模板"</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>arr</td>
+										<td>Array</td>
+										<td></td>
+										<td>"序列化数组"</td>
+										<td>Y</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd style="height: 130px;width: 97%;">
+										<pre class="prettyprint" data-lang="script" style="height: 130px;">
+										// 示例1
+										requirejs([ "/static/js/libs/countdown.js" ], function(countdown) {
+											var text = countdown.format("用户名：{0}, 邮箱：{1}",['张三','123456@qq.com']);
+											console.log(text); // 用户名：张三, 邮箱：123456@qq.com
+										});
+										</pre>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>run</a>(params : Object) : <a>Void</a></p>
+						<p>输出倒计时HTML模版字符串；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>time</td>
+										<td>Number</td>
+										<td>"0"</td>
+										<td>倒计时间秒</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>downText</td>
+										<td>String</td>
+										<td>""</td>
+										<td>倒计文本字符串模板</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>onChange</td>
+										<td>Function</td>
+										<td>function() {}</td>
+										<td>改变触发事件</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>function() {}</td>
+										<td>倒计完成事件</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+										<dd style="height: 320px;">
+											<pre class="prettyprint" data-lang="script" style="height: 300px;margin-left: -605px;">
+											// 示例1
+											requirejs([ "/static/js/libs/countdown.js" ], function(countdown) {
+												countdown.run({
+													time : 60,
+													downText : "{3}秒后重新发送",
+													onChange : function(html) {
+														console.log(html);
+													},
+													callback : function() {
+														console.log("重新发送");
+													},
+												});
+											});
+											</pre>
+										</dd>
+										<dd style="height: 320px;">
+											<pre class="prettyprint" data-lang="script" style="height: 300px;margin-left: -605px;">
+											// 示例2
+											requirejs([ "/static/js/libs/countdown.js" ], function(countdown) {
+												countdown.run({
+													time : 60*60,
+													downText : "距离结束还有{1}时{2}分{3}秒",
+													onChange : function(html) {
+														console.log(html);
+													},
+													callback : function() {
+														console.log("倒计时结束");
+													},
+												});
+											});
+											</pre>
+										</dd>
+									</dl>
+								
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

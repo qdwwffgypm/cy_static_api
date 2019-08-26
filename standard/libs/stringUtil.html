@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.list{line-height: 28px;}
+			.methods .explain .expList dd{
+			    width: 48%;
+			}
+			.methods .explain .expList dd pre {
+			    margin-left: -591px;
+			}
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="stringUtil.source.js" class="bold uline  tag" target="_blank">/static/js/libs/stringUtil.js</a></p>
+				<p>
+					PS：该对象在CY对象下；<br/>
+					常用String类扩展；
+				</p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 140px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 115px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import stringUtil from "cy_static/stringUtil";
+								// ====使用====
+								var newValue = stringUtil.comma(5466655);
+							</pre>
+							</dd>
+							<dd style="height: 195px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 170px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["stringUtil"], function(stringUtil) {
+										    var newValue = stringUtil.comma(5466655);
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 195px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 170px;">
+									&lt;script type="text/javascript" src="/static/js/libs/stringUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											var str = "&lt;a href={url} title={title}&gt;{title}&lt;/a&gt;";
+											<b>CY.</b>stringUtil.substitute(str, {
+												title : "标题",
+												url : "http://m.changyoyo.com/"
+											});
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>comma </a>(number:Number, length:Number=3) : <a>String</a></p>
+						<p>为目标数字添加逗号分隔，参数length默认为3</p>
+					</li>
+					<li>
+						<p><a>params </a>(obj:Object) : <a>String</a></p>
+						<p>序列化一个 key/value 对象(即以&拼接:key&value)；</p>
+					</li>
+					<li>
+						<p><a>getQueryValue </a>(url:String, name:String) : <a>String</a></p>
+						<p>获取URL中的指定参数值；</p>
+					</li>
+					<li>
+						<p><a>addQueryValue </a>(url:String, name:String, value:String) : <a>String</a></p>
+						<p>给URL增加指定的参数和参数值；</p>
+					</li>
+					<li>
+						<p><a>substitute </a>(str:String, data:Object) : <a>String</a></p>
+						<p>输出模版字符串；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<dl class="expList">
+										<dd>
+											<pre class="prettyprint" data-lang="script" style="height: 325px;">
+											// 示例1
+											var str = "&lt;a href={url} title={title}&gt;{title}&lt;/a&gt;"；
+											<b>CY.</b>stringUtil.substitute(str, {
+												title : "标题",
+												url : "http://m.changyoyo.com/"
+											});
+											</pre>
+										</dd>
+										<dd>
+											<pre class="prettyprint" data-lang="script" >
+											// 示例2
+											var str = "&lt;a href={url} title={title}&gt;{title}&lt;/a&gt;"；
+											var data = [ {
+												title : "标题",
+												url : "http://www.ule.com/"
+											}, {
+												title : "标题2",
+												url : "http://www.ule.com/"
+											} ]
+											var newstr = [];
+											for ( var i = 0; i < data.length; i++) {
+												newstr.push(<b>CY.</b>stringUtil.substitute(str, data[i]))
+											}
+											newstr = newstr.join("");
+											</pre>
+										</dd>
+									</dl>
+								
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

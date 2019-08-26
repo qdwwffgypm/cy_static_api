@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.methods .explain .expList dd pre {
+		    margin-left: -556px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		    line-height: 18px;
+		}
+		</style>
+
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="ajax.source.js" class="bold uline  tag" target="_blank">/static/js/libs/ajax.js</a></p>
+				<p>	PS：该对象在CY对象下；<br/>
+					1、该方法底层使用XMLHttpRequest、ActiveXObject实现；<br/>
+					2、仅支持：<span class="atv">"json"</span>, <span class="atv">"text"</span>, <span class="atv">"script"</span>, <span class="atv">"xml"</span> 类型；
+					<span class="atv">"jsonp"</span>, <span class="atv">"arraybuffer"</span>, <span class="atv">"blob"</span>, <span class="atv">"document"</span>, <span class="atv">"stream"</span>需另外封装；</p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 270px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 245px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import ajax from "cy_static/ajax";
+								// ====使用====
+								ajax("xxxx/xxx.do", {
+									method:"POST",
+									body:{
+										name:"张三"
+									},
+									success:function(data) {
+										// code
+									}
+								});
+							</pre>
+							</dd>
+							<dd style="height: 295px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 270px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["ajax"], function(ajax) {
+										    ajax("xxxx/xxx.do", {
+												method:"POST",
+												body:{
+													name:"张三"
+												},
+												success:function(data) {
+													// code
+												}
+											});
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 295px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 270px;">
+									&lt;script type="text/javascript" src="/static/js/libs/ajax.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											<b>CY.</b>ajax("xxxx/xxx.do", {
+												method:"POST",
+												body:{
+													name:"张三"
+												},
+												success:function(data) {
+													// code
+												}
+											});
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>ajax</a>(url : String, request : Object = {}) : <a>Promise</a></p>
+						<p>ajax() 方法通过 HTTP 请求加载远程数据。<b>暂不支持跨域；</b></p>
+						<div class="explain isShow">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>url</td>
+										<td>String</td>
+										<td>发送请求的地址</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>request</td>
+										<td>Object</td>
+										<td>AJAX 请求设置。所有选项都是可选的</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<table class="propertys br">
+									<tr>
+										<th colspan="3">request 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+									</tr>
+									<tr>
+										<td>method</td>
+										<td>String</td>
+										<td>请求方式 ("POST" 或 "GET")， 默认为 "GET"；（其他方式Content-Type以application/json值传后端）</td>
+									</tr>
+									<tr>
+										<td>body</td>
+										<td>Object</td>
+										<td>发送到服务器的数据，必须为 Key/Value 格式，GET请求中将附加在 URL后；Post表单流动形式，其他以字符串形式（JSON.stringify）；</td>
+									</tr>
+									<tr>
+										<td>dataType</td>
+										<td>String</td>
+										<td>预期服务器返回的数据类型：默认："json"<br/>
+											"json": 返回 JSON数据；<br/>
+											"text": 返回纯文本字符串；<br/>
+											"script": 返回纯文本 JavaScript代码；<br/>
+											"xml": 返回 XML文档；<br/>
+										</td>
+									</tr>
+									<tr>
+										<td>Content-Type</td>
+										<td>String</td>
+										<td>
+										发送信息至服务器时内容编码类型：<br/>
+										"get方式": ""；<br/>
+										"post方式": "application/x-www-form-urlencoded"；<br/>
+										"其他方式": "application/json"；<br/>
+										</td>
+									</tr>
+									<tr>
+										<td>headers</td>
+										<td>Object</td>
+										<td>设置请求头信息；必须为 Key/Value 格式</td>
+									</tr>
+									<tr>
+										<td>timeout</td>
+										<td>Number</td>
+										<td>设置请求超时时间（毫秒）</td>
+									</tr>
+									<tr>
+										<td>async</td>
+										<td>Boolean</td>
+										<td>默认值: true。默认设置下，所有请求均为异步请求。</td>
+									</tr>
+									<tr>
+										<td>username</td>
+										<td>String</td>
+										<td>用于响应 HTTP 访问认证请求的用户名</td>
+									</tr>
+									<tr>
+										<td>password</td>
+										<td>String</td>
+										<td>用于响应 HTTP 访问认证请求的密码</td>
+									</tr>
+									<tr>
+										<td>beforeSend</td>
+										<td>Function</td>
+										<td>在发送请求之前调用，并且传入一个 XMLHttpRequest 作为参数；返回false将取消AJAX</td>
+									</tr>
+									<tr>
+										<td>error</td>
+										<td>Function</td>
+										<td>在请求出错时调用。传入 Error；</td>
+									</tr>
+									<tr>
+										<td>success</td>
+										<td>Function</td>
+										<td>当请求成功之后调用。传入返回后的数据；</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList br">
+									<dd style="height: 265px;width: 28%;">
+										<pre class="prettyprint" data-lang="script" style="height: 270px;">
+										// 示例1
+										<b>CY.</b>ajax("xxxx/xxx.do", {
+											method:"POST",
+											body:{
+												name:"张三"
+											},
+											error:function(data) {
+												// code
+											}
+										}).then(function(data) {
+											// code
+										})
+										</pre>
+									</dd>
+									<dd style="height: 265px;width: 28%;">
+										<pre class="prettyprint" data-lang="script" style="height: 270px;">
+										// 示例2
+										<b>CY.</b>ajax("xxxx/xxx.do", {
+											method:"POST",
+											body:{
+												name:"张三"
+											},
+											success:function(data) {
+												// code
+											}
+										});
+										</pre>
+									</dd>
+									<dd style="height: 265px;width: 40%;">
+										<pre class="prettyprint" data-lang="script" style="height: 270px;">
+										// 示例3
+										<b>CY.</b>ajax("xxxx/xxx.do", {
+											method:"POST",
+											headers:{
+												"Content-Type":"application/json"
+											}
+										}).then(function(data) {
+											// code
+										})
+										</pre>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

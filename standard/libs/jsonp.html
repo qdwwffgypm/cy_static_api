@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.methods .explain .expList dd {width: 48%;}
+		.methods .explain .expList dd pre {
+		    margin-left: -605px;
+		}
+		.methods .explain .expList dd pre {
+		    margin-left: -556px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		    line-height: 18px;
+		}
+		.propertys {
+		    width: 925px;
+		}
+		</style>
+
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="jsonp.source.js" class="bold uline  tag" target="_blank">/static/js/libs/jsonp.js</a></p>
+				<p>	PS：该对象在CY.<b>jsonp</b> 对象下；<br/>
+					1、JSONP请求数据方式；<br/>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 300px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 275px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import jsonp from "cy_static/jsonp";
+								// ====使用====
+								// 用法一
+								jsonp("/test.do", {id : 11});
+								//用法二
+								jsonp("/test.do", 6000);
+								//用法三
+								jsonp("/test.do", {id : 11}, 6000);
+								//用法四
+								jsonp("/test.do", {id : 11}, function() {
+									console.log('调用成功');
+								});
+							</pre>
+							</dd>
+							<dd style="height: 320px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 300px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs([ "/static/js/libs/jsonp.js" ], function(jsonp) {
+										// 用法一
+										jsonp("/test.do", {id : 11});
+										//用法二
+										jsonp("/test.do", 6000);
+										//用法三
+										jsonp("/test.do", {id : 11}, 6000);
+										//用法四
+										jsonp("/test.do", {id : 11}, function() {
+											console.log('调用成功');
+										});
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 320px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 300px;">
+									&lt;script type="text/javascript" src="/static/js/libs/jsonp.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										// 用法一
+										<b>CY.</b>jsonp("/test.do", {id : 11});
+										//用法二
+										<b>CY.</b>jsonp("/test.do", 6000);
+										//用法三
+										<b>CY.</b>jsonp("/test.do", {id : 11}, 6000);
+										//用法四
+										<b>CY.</b>jsonp("/test.do", {id : 11}, function() {
+											console.log('调用成功');
+										});
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>方法参数</h3>
+				<ul class="methods">
+					<li>
+						<p><a>jsonp</a>(url : String, data : Object, timeout : Number, callback : Function) : <a>Void</a></p>
+						<p>JSONP请求数据方式；</p>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>url</td>
+										<td>String</td>
+										<td>""</td>
+										<td>"请求URL地址"</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>data</td>
+										<td>Object</td>
+										<td>{}</td>
+										<td>请求参数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>timeout</td>
+										<td>Number</td>
+										<td>7000</td>
+										<td>请求超时时间(毫秒)</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td></td>
+										<td>请求成功回调函数</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

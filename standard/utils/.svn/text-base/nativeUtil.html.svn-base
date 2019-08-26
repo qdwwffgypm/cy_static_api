@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.propertys {
+		    width: 908px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -495px;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="nativeUtil.source.js" class="bold uline  tag" target="_blank">/static/js/utils/nativeUtil.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<p>查看ios交互API： <a href="Ios与h5交互逻辑列表.pdf" class="link">Ios与h5交互逻辑列表.pdf</a></p>
+				<p>查看android交互API： <a href="Android与h5交互文档.pdf" class="link">Android与h5交互文档.pdf</a></p>
+				<p>nativeUtil.js内部依赖browser.js；<br/></p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 235px;">
+								<p>
+									引用方式一、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 210px;">
+									&lt;script type="text/javascript" src="/static/js/libs/browser.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/nativeUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											<b>CY.</b>nativeUtil.open("user", "closewebview", {
+												title: "标题"
+											}, function (){
+												// code
+											})
+									&lt;/script&gt;
+								</pre>
+							</dd>
+							<dd style="height: 235px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 210px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["nativeUtil"], function(nativeUtil) {
+										    nativeUtil.open("user", "closewebview", {
+												title: "标题"
+											}, HandleName)
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>loadUrl</a>(url : String) : <a>Void</a></p>
+						<p>通过Iframe加载URL加载完成删除Iframe；（主要用加载webView协议）</p>
+					</li>
+					<li>
+						<p><a>open</a>(host : String = "user", action : String, data : Object, callback : function) : <a>Void</a></p>
+						<p>调用javascript端注册的HandleName；（webView交互方式）</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>host</td>
+										<td>String</td>
+										<td>注册的HandleName</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>action</td>
+										<td>String</td>
+										<td>注册的HandleName</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>data</td>
+										<td>Object</td>
+										<td>接口所需参数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>回调参数名称；需在window下</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd style="height: 150px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 115px;">
+										// 示例1
+										<b>CY.</b>nativeUtil.open("user", "closewebview")
+										</pre>
+									</dd>
+									<dd style="height: 150px;width: 47%;">
+										<pre class="prettyprint" data-lang="script">
+										// 示例2
+										<b>CY.</b>nativeUtil.open("user", "closewebview", {
+											title: "标题"
+										}, HandleName)
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>bridge</a> : Object</p>
+						<p>bridge的方式与APP交互</p>
+					</li>
+					<li>
+						<p><a>bridge.check</a>(callback : function) : <a>Void</a></p>
+						<p>建立javascript与APP的沟通桥梁（bridge交互方式）</p>
+					</li>
+					<li>
+						<p><a>bridge.open</a>(action : String, data : Object, callback : function) : <a>Void</a></p>
+						<p>调用javascript端注册的HandleName（bridge交互方式）</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>action</td>
+										<td>String</td>
+										<td>注册的HandleName</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>data</td>
+										<td>Object</td>
+										<td>接口所需参数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>回调参数</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd style="height: 320px;width: 47%;">
+										<pre class="prettyprint" data-lang="script" style="height: 304px;">
+										// 示例1
+										<b>CY.</b>nativeUtil.bridge.open({
+											action : "closewebview",
+											callback : function() {}
+										})
+										</pre>
+									</dd>
+									<dd style="height: 320px;width: 47%;">
+										<pre class="prettyprint" data-lang="script">
+										// 示例2
+										<b>CY.</b>nativeUtil.bridge.open({
+											action : "share",
+											data : {
+												title: {
+										            		othTitle: "标题"
+										        	},
+										        	content: "内容",
+										        	imageurl: "路径",
+										        	shareurl: "URL"
+											}
+											callback : function() {}
+										})
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a><b>open_v1</b></a>(params : Object) : <a>Boolean</a></p>
+						<p>调用javascript调用APP端注册的HandleName；兼容webView与bridge；返回值表示当前页面是否在畅由APP里打开；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+										<th>默认值</th>
+									</tr>
+									<tr>
+										<td>isVebView</td>
+										<td>Boolean</td>
+										<td>与App的交互方式</td>
+										<td>Y</td>
+										<td>ios： <span class="atn">false</span>;android：<span class="atn">true</span>;</td>
+									</tr>
+									<tr>
+										<td>host</td>
+										<td>String</td>
+										<td>host名</td>
+										<td>Y</td>
+										<td>"user"</td>
+									</tr>
+									<tr>
+										<td>action</td>
+										<td>String</td>
+										<td>注册的HandleName</td>
+										<td>Y</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>data</td>
+										<td>Object</td>
+										<td>接口所需参数</td>
+										<td>N</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>回调参数</td>
+										<td>N</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>ios</td>
+										<td>Object</td>
+										<td>在ios终端时的处理方式；参数和一级参数相同</td>
+										<td>N</td>
+										<td>{}</td>
+									</tr>
+									<tr>
+										<td>android</td>
+										<td>Object</td>
+										<td>在android终端时的处理方式；参数和一级参数相同</td>
+										<td>N</td>
+										<td>{}</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd>
+										<pre class="prettyprint" data-lang="script" style="height: 388px;">
+										// 示例1
+										// IOS和安卓action都是closewebview;
+										<b>CY.</b>nativeUtil.open_v1({
+											action : "closewebview",
+											callback : function() {}
+										})
+										</pre>
+									</dd>
+									<dd>
+										<pre class="prettyprint" data-lang="script">
+										// 示例2
+										// IOS和安卓action不相同时的处理方式;
+										<b>CY.</b>nativeUtil.open_v1({
+											action : "share",
+											data : {
+												title: {
+										            		othTitle: "标题"
+										        	},
+										        	content: "内容",
+										        	imageurl: "路径",
+										        	shareurl: "URL"
+											},
+											ios : {
+												action : "hasShare"
+											},
+											callback : function() {}
+										})
+										</pre>
+									</dd>
+									<dd>
+										<pre class="prettyprint" data-lang="script">
+										// 示例3 方法名不同参数相同
+										// IOS:vebView交互和安卓bridge交互;
+										<b>CY.</b>nativeUtil.open_v1({
+											data : {
+												name : "李子"
+											},
+											ios : {
+												isVebView : true,
+												host : "user",
+												action : "AAAA"
+											},
+											android : {
+												isVebView : false,
+												action : "BBBB"
+											},
+											callback : function() {}
+										})
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>closeWebview</a>(param : Object = null) : <a>Boolean</a></p>
+						<p>关闭APP，参数与open_v1相同；</p>
+					</li>
+					<li>
+						<p><a>goBack</a>() : <a>Void</a></p>
+						<p>后退调用history.back；APP调用上述closeWebview方法</p>
+					</li>
+					<li>
+						<p><a>goHome</a>(url : String = "/jfmall/index.htm") : <a>Void</a></p>
+						<p>返回首页；APP调用上述closeWebview方法</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

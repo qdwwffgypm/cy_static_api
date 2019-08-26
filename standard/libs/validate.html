@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.methods .explain .expList dd {width: 48%;}
+		.methods .explain .expList dd pre {
+		    margin-left: -605px;
+		}
+		.methods .explain .expList dd pre {
+		    margin-left: -556px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		    line-height: 18px;
+		}
+		.propertys {
+		    width: 925px;
+		}
+		</style>
+
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="validate.source.js" class="bold uline  tag" target="_blank">/static/js/libs/validate.js</a></p>
+				<p>	PS：该对象在CY.<b>validate</b> 对象下；<br/>
+					1、针对input、textarea、select控件的字符长度、值范围、选择个数的控制；<br/>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 330px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 305px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import validate from "cy_static/validate";
+								// ====使用====
+								var valid = validate({}, {
+									username : {
+										min : 1,
+										max : 10,
+										onError : "收货人不能为空",
+										onErrorMax : "收货人最多10个字符"
+									}
+								});
+								if (valid.pageIsValid(function(error) {
+									alert(error);
+									<b>return  true</b>;
+								}));
+							</pre>
+							</dd>
+							<dd style="height:500px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 485px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["/static/js/libs/validate.js"], function(validate) {
+										    var valid = validate({}, {
+												username : {
+													min : 1,
+													max : 10,
+													onError : "收货人不能为空",
+													onErrorMax : "收货人最多10个字符"
+												},
+												mobileid : {
+													validtype : "regType",
+													regExp : "^1\\d{10}$",
+													onError : "手机号码格式错误"
+												},
+												areaInfo : {
+													min : 1,
+													onError : "所在地区不能为空"
+												}
+											});
+											if (valid.pageIsValid(function(error) {
+												alert(error);
+												<b>return  true</b>;
+											}));
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							
+							<dd style="height: 500px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 485px;">
+									&lt;script type="text/javascript" src="/static/js/libs/validate.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;											
+											var valid = CY.validate({}, {
+												username : {
+													min : 1,
+													max : 10,
+													onError : "收货人不能为空",
+													onErrorMax : "收货人最多10个字符"
+												},
+												mobileid : {
+													validtype : "regType",
+													regExp : "^1\\d{10}$",
+													onError : "手机号码格式错误"
+												},
+												areaInfo : {
+													min : 1,
+													onError : "所在地区不能为空"
+												}
+											});
+											if (valid.pageIsValid(function(error) {
+												alert(error);
+												<b>return  true</b>;
+											}));
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>validate</a>(obj : Object, params : Object) : <a>Boolean</a></p>
+						<p>设置校验项和校验规则；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								params的key与value；<br/>
+								key：要校验的属性<br/>
+								value：校验规则。validtype属性为校验使用的规则，默认调用inputValid规则；其他项为验证规则<br/>
+								<div class="br"></div>
+								<ul class="methods" style="border: 1px dashed #b9b9b9;">
+									<li>
+										<p><a>validtype等于inputValid</a></p>
+										<p>值<b>最大&最小</b>范围校验 ；</p>
+										<div class="explain">											
+											<div class="detail">
+												<table class="propertys" style="width: 100%;">
+													<tr>
+														<th colspan="5">其他参数</th>
+													</tr>
+													<tr>
+														<th>参数名</th>
+														<th>类型</th>
+														<th>默认值</th>
+														<th>描述</th>
+														<th>必需</th>
+													</tr>
+													<tr>
+														<td>type</td>
+														<td>String</td>
+														<td>"size"</td>
+														<td>
+															(对select无效)<br/>
+															"size":表示比较长度； <br/>
+															"number":数值型比较；<br/>
+															"string":字符型比较；<br/>
+															"date":短日期类型；<br/>
+															"datetime":长日期类型
+														</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>min</td>
+														<td>String</td>
+														<td>0</td>
+														<td>
+															最小长度/值	0<br/>
+															输入框比较的是关系；<br/>
+															单|多选校验选项个数
+														</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>max</td>
+														<td>String</td>
+														<td>99999999999999</td>
+														<td>
+															最大长度/值	<br/>
+															输入框比较的是关系；<br/>
+															单|多选校验选项个数
+														</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>onError</td>
+														<td>String</td>
+														<td>"输入错误"</td>
+														<td>错误时的提示语</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>onErrorMin</td>
+														<td>String</td>
+														<td>""</td>
+														<td>比min属性小的提示</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>onErrorMax</td>
+														<td>String</td>
+														<td>""</td>
+														<td>比max属性大的提示</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>empty</td>
+														<td>object</td>
+														<td>
+															{<br>
+															    leftEmpty: true,<br>
+															    rightEmpty: true,<br>
+															    emptyError: null<br>
+															};
+														</td>
+														<td>
+															leftEmpty:左边是否允许为空；<br>
+															rightEmpty:右边是否允许为空； <br>
+															emptyError：没有提示语时，显示onError提示语
+														</td>
+														<td>N</td>
+													</tr>
+													
+												</table>
+												<div class="br"></div>
+																								
+											</div>
+										</div>
+									</li>
+									<li>
+										<p><a>validtype等于regType</a></p>
+										<p>值进行<b>正则</b>表达式校验  ；</p>
+										<div class="explain">											
+											<div class="detail">
+												<table class="propertys" style="width: 100%;">
+													<tr>
+														<th colspan="5">其他参数</th>
+													</tr>
+													<tr>
+														<th>参数名</th>
+														<th>类型</th>
+														<th>默认值</th>
+														<th>描述</th>
+														<th>必需</th>
+													</tr>
+													<tr>
+														<td>regExp</td>
+														<td>String|Array</td>
+														<td>""</td>
+														<td>
+															正则表达式或regexEnum对象的属性名
+														</td>
+														<td>Y</td>
+													</tr>
+													<tr>
+														<td>dataType</td>
+														<td>String</td>
+														<td>"string"</td>
+														<td>
+															"string":自定义的表达式；<br>
+															"enum":regexEnum属性名
+														</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>operateor</td>
+														<td>String</td>
+														<td>""</td>
+														<td>
+															多个表达式时的运算符类型；<br>
+															"||"或的关系   "&&"并列
+														</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>onError</td>
+														<td>String</td>
+														<td>"输入错误"</td>
+														<td>错误时的提示语</td>
+														<td>N</td>
+													</tr>
+												</table>
+												<div class="br"></div>
+											</div>
+										</div>
+									</li>
+									<li>
+										<p><a>validtype等于funType</a></p>
+										<p>值进行<b>函数</b>表达式校验  ；</p>
+										<div class="explain">											
+											<div class="detail">
+												<table class="propertys" style="width: 100%;">
+													<tr>
+														<th colspan="5">其他参数</th>
+													</tr>
+													<tr>
+														<th>参数名</th>
+														<th>类型</th>
+														<th>默认值</th>
+														<th>描述</th>
+														<th>必需</th>
+													</tr>
+													<tr>
+														<td>fun</td>
+														<td>Function</td>
+														<td>function(){}</td>
+														<td>
+															外部函数名<br/>
+															参数1:元素的值；<br/>
+															参数2:元素对象；<br/>
+															返回string为自定义错误
+														</td>
+														<td>Y</td>
+													</tr>
+													<tr>
+														<td>onError</td>
+														<td>String</td>
+														<td>"输入错误"</td>
+														<td>
+															函数返回false错误的提示;
+														</td>
+														<td>N</td>
+													</tr>
+												</table>
+												<div class="br"></div>												
+											</div>
+										</div>
+									</li>
+									<li>
+										<p><a>validtype等于compareType</a></p>
+										<p>值进行<b>关系比较</b>校验；</p>
+										<div class="explain">											
+											<div class="detail">
+												<table class="propertys" style="width: 100%;">
+													<tr>
+														<th colspan="5">其他参数</th>
+													</tr>
+													<tr>
+														<th>参数名</th>
+														<th>类型</th>
+														<th>默认值</th>
+														<th>描述</th>
+														<th>必需</th>
+													</tr>
+													<tr>
+														<td>desID</td>
+														<td>string|object</td>
+														<td>""</td>
+														<td>要跟源目标进行比较的目标组件（选择器|对象）</td>
+														<td>Y</td>
+													</tr>
+													<tr>
+														<td>operateor</td>
+														<td>string</td>
+														<td>""</td>
+														<td>
+															比较符号：=、!=、>、>=、<、<=
+														</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>dataType</td>
+														<td>string</td>
+														<td>"string"</td>
+														<td>值："string"、"number","datetime","date"</td>
+														<td>N</td>
+													</tr>
+													<tr>
+														<td>onError</td>
+														<td>String</td>
+														<td>"输入错误"</td>
+														<td>错误时的提示语</td>
+														<td>N</td>
+													</tr>
+												</table>
+												<div class="br"></div>												
+											</div>
+										</div>
+									</li>
+								</ul>
+								
+								
+							</div>
+						</div>
+						
+					</li>
+				</ul>
+				<h3>实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>pageIsValid</a>(callback : Function) : <a>Boolean</a></p>
+						<p>检查各项是否验证通过，返回校验结果；</p>
+						<div class="explain">
+							<div class="title">详情</div>
+							<div class="detail">
+								参数callback每一项校验不通过时都会调用该函数；当该函数返回true时不再校验后面各项验证；
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>oneIsValid</a>(attr : String) : <a>object</a></p>
+						<p>检查单项是否验证通过；</p>
+						<div class="explain">
+							<div class="title">详情</div>
+							<div class="detail">
+								参数attr为要校验的数据属性值；返回值object；里面包含isValid属性表示校验是否通过;
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>静态方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>addRule</a>(validtype : String, func : Function) : <a>Void</a></p>
+						<p>添加校验规则；validtype校验类型，func校验函数；</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<dl class="expList">
+										<dd style="height: 350px;">
+											<pre class="prettyprint" data-lang="script" style="height: 350px;margin-left: -605px;">
+											// 定义
+											validate.addRule("isMobile", function(value, params){
+												var setting = Object.assign({
+													onError : "手机号码格式错误"
+												}, params || {});
+												var returnObj = {isValid: true};
+												if (!/^1\d{10}$/.test(value)) {
+													returnObj.isValid = false;
+													returnObj.onError = setting.onError;
+												}
+												return returnObj
+											});
+											</pre>
+										</dd>
+										<dd style="height: 350px;">
+											<pre class="prettyprint" data-lang="script" style="height: 350px;margin-left: -605px;">
+											// 使用
+											requirejs([ "/static/js/libs/validate.js" ], function(validate) {
+												var valid = validate({
+													mobileid : 15604656355
+												}, {
+													mobileid : {
+														validtype : "isMobile",
+														onError : "手机号码格式错误"
+													}
+												});									
+												if (valid.pageIsValid(function(error) {
+													alert(error);
+												})) {
+													// submit
+												}
+											});
+											</pre>
+										</dd>
+									</dl>									
+									<div class="br"></div>								 
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>serialize</a>(form : Object|String = null) : <a>String</a></p>
+						<p>输出序列化表单值的结果；</p>
+					</li>
+					<li>
+						<p><a>serializeArray</a>(form : Object|String = null) : <a>Array</a></p>
+						<p>输出以数组形式序列化表单值的结果；</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

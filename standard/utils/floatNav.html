@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="floatNav.source.js" class="bold uline  tag" target="_blank">/static/js/utils/floatNav.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<P>浮动固定与滚动选中</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 150px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 125px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import floatNav from "cy_static/floatNav";
+								// ====使用====
+								floatNav.float("#test", {top:50});
+							</pre>
+							</dd>
+							<dd style="height: 160px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 145px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs(["floatNav"], function() {
+									    <b>CY.</b>floatNav.float("#test", {top:50});																	    
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 160px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 145px;">
+									&lt;script type="text/javascript" src="/static/js/libs/offset.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/floatNav.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										<b>CY.</b>floatNav.float("#test", {top:50});																		    
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>anchor构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>anchor</a>(params : Object) : <a>Void</a></p>
+						<p>滚动选中相关元素</p>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>menuItem</td>
+										<td>dom|String</td>
+										<td>''</td>
+										<td>固定元素选择器多个','分隔</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>elemItem</td>
+										<td>dom|String</td>
+										<td>''</td>
+										<td>内容元素选择器多个','分隔</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>goTop</td>
+										<td>dom|String</td>
+										<td>''</td>
+										<td>返回顶部元素选择器</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>currCss</td>
+										<td>String</td>
+										<td>'curr'</td>
+										<td>选中固定元素样式</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>speeds</td>
+										<td>Array</td>
+										<td>[0]</td>
+										<td>内容元素修正偏移量多个','分隔</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>moveTime</td>
+										<td>Number</td>
+										<td>300</td>
+										<td>点击时内容元素移动时间</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>deferTime</td>
+										<td>Number</td>
+										<td>1000</td>
+										<td>延迟时间毫秒数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onSelect</td>
+										<td>Function</td>
+										<td>function(num, isClick) {}</td>
+										<td>选中回调函数</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd style="height: 150px;width: 47%;min-width: 600px;">
+										<pre class="prettyprint" data-lang="script"style="height: 115px;">
+										// 示例1
+										floatNav.anchor({
+							                            menuItem: "#goodsTitle .l-item",
+							                            elemItem: "#goodsRecList > div"
+							                        });
+										</pre>
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>float构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>float</a>(dom : selector|String, params : Object) : <a>Void</a></p>
+						<p>浮动元素</p>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>top</td>
+										<td>Number</td>
+										<td>0</td>
+										<td>离开滚动元素上边框距离</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>container</td>
+										<td>dom|String</td>
+										<td>window</td>
+										<td>滚动元素</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onChange</td>
+										<td>Function</td>
+										<td>function() {}</td>
+										<td>滚动时触发的函数</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

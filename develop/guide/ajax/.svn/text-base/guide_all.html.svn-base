@@ -1,0 +1,49 @@
+<h2 class="all">总的规范</h2>
+<ul class="items">
+	<li>
+		<h3>规范目标</h3>
+		<ol>
+			<li>
+				<em>Web标准化</em>。
+				页面要符合Web标准，能基本通过W3C的校验。
+				<a href="http://baike.baidu.com/view/7921.htm" target="_blank">关于Web标准</a>
+				<span class="sep">|</span>
+				<a href="../docs/webstandard.pdf" target="_blank">Web标准课程</a>
+			</li>
+			<li>
+				<em>HTML语义化</em>。
+				要求HTML代码简洁明了，并有着良好的结构和语义，保持对搜索引擎的友好。
+				<a href="#" target="_blank">再谈语义化</a>
+			</li>
+			<li>
+				<em>结构表现行为分离</em>。
+				要求页面上的HTML/CSS/JS代码实现分离，HTML内容结构代码中避免出现CSS和JS代码。
+			</li>
+			<li>
+				<em>页面内容和功能模块化</em>，
+				尽可能的提高已有功能模块在不同页面上的重用度。
+			</li>
+			<li>
+				<em>页面具有较好的兼容性</em>，
+				在各主流浏览器中保持一致的表现。
+			</li>
+			<li>
+				<em>页面具有较好的性能</em>，
+				尽可能的实现代码的精简和减少服务器负载，以及页面加载的优化。
+			</li>
+		</ol>
+	</li>
+	<li>
+		<h3>规范执行</h3>
+		<p>规范里的内容，分为下面两个级别：</p>
+		<ol>
+			<li><em>需要严格遵守的规范</em></li>
+			<li><em>建议参考使用的规范</em></li>
+		</ol>
+		<p>不同的项目页面，对于规范的执行可以有相应的达成比例。</p>
+		<ol>
+			<li><em>平台页面</em>，要尽量的符合前端开发规范</li>
+			<li><em>专题页面</em>，根据页面的类型可以做适当的规范降级</li>
+		</ol>
+	</li>
+</ul>

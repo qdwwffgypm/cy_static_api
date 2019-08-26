@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -495px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="cookie.source.js" class="bold uline  tag" target="_blank">/static/js/libs/cookie.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 290px;">
+								<p>
+									引用方式一、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 265px;">
+									&lt;script type="text/javascript" src="/static/js/libs/cookie.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											<b>CY.</b>cookie.set("key", "value", {
+												expires : 7,
+												path : "/",
+												domain : "m.changyoyo.com",
+												secure : true
+											});
+											// 获取
+											<b>CY.</b>cookie.get("key");
+									&lt;/script&gt;
+								</pre>
+							</dd>
+							<dd style="height: 290px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 265px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["cookie"], function(cookie) {
+										    cookie.set("key", "value", { expires: 7 });
+										    cookie.set("key", "value", { expires: 7, path: "/" });
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>get</a>(key : String) : <a>String</a></p>
+						<p>根据key获取cookie的值</p>
+					</li>
+					<li>
+						<p><a>set</a>(key : String, value : String, params : Object) : <a>Void</a></p>
+						<p>设置cookie的值</p>
+						<div class="explain isShow">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>key</td>
+										<td>String</td>
+										<td>cookie键</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>value</td>
+										<td>String</td>
+										<td>cookie值</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>params</td>
+										<td>Object</td>
+										<td>可选参数</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<table class="propertys" style="width: 908px;">
+										<tr>
+											<th colspan="4">param参数</th>
+										</tr>
+										<tr>
+											<th>参数名</th>
+											<th>类型</th>
+											<th>描述</th>
+											<th>默认值</th>
+										</tr>
+										<tr>
+											<td>expires</td>
+											<td>Number|Date</td>
+											<td>设置一个整数时，有效期单位是天；也可以设置一个日期对象</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>path</td>
+											<td>String</td>
+											<td>创建该Cookie的页面路径</td>
+											<td>/</td>
+										</tr>
+										<tr>
+											<td>domain</td>
+											<td>String</td>
+											<td>创建该Cookie的页面域名</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>secure</td>
+											<td>Booblean</td>
+											<td>是否只能https协议发送给服务器</td>
+											<td></td>
+										</tr>
+									</table>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd style="height: 150px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 150px;">
+										// 示例1
+										<b>CY.</b>cookie.set("key", "value");
+										// 删除
+										<b>CY.</b>cookie.set("key", null); 
+										</pre>
+									</dd>
+									<dd style="height: 150px;width: 47%;">
+										<pre class="prettyprint" data-lang="script">
+										// 示例2
+										<b>CY.</b>cookie.set("key", "value", {
+											expires : 7,
+											path : "/",
+											domain : "m.changyoyo.com",
+											secure : true
+										});
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

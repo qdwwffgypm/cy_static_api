@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="lazyloadUtil.source.js" class="bold uline  tag" target="_blank">/static/js/libs/lazyloadUtil.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<P>浮动固定与滚动选中</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 150px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 125px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import lazyloadUtil from "cy_static/lazyloadUtil";
+								// ====使用====
+								lazyloadUtil();
+							</pre>
+							</dd>
+							<dd style="height: 160px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 145px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs(["lazyloadUtil"], function(lazyloadUtil) {
+									    lazyloadUtil();																	    
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 160px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 145px;">
+									&lt;script type="text/javascript" src="/static/js/libs/offset.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/lazyloadUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										<b>CY.</b>lazyloadUtil();																		    
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>lazyloadUtil</a>(params : Object) : <a>Void</a></p>
+						<p>滚动加载图片</p>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>step</td>
+										<td>Number</td>
+										<td>100</td>
+										<td>间距加载图片</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>realSrc</td>
+										<td>String</td>
+										<td>"realSrc"</td>
+										<td>真实路径</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>container</td>
+										<td>dom|String</td>
+										<td>"body"</td>
+										<td>滚动元素</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="funcModule.source.js" class="bold uline  tag" target="_blank">/static/js/uis/funcModule.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<P>功能球</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 310px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 285px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import funcModule from "cy_static/funcModule";
+								// ====使用====
+								funcModule("#test", {
+						                    "keyId": "quickEntry",
+						                    "backgroundColor": "#ffffff",
+						                    onBefore: function(data, param) {
+						                        if (data.length > 5) {
+						                            param.row = Math.ceil(data.length / 2);
+						                        } 
+						                    }
+						                });
+							</pre>
+							</dd>
+							<dd style="height: 500px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 475px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs(["funcModule"], function(funcModule) {
+									    funcModule("#test", {
+								                    "keyId": "quickEntry",
+								                    "colSpace": 15,
+								                    "row": 5,
+								                    "column": 2,
+								                    "paddingTop": 10,
+								                    "paddingBottom": 10,
+								                    "paddingLeft": 10,
+								                    "paddingRight": 10,
+								                    "unLazyNum": 0,
+								                    "backgroundColor": "#ffffff",
+								                    onBefore: function(data, param) {
+								                        if (data.length > 5) {
+								                            param.row = Math.ceil(data.length / 2);
+								                        } 
+								                    }
+								                });																    
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 500px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 475px;">
+									&lt;script type="text/javascript" src="/static/js/utils/serverUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/cache.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/ajaxUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/ajax.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/browser.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/CryptoJS.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/uis/funcModule.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										<b>CY.</b>funcModule("#test", {
+								                    "keyId": "quickEntry",
+								                    "backgroundColor": "#ffffff",
+								                    onBefore: function(data, param) {
+								                        if (data.length > 5) {
+								                            param.row = Math.ceil(data.length / 2);
+								                        } 
+								                    }
+								                });																	    
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>方法参数</h3>
+				<ul class="methods">
+					<li>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>keyId</td>
+										<td>String</td>
+										<td>广告推荐位</td>
+										<td>""</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>rowSpace</td>
+										<td>String</td>
+										<td>列表行高度</td>
+										<td>5</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>row</td>
+										<td>String</td>
+										<td>每行的列数</td>
+										<td>5</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>column</td>
+										<td>String</td>
+										<td>功能球行数</td>
+										<td>2</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>paddingTop</td>
+										<td>String</td>
+										<td>模块上边距</td>
+										<td>10</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>paddingBottom</td>
+										<td>String</td>
+										<td>模块下边距</td>
+										<td>10</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>paddingLeft</td>
+										<td>String</td>
+										<td>模块左边距</td>
+										<td>10</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>paddingRight</td>
+										<td>String</td>
+										<td>模块右边距</td>
+										<td>10</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>unLazyNum</td>
+										<td>String</td>
+										<td>不懒加载图片</td>
+										<td>0</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>backgroundColor</td>
+										<td>String</td>
+										<td>模块背景色</td>
+										<td>#ffffff</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>moduleSpm</td>
+										<td>String</td>
+										<td>模块SPM编码</td>
+										<td>""</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>moduleName</td>
+										<td>String</td>
+										<td>模块名称</td>
+										<td>""</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>data</td>
+										<td>Object||Array</td>
+										<td>本地数据[]</td>
+										<td>""</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onBefore</td>
+										<td>Function</td>
+										<td>渲染前处理</td>
+										<td>function(data, params, dom) {}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onAfter</td>
+										<td>Function</td>
+										<td>渲染后处理</td>
+										<td>function(data, params, dom) {}</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

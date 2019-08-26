@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -495px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="dialog.source.js" class="bold uline  tag" target="_blank">/static/js/libs/dialog.js</a></p>
+				<p>PS：该对象在CY.ui对象下；</p>
+				<p>内容包括：遮罩层和弹出窗口；</p>
+				<p>1、遮罩层在CY.ui.mask对象下；</p>
+				<p>2、弹出窗口在CY.ui.dialog对象下；</p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 330px;">
+								<p>
+									引用方式一、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 305px;">
+									&lt;script type="text/javascript" src="/static/js/libs/dialog.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											<b>CY.ui.mask.</b>create();
+											// 示例
+											<b>CY.ui.mask.</b>create().show();
+											// 示例
+											<b>CY.ui.dialog.</b>alert("文字必需是数字");
+											// 示例
+											<b>CY.ui.dialog.</b>confirm("确认要删除吗?", function () {
+												// code
+											});
+									&lt;/script&gt;
+								</pre>
+							</dd>
+							<dd style="height: 330px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 305px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["dialog"], function(ui) {
+										    <b>ui.mask.</b>create();
+										    // 示例
+										    <b>ui.mask.</b>create().show();
+										    // 示例
+										    <b>ui.dialog.</b>alert("文字必需是数字");
+										    // 示例
+										    <b>ui.dialog.</b>confirm("确认要删除吗?", function () {
+											    // code
+										    });
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>toast方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>toast</a>(text:String, params:Object = {}) : <a>Void</a></p>
+						<p>半透明提示层</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="4">param参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>text</td>
+										<td>String</td>
+										<td>显示文本</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>params</td>
+										<td>Object</td>
+										<td>参数</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<table class="propertys">
+									<tr>
+										<th colspan="4">params参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>duration</td>
+										<td>Number</td>
+										<td>显示时间；默认：1000毫秒;</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>className</td>
+										<td>String</td>
+										<td>样式名</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<dl class="expList">
+									<dd style="height: 160px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 160px;">
+										// 示例1
+										<b>CY.ui</b>.toast("接口出问题啦!");
+										// 示例3
+										<b>CY.ui</b>.toast({
+											text : "接口出问题啦!",
+											duration: 2000
+										});
+										</pre>
+									</dd>
+									<dd style="height: 160px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 160px;">
+										// 示例2
+										<b>CY.ui</b>.toast("接口出问题啦!", {
+											duration: 2000,
+											className : "xxxx"
+										});
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>mask对象方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>create</a>(params:Object = {}) : <a>Void</a></p>
+						<p>创建遮罩层（创建实例）</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="4">param参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>clickClose</td>
+										<td>Boolean</td>
+										<td>点击遮罩层是否关闭；默认：true</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>关闭层时的回调函数；返回false时将不关闭</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								
+								<dl class="expList">
+									<dd style="height: 180px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 180px;">
+										// 示例1
+										var mask = <b>CY.ui.mask</b>.create();
+										mask.show();
+										// 示例2
+										var mask = <b>CY.ui.mask</b>.create(function (){
+											return false;
+										});
+										</pre>
+									</dd>
+									<dd style="height: 180px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 180px;">
+										// 示例2
+										var mask = <b>CY.ui.mask</b>.create({
+											clickClose : false,
+											callback : function(elem) {
+												// code
+											}
+										});
+										mask.show();
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>show</a>(callback:Function = null) : <a>Void</a></p>
+						<p>显示遮罩层（实例方法）</p>
+					</li>
+					<li>
+						<p><a>close</a>(callback:Function = null) : <a>Void</a></p>
+						<p>关闭遮罩层（实例方法）</p>
+					</li>
+				</ul>	
+				<h3>dialog对象方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>close</a>(callback:Function = null) : <a>Void</a></p>
+						<p>关闭当前弹窗</p>
+					</li>
+					<li>
+						<p><a>show</a>(callback:Function = null) : <a>Void</a></p>
+						<p>显示已经打开过的弹窗</p>
+					</li>
+					<li>
+						<p><a>extend</a>(params:Object = {}) : <a>Void</a></p>
+						<p>扩展dialog对象方法</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<dl class="expList">
+									<dd style="height: 375px;width: 100%;">
+										<pre class="prettyprint" data-lang="script"style="height: 375px;">
+										// 示例1
+										<b>CY.ui.dialog</b>.extend({
+											open : function(params) {
+												var m = this, options;
+												options = params.options;
+												options.text = options.content;
+												params.afterHooks.push(function(p, elem) {
+													options.text && extend(elem.style, {
+														position : "relative",
+														zIndex : "1111"
+													});
+												});
+												params.afterHooks.push(function(p, elem) {
+													options.callback(elem);
+												});
+											}
+										});
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>open</a>(params:Object = {}) : <a>Void</a></p>
+						<p>简单弹出层</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="4">param参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>elem</td>
+										<td>String</td>
+										<td>元素选择器优先级比content高</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>content</td>
+										<td>String</td>
+										<td>弹窗内容优先级比elem低</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>关闭层时的回调函数</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								
+								<dl class="expList">
+									<dd style="height: 165px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 165px;">
+										// 示例1
+										<b>CY.ui.dialog</b>.open({
+											content : "&lt;p&gt;新闻内容&lt;/p&gt;",
+											callback : function(elem) {
+												// code
+											}
+										});
+										</pre>
+									</dd>
+									<dd style="height: 165px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 165px;">
+										// 示例2
+										<b>CY.ui.dialog</b>.open({
+											elem : "#elem",
+											callback : function(elem) {
+												// code
+											}
+										});
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>pop</a>(params:Object = {}) : <a>Void</a></p>
+						<p>没有标题和按钮的居中弹窗</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="4">param参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>content</td>
+										<td>String</td>
+										<td>弹窗内容</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>width</td>
+										<td>String</td>
+										<td>宽度，默认：80%</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>height</td>
+										<td>String</td>
+										<td>高度，默认：auto</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>关闭层时的回调函数</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								
+								<dl class="expList">
+									<dd style="height: 315px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 315px;">
+										// 示例1
+										<b>CY.ui.dialog</b>.pop("新闻内容");
+										// 示例3
+										<b>CY.ui.dialog</b>.pop({
+											width : "270px",
+											width : "200px",
+											content : "&lt;p&gt;新闻内容&lt;/p&gt;",
+											callback : function(elem) {
+												// code
+											}
+										});
+										</pre>
+									</dd>
+									<dd style="height: 315px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 315px;">
+										// 示例2
+										<b>CY.ui.dialog</b>.pop({
+											elem : "#elem",
+											callback : function(elem) {
+												// code
+											}
+										});
+										// 示例4
+										<b>CY.ui.dialog</b>.pop({
+											content : "&lt;p&gt;新闻内容&lt;/p&gt;",
+											callback : function(elem) {
+												// code
+											}
+										});
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>alert</a>(params:Object = {}) : <a>Void</a></p>
+						<p>警告框</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="4">param参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>title</td>
+										<td>String</td>
+										<td>弹窗标题</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>content</td>
+										<td>String</td>
+										<td>弹窗内容</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>textAlign</td>
+										<td>String</td>
+										<td>内容对齐方式：left|center|right</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>className</td>
+										<td>String</td>
+										<td>最外层样式名：cy-dialog-类名</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>width</td>
+										<td>String</td>
+										<td>宽度，默认：80%</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>height</td>
+										<td>String</td>
+										<td>高度，默认：auto</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>弹出后回调函数</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								
+								<dl class="expList">
+									<dd style="height: 265px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 265px;">
+										// 示例1
+										<b>CY.ui.dialog</b>.alert("文字必需是数字");
+										// 示例3
+										<b>CY.ui.dialog</b>.alert({
+											title : "提醒啦",
+											content : "输入必需是数字",
+											callback : function(elem) {
+												// CY.ui.dialog.close();
+											}
+										});
+										</pre>
+									</dd>
+									<dd style="height: 265px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 265px;">
+										// 示例2
+										<b>CY.ui.dialog</b>.alert("文字必需是数字",function() {
+											// code
+										});
+										// 示例4
+										<b>CY.ui.dialog</b>.alert({
+											title : "提醒啦",
+											content : "输入必需是数字",
+											callback : function(elem) {
+												// code
+											}
+										});
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>confirm</a>(params = {} : Object) : <a>Void</a></p>
+						<p>确认框</p>
+						<div class="explain">
+							<div class="title">示例</div>
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="4">param参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>content</td>
+										<td>String</td>
+										<td>弹窗内容</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>textAlign</td>
+										<td>String</td>
+										<td>内容对齐方式：left|center|right</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>title</td>
+										<td>String</td>
+										<td>弹窗标题</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td><a>bottom</a></td>
+										<td>Array</td>
+										<td>按钮组</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>className</td>
+										<td>String</td>
+										<td>最外层样式名：cy-dialog-类名</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>width</td>
+										<td>String</td>
+										<td>宽度，默认：80%</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>height</td>
+										<td>String</td>
+										<td>高度，默认：auto</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>cancel</td>
+										<td>String</td>
+										<td>取消按钮文本</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>confirm</td>
+										<td>String</td>
+										<td>确认按钮文本</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>beforeHooks</td>
+										<td>Array</td>
+										<td>生成DOM前执行函数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>afterHooks</td>
+										<td>Array</td>
+										<td>生成DOM后执行函数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>确认回调函数</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								<table class="propertys">
+									<tr>
+										<th colspan="4">bottom按钮组参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>type</td>
+										<td>String</td>
+										<td>样式区分和于监听click事件</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>text</td>
+										<td>String</td>
+										<td>按钮文本</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>callback</td>
+										<td>Function</td>
+										<td>回调函数</td>
+										<td>N</td>
+									</tr>
+								</table>
+								<div class="br"></div>
+								
+								<dl class="expList">
+									<dd style="height: 335px;width: 47%;">
+										<pre class="prettyprint" data-lang="script"style="height: 335px;">
+										// 示例1
+										<b>CY.ui.dialog</b>.confirm("确认要删除吗", function() {
+											// code
+										});
+										// 示例2
+										<b>CY.ui.dialog</b>.confirm({
+											content : "确认要删除吗",
+											callback : function() {
+												// code
+											}
+										});
+										</pre>
+									</dd>
+									<dd style="height: 335px;width: 47%;">
+										<pre class="prettyprint" data-lang="script">
+										// 示例3
+										<b>CY.ui.dialog</b>.confirm({
+											content : "确认要删除吗",
+											bottom : [ {
+												text : "还是取消吧",
+												callback : function() {
+													// code
+												}
+											}, {
+												text : "再考虑一下",
+												callback : function() {
+													// code
+												}
+											} ]
+										});
+										</pre>
+									</dd>
+								</dl>
+								
+							</div>
+						</div>
+					</li>
+					<li>
+						<p><a>showLoading</a>(callback:Function = null) : <a>Void</a></p>
+						<p>开发中...</p>
+					</li>
+					<li>
+						<p><a>hideLoading</a>(callback:Function = null) : <a>Void</a></p>
+						<p>开发中...</p>
+					</li>
+					
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="page.source.js" class="bold uline  tag" target="_blank">/static/js/libs/page.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 230px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 205px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import page from "cy_static/page";
+								// ====使用====
+								 page("#test", {
+								        count: 5,
+								        page: 1,
+								        total: 80
+								    })
+							</pre>
+							</dd>
+							<dd style="height: 270px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 250px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs(["page"], function(page) {
+									    page("#test", {
+									        count: 5,
+									        page: 1,
+									        total: 80
+									    })
+									})
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 270px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 250px;">
+									&lt;script type="text/javascript" src="/static/js/libs/offset.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/tooltip.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/select.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/page.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+									    <b>CY.</b>page("#test", {
+									        count: 5,
+									        page: 1,
+									        total: 80
+									    })
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>page</a>(dom : Object|selector,params : Object) : <a>Object</a></p>
+						<p>设置page的值，如果dom为page标签，自动加载里面的数据</p>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>count</td>
+										<td>Number</td>
+										<td>5</td>
+										<td>显示页数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>page</td>
+										<td>Number</td>
+										<td>1</td>
+										<td>当前页面</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>total</td>
+										<td>Number</td>
+										<td>1</td>
+										<td>总记录条数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>pageSize</td>
+										<td>Number</td>
+										<td>10</td>
+										<td>分页条数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>showSep</td>
+										<td>Boolean</td>
+										<td>false</td>
+										<td>显示分隔线</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>hasPageInfo</td>
+										<td>Boolean</td>
+										<td>false</td>
+										<td>显示分页详情</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>hasPage</td>
+										<td>Boolean</td>
+										<td>false</td>
+										<td>显示页数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>hasPageInput</td>
+										<td>Boolean</td>
+										<td>false</td>
+										<td>显示输入框</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>pageInfoAlign</td>
+										<td>String</td>
+										<td>"right"</td>
+										<td>显示分页详情位置left|right</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>pageInputAlign</td>
+										<td>String</td>
+										<td>"center"</td>
+										<td>显示输入框位置left|center|right</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>sizeInputAlign</td>
+										<td>String</td>
+										<td>"center"</td>
+										<td>显示输入分页位置left|center|right</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>sizeInputArr</td>
+										<td>Array</td>
+										<td>[5, 10]</td>
+										<td>显示输入分页</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>url</td>
+										<td>String</td>
+										<td>""</td>
+										<td>跳转URL</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>target</td>
+										<td>String</td>
+										<td>"_self"</td>
+										<td>URL打开方式</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>disabled</td>
+										<td>String</td>
+										<td>"disabled"</td>
+										<td>没有分页样式</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onSwitch</td>
+										<td>Function</td>
+										<td>null</td>
+										<td>切换事件</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onPageChange</td>
+										<td>Function</td>
+										<td>function () {}</td>
+										<td>点击页数时触发</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onSizePageChange</td>
+										<td>Function</td>
+										<td>function () {}</td>
+										<td>选择页时触发</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+				
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

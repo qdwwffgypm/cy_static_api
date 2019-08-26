@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -510px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="sliderUtil.source.js" class="bold uline  tag" target="_blank">/static/js/utils/sliderUtil.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<P>浮动固定与滚动选中</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 260px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 235px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import sliderUtil from "cy_static/sliderUtil";
+								// ====使用====
+								sliderUtil({
+						                  elem:"#adModule040752366199529444",
+						                  content:".content",
+						                  isLoop:false,
+						                  autoTime : 5000
+						                });
+							</pre>
+							</dd>
+							<dd style="height: 260px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 240px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs(["sliderUtil"], function(sliderUtil) {
+									    sliderUtil({
+								                  elem:"#adModule040752366199529444",
+								                  content:".content",
+								                  isLoop:false,
+								                  autoTime : 5000
+								                });																	    
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 260px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 240px;">
+									&lt;script type="text/javascript" src="/static/js/libs/offset.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/utils/sliderUtil.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										<b>CY.</b>sliderUtil({
+								                  elem:"#adModule040752366199529444",
+								                  content:".content",
+								                  isLoop:false,
+								                  autoTime : 5000
+								                });																	    
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>sliderUtil</a>(params : Object) : <a>Void</a></p>
+						<p>滚动加载图片</p>
+						<div class="explain isShow">
+							<div class="detail">
+								<table class="propertys">
+									<tr>
+										<th colspan="5">params 参数</th>
+									</tr>
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>delay</td>
+										<td>Number</td>
+										<td>800</td>
+										<td>延迟轮播时间</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>drag</td>
+										<td>Number</td>
+										<td>0.1</td>
+										<td>阻尔糸数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>time</td>
+										<td>Number</td>
+										<td>1000</td>
+										<td>滑动时间</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>resetWidth</td>
+										<td>Number</td>
+										<td>10</td>
+										<td>重置复位宽度</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>autoTime</td>
+										<td>Number</td>
+										<td>0</td>
+										<td>自动播放时间（毫秒）</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>attr</td>
+										<td>String</td>
+										<td>'left'</td>
+										<td>滚动元素属性[left|top]</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>realSrc</td>
+										<td>String</td>
+										<td>"realSrc"</td>
+										<td>（如果有）延迟加载图片的真实路径</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>moveInt</td>
+										<td>Boolean</td>
+										<td>true</td>
+										<td>移动整数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>isOverMove</td>
+										<td>Boolean</td>
+										<td>true</td>
+										<td>超过窗口是否能滑动</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>isSpring</td>
+										<td>Boolean</td>
+										<td>true</td>
+										<td>启动弹性吸附效果</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>isLoop</td>
+										<td>Boolean</td>
+										<td>false</td>
+										<td>是否循环轮播</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>isShowNum</td>
+										<td>Boolean</td>
+										<td>false</td>
+										<td>显示x/xx比例数量如:1/10</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>elem</td>
+										<td>dom|String</td>
+										<td>""</td>
+										<td>滑动元素选择器</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>content</td>
+										<td>dom|String</td>
+										<td>""</td>
+										<td>滚动元素选择器</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>navMenu</td>
+										<td>(dom|String)|Boolean</td>
+										<td>""</td>
+										<td>底部菜单小点;如果存在选择器或dom直接读取，否则自动生成</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onChange</td>
+										<td>Function</td>
+										<td>function () {}</td>
+										<td>滚动改变事件</td>
+										<td>N</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+			.methods li.explain .expList{
+			    width: 1160px;
+			}
+			.methods li.explain .expList dd{
+			    width: 49%;
+			}
+			.methods li.explain .expList dd pre {
+			    margin-left: -495px;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="browser.source.js" class="bold uline  tag" target="_blank">/static/js/libs/browser.js</a></p>
+				<p>PS：该对象在CY对象下；</p>
+				<P>浏览器内核标识。依据 navigator.userAgent 判断。</P>
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 170px;">
+								<p>
+									引用方式一、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 145px;">
+									&lt;script type="text/javascript" src="/static/js/libs/browser.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+											var isWebp = <b>CY.</b>browser.webp;
+									&lt;/script&gt;
+								</pre>
+							</dd>
+							<dd style="height: 170px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 145px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+										requirejs(["browser"], function(browser) {
+										    var isWebp = browser.webp;
+										});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>属性</h3>
+				<ul class="methods">
+					<li>
+						<p><a>jfmore</a> : <a>String</a></p>
+						<p>畅由APP内嵌标识版本号；非常畅由APP返回""字符串；</p>
+					</li>
+					<li>
+						<p><a>ios</a> : <a>Boolean</a></p>
+						<p>在iphone|ipod|ipad|ios浏览器中返回 true；</p>
+					</li>
+					<li>
+						<p><a>android</a> : <a>Boolean</a></p>
+						<p>在android浏览器中返回 true；</p>
+					</li>
+					<li>
+						<p><a>weixin</a> : <a>Boolean</a></p>
+						<p>在微信micromessenger浏览器中返回 true；</p>
+					</li>
+					<li>
+						<p><a>qq</a> : <a>Boolean</a></p>
+						<p>在QQAPP中返回 true；</p>
+					</li>
+					<li>
+						<p><a>qzone</a> : <a>Boolean</a></p>
+						<p>在QQAPP、qzone中返回 true；</p>
+					</li>
+					<li>
+						<p><a>webp</a> : <a>Boolean</a></p>
+						<p>当前环境是否支持webp格式图片；</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

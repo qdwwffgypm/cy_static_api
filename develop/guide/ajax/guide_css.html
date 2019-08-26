@@ -1,0 +1,389 @@
+<h2 class="css"><strong>CSS</strong>代码规范</h2>
+<ul class="items">
+	<li>
+		<h3>样式支持</h3>
+		<ol>
+			<li>
+				<h4>CSS浏览器支持标准</h4>
+				<p>对移动设备为三个级别（iphone6为标准），分别有相应的支持级别：</p>
+				<dl class="dl-w50">
+					<dt><em>A级</em></dt>
+					<dd>交互和视觉完全符全设计的要求。iphone6 必须达到A级规范。</dd>
+					<dt><em>B级</em></dt>
+					<dd>视觉上允许有所差异，不破坏页面整体效果。</dd>
+					<dt><em>C级</em></dt>
+					<dd>可忽视视觉上的问题，但不防碍使用。</dd>
+				</dl>
+				<p>页面制作时，phone6为基础，再向其他系列手机兼容。</p>
+			</li>
+			<li>
+				<h4>渐进增强和优雅退化</h4>
+				<p>
+					<em>渐进增强</em>： 针对高级浏览器追加功能和效果，实现更好的用户体验。<br/>
+					<em>优雅降级</em>： 针对高级浏览器来设计和开发，在开发后期针对老式浏览器进行测试，保证其有简陋却不影响使用的体验。
+				</p>
+				<p>
+					<em>强调渐进增强和优雅退化的目的</em>：<br/>
+					1) 让我们的用户享受到更好的体验；<br/>
+					2) 让前端开发的工作更有趣，而不用每天纠结在兼容性上；<br/>
+					3) 促进用户更新浏览器；<br/>
+					4) 让新技术得以更快的普及。
+				</p>
+				<p>
+					渐进增强和优雅退化的原则所要达到的就是这样一个良性的循环 ：给高级浏览器优良体验，过时浏览器简陋体验，促使用户提高升级浏览器的概率，当高级浏览器覆盖率更高时，我们将能提供更多的优良体验，而用户也将获得更Cool的浏览效果，整体收益。 <a href="http://demo.doyoe.com/share/user-experience-gradually/" target="_blank">了解更多介绍</a>
+				</p>
+			</li>
+		</ol>
+	</li>
+	<li>
+		<h3>CSS文件的分类和引用顺序</h3>
+		<ol>
+			<li>公共样式：包括了以下几个部分：“标签的重置和设置默认值”、“统一调用背景图和清除浮动或其他需统一处理的长样式”、“网站通用布局”。</li>
+			<li>模块样式：不同页面上的独立模块的样式（即不同页面相同功能模块）如弹出窗口。</li>
+			<li>页面样式：页面样式则为当前页面独有不可重复使用。</li>
+		</ol>
+		<pre class="prettyprint plain" data-lang="script">&lt;link href="assets/css/global.css" rel="stylesheet" type="text/css"/&gt;
+&lt;link href="assets/css/module.css" rel="stylesheet" type="text/css"/&gt;
+&lt;link href="assets/css/index.css" rel="stylesheet" type="text/css"/&gt;
+</pre>
+<div class="br"></div>
+	</li>
+	<li>
+		<h3>命名规则</h3>	
+		<ol>
+			<li>规则命名中，一律采用小写加中划线“-”的方式，不允许使用大写字母或下划线“_”</li>
+			<li>命名避免使用中文拼音，应该采用更简明有语义的英文单词迚行组合</li>
+			<li>命名注意缩写，但是不能盲目缩写</li>
+			<li>尽量避免使用id来命名，id只用来标识具体模块，命名必须具体且唯一，不要随意新建id。</li>
+			<li>class是用来标识某一类型的元素，命名简洁表意清楚，避免class与id重名。</li>
+			<li>尽可能提高代码模块的复用，样式尽量用组合的方式</li>			
+		</ol>
+	</li>
+	<li>
+		<h3>代码格式</h3>	
+		<p>尽量使用有效的CSS代码。 </p>
+		<ol>
+			<li>
+				<h4>代码注释</h4>
+				<p>
+					CSS代码的注释格式为：<strong>/* 注释文字 */</strong>。 注释中的每一行长度不超过40个汉字，或者80个英文字符。<br/>
+					可以在文件顶部添加整个文件的注释信息，并尽可能给每个区块加上注释，大区块样式添加注释, 小区块适量注释。<br/>
+					通用规则尽可能放在一起，并用注释标明。<br/>
+					对选择器的注释统一写在被注释对象的上一行，对属性及值的注释写于分号后。
+				</p>
+			</li>
+			<li>
+				<h4>格式要求</h4>
+				<dl class="dl-w50">
+					<dt><em>基础</em></dt>
+					<dd>
+						单行写完一个选择器定义<br/>
+						非必要的情况下不要使用元素标签名和ID或class进行组合。<br/>						
+						避免使用CSS类型选择器，出于性能上的考虑避免使用父辈节点做选择器
+					</dd>
+					<dt><em>空格</em></dt>
+					<dd>
+						每一条规则开始的大括号{前后加空格；<br/>
+						每一条规则结束的大括号}前加空格；<br/>
+						属性名冒号之前不加空格，冒号之后加空格；<br/>
+						每一个属性值后必须添加分号;并且分号后空格
+					</dd>
+					<dt><em>空行</em></dt>
+					<dd>不同区块之间，用一个空行分开</dd>
+					<dt><em>分号</em></dt>
+					<dd>每个属性值后面都必须添加分号，最后一个值也以分号结尾</dd>
+					<dt><em>引号</em></dt>
+					<dd>使用单引号，不使用双引号。 省略url引用中的引号，其他需要引号的地方使用单引号。</dd>
+					<dt><em>大小写</em></dt>
+					<dd>在xhtml标准中规定了所有标签、属性和值都小写。</dd>
+					<dt><em>颜色</em></dt>
+					<dd>使用16进制表示颜色值。只有在需要透明度时可以使用rgba，否则都使用#f0f0f0这样的表示方法，并尽量缩写。</dd>
+					<dt><em>属性</em></dt>
+					<dd>私有在前，标准在后。先写带有浏览器私有标志的，后写W3C标准的。</dd>
+					<dt><em>禁止</em></dt>
+					<dd>
+						避免使用低效的选择器<br/>
+						尽量避免使用filter<br/>
+						不要在CSS中使用@import<br/>
+						不要直接给没有语义的标签定义样式，如： div { ... }<br/>
+						尽量不要在CSS中使用expression，特别情况下需要考虑ie6/7兼容性时可以使用。<br/>
+						尽量不要在CSS中使用!important<br/>
+						绝对不要在CSS中使用 "*" 选择符
+					</dd>
+				</dl>
+			</li>
+		</ol>
+	</li>
+	<li>
+		<h3>代码容错</h3>
+		<ol>
+			<li>
+				<em>图片大小</em> 
+				在固定图片大小的内容列表中，如果没有在img标签中设置width/height属性，需要在css中强制设定图片的宽高，以避免列表中图片自身宽高和标准不一致时，出现显示错位。<br/>
+				对于固定大小的图片列表，建议通过CSS来统一设置图片的宽高，而不用在img标签中设置宽高属性。
+			</li>
+			<li><em>容器大小</em> 如果容器区块的宽度或者高度是固定的，请指定高度并设置overflow为hidden，避免文字内容过多时引起了容器显示错位。</li>
+			<li><em>背景图</em> 在使用了非透明的深色背景图时（特别是按钮使用了背景底图）而文字被设为浅色（如白色）时，需要在css中定义一个可临时替代背景图片的背景颜色，以确保在相应背景图片还没加载完的情况下，能看到相应的文字内容。</li>
+			<li><em>清除浮动</em> 不要在html中加入标签来清除浮动，而是通过在浮动元素的父元素上添加.clearfix样式来清除浮动。</li>
+		</ol>
+	</li>
+	<li>
+		<h3>精简优化</h3>
+		<ol>
+			<li>
+				<h4>值缩写</h4>
+				<p>
+					省略0后面的单位。为节省不必要的字节同时也使阅读方便，我们将0px、0em、0%等值缩写为0。<br/>
+					省略0开头小数点前面的0。 如设置透明度 opacity:0.5; 可以写成 opacity:.5;<br/>
+					16进制颜色值，能使用3位表示的，尽量使用3位表示。如#ff9900可以简写为#f90<br/>
+					部分能用数字值代替的属性值，可以用数字值来表示， 如font-weight的属性值， normal可以用400代替， bold可以用700代替。<br/>
+				</p>
+			</li>
+			<li>
+				<h4>属性缩写</h4>
+				<p>
+					在定义相应属性时，如果可以选择一个属性来代替一系列属性定义的，建议采用一个熟悉的简写形式。<br/>
+					如margin、padding、border、background、font等。详细缩写方法请查阅css手册。
+				</p>					
+			</li>
+			<li>
+				<h4>图片合并</h4>
+				<p>
+					页面上所需的背景图片，可以使用csssprites，按照模块、业务、页面来划分来进行合并，以便于减少页面上的背景图片请求数量和总字节数。<br/>
+					具体图片合并规则请详见图片规范。
+				</p>
+			</li>
+			<li>
+				<h4>选择器合并</h4>
+				<p>
+					可以将定义相同的或者有大部分属性值相同（确实是因为相关而相同）的一系列选择器组合到一起（采用逗号的方法）来统一定义。
+					如在使用了csssprite时，不同选择器的同一张背景图片调用可以合并到一起来定义。
+				</p>
+			</li>
+			<li>
+				<h4>其他优化</h4>
+				<p>如果CSS可以做到，就不要使用JS。如hover效果，可以不用考虑IE6下的不支持情况，直接使用:hover伪类来实现效果</p>
+			</li>
+		</ol>
+	</li>
+	<li>
+		<h3>参考规范</h3>	
+		<ol>
+			<li>
+				<h4>选择器编写规范</h4>
+				<p>
+					书写CSS时，请综合考虑以下顺序依据：<br/>
+					1) 从大到小（以选择器的范围为准），如 先.m-list p 再.m-list p.part<br/>
+					2) 从低到高（以等级上的高低为准），如 先.m-logo a 再.m-list a:hover<br/>
+					3) 从先到后（以结构上的先后为准），如 先.g-hd 再.g-bd<br/>
+					4) 从父到子（以结构上的嵌套为准），如 先.m-list 再.m-list .item
+				</p>
+				<p>
+					选择器等级参考：<br/>
+					a = 行内样式style。<br/>
+					b = ID选择器的数量。<br/>
+					c = 类、伪类和属性选择器的数量。<br/>
+					d = 类型选择器和伪元素选择器的数量。
+				</p>
+				<table>
+					<thead>
+						<tr><th rowspan="2">选择器</th><th colspan="4">等级</th></tr> 
+						<tr><th width="30">a</th><th width="30">b</th><th width="30">c</th><th width="30">d</th></tr>
+					</thead>
+					<tbody>
+						<tr align="center"><td align="left">style=”” </td><td>1</td><td>0</td><td>0</td><td>0</td></tr> 
+						<tr align="center"><td align="left">#wrapper #content {}</td><td>0</td><td>2</td><td>0</td><td>0</td></tr> 
+						<tr align="center"><td align="left">#content .dateposted {}</td><td>0</td><td>1</td><td>1</td><td>0</td></tr> 
+						<tr align="center"><td align="left">div#content {}</td><td>0</td><td>1</td><td>0</td><td>1</td></tr> 
+						<tr align="center"><td align="left">#content p {}</td><td>0</td><td>1</td><td>0</td><td>1</td></tr> 
+						<tr align="center"><td align="left">#content {}</td><td>0</td><td>1</td><td>0</td><td>0</td></tr> 
+						<tr align="center"><td align="left">p.comment .dateposted {}</td><td>0</td><td>0</td><td>2</td><td>1</td></tr> 
+						<tr align="center"><td align="left">div.comment p {}</td><td>0</td><td>0</td><td>1</td><td>2</td></tr> 
+						<tr align="center"><td align="left">.comment p {}</td><td>0</td><td>0</td><td>1</td><td>1</td></tr> 
+						<tr align="center"><td align="left">p.comment {}</td><td>0</td><td>0</td><td>1</td><td>1</td></tr> 
+						<tr align="center"><td align="left">.comment {}</td><td>0</td><td>0</td><td>1</td><td>0</td></tr> 
+						<tr align="center"><td align="left">div p {}</td><td>0</td><td>0</td><td>0</td><td>2</td></tr> 
+						<tr align="center"><td align="left">p {}</td><td>0</td><td>0</td><td>0</td><td>1</td></tr> 
+					</tbody>
+				</table>
+			</li>
+			<li>
+				<h4>属性编写规范</h4>
+				<p>
+					推荐的样式编写顺序<br/>
+					1、显示属性： display/visibility/list-style/position/float/clear<br/>
+					2、自身属性（盒模型）： width/height/min-width/margin/padding/border/overflow<br/>
+					3、背景： background<br/>
+					4、行高： line-height<br/>
+					5、文本属性： color/font/text-decoration/text-align/text-indent/vertical-align/white-space<br/>
+					6、其他 cursor/z-index/zoom<br/>
+					7、CSS3属性transform/transition/animation/box-shadow/border-radius<br/>
+					如果属性间存在关联性，则不要隔开写，如height和line-height。
+				</p>
+				<p>
+					链接的样式请严格按照：a:link -> a:visited -> a:hover -> a:active（LoVeHAte）的顺序添加
+				</p>
+			</li>
+			<li>
+				<h4>CSS属性取值规范</h4>
+				<dl>
+					<dt><em>字体大小</em></dt>
+					<dd>设置font-size字体大小时，统一以px为单位</dd>
+					<dt><em>字体系列</em></dt>
+					<dd>
+						页面全局样式中，body里的默认字体设置固定为： <strong>font-family: Tahoma,SimSun;</strong><br/>
+						在使用中文字体时，字体名称请使用相应的英文名称，如黑体(<strong>SimHei</strong>) 宋体(<strong>SimSun</strong>) 微软雅黑(<strong>Microsoft Yahei</strong>)，如果字体名称中有空格，则必须加单引号包含起来。
+					</dd>
+				</dl>
+			</li>
+			<li>
+				<h4>z-index取值规范</h4>
+				<p>在平台页面开发时，在处理不同层级图层内容，需要用到z-index属性。当前框架中，已经使用到的图层有：</p>
+				<table>
+					<thead>
+						<tr><th width="100">图层对象</th><th width="100">规则名称</th><th width="150">z-index取值范围</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>通用页头</td><td>.header</td><td align="center">900-999</td></tr>
+						<tr><td>msgtips</td><td>.util-msgtip</td><td align="center">1000</td></tr>
+						<tr><td>遮盖图层</td><td>#util-overlayer</td><td align="center">9000</td></tr>
+						<tr><td>popbox弹层</td><td>#util-popbox</td><td align="center">9010</td></tr>
+						<tr><td>dialog弹窗</td><td>#util-dialog</td><td align="center">9999</td></tr>
+					</tbody>
+				</table>
+				<p>
+					在页面正文内容中，如果只是相对定位浮动在正文上方的内容，使用z-index时，请选择1-500之间的值。<br/>
+					如果是需要用到overlayer遮盖图层，并在遮盖图层上方显示的内容，则使用z-index时，请选择9001到9099之间的值。
+				</p>
+			</li>
+			<li>
+				<h4>hack使用规范</h4>
+				<p>尽量避免使用CSS Hacks，在遇到兼容性问题时，可以通过改变方法和思路来解决。</p>
+				<p>由于浏览器自身缺陷，我们无法避开的时候，可以允许使用适当的Hack。</p>
+				<p>通常所需要的是对IE6/7进行Hack处理，这种情况下，请统一使用“*”和“_”分别对IE7和6进行Hack。（*支持IE6/7, _仅支持IE6）</p>
+			</li>
+			<li>
+				<h4>常用的CSS命名</h4>
+				<p><em>布局相关</em></p>
+				<table class="c3">
+					<tr>
+						<th>文档</th><td>doc/wrapper</td>
+						<th>头部</th><td>header/head/hd</td>
+						<th>主体</th><td>content/body/bd</td>
+					</tr>
+					<tr>
+						<th>尾部</th><td>footer/foot/ft</td>
+						<th>布局</th><td>layout</td>
+						<th>栏目</th><td>column</td>
+					</tr>
+					<tr>
+						<th>分列</th><td>grid</td>
+						<th>主栏</th><td>main</td>
+						<th>侧栏</th><td>aside/side/sidebar</td>
+					</tr>
+					<tr>
+						<th>盒容器</th><td>wrap/box</td>
+						<th>区块</th><td>section</td>
+					</tr>
+				</table>
+				<p><em>模块相关</em> 模块命名时，可以考虑使用.m-或.mod-前缀。</p>
+				<table class="c3">
+					<tr>
+						<th>导航</th><td>nav</td>
+						<th>子导航</th><td>subnav</td>
+						<th>面包屑</th><td>breakcrumb/crumb</td>
+					</tr>
+					<tr>
+						<th>菜单</th><td>menu</td>
+						<th>子菜单</th><td>submenu</td>
+						<th>选项卡</th><td>tab</td>
+					</tr>
+					<tr>
+						<th>列表</th><td>list</td>
+						<th>表格</th><td>table/tb</td>
+						<th>表单</th><td>form/frm</td>
+					</tr>
+					<tr>
+						<th>热点</th><td>hot</td>
+						<th>排行</th><td>top</td>
+						<th>标志</th><td>logo</td>
+					</tr>
+					<tr>
+						<th>广告</th><td>advertise/ad</td>
+						<th>搜索</th><td>search</td>
+						<th>幻灯</th><td>slide</td>
+					</tr>
+					<tr>
+						<th>提示</th><td>tips</td>
+						<th>帮助</th><td>help</td>
+						<th>新闻</th><td>news</td>
+					</tr>
+					<tr>
+						<th>下载</th><td>download</td>
+						<th>投票</th><td>vote</td>
+						<th>版权</th><td>copyright</td>
+					</tr>
+					<tr>
+						<th>结果</th><td>result</td>
+						<th>标题</th><td>title</td>
+						<th>说明</th><td>note</td>
+					</tr>
+					<tr>
+						<th>指南</th><td>guide</td>
+						<th>服务</th><td>service</td>
+						<th>按钮</th><td>button/btn</td>
+					</tr>
+					<tr>
+						<th>横幅</th><td>banner</td>
+						<th>消息</th><td>msg</td>
+						<th>购物车</th><td>shoppingcart/cart</td>
+					</tr>
+					<tr>
+						<th>图标</th><td>icon</td>
+						<th>文本</th><td>txt</td>
+					</tr>
+				</table>
+				<p><em>状态和位置相关</em></p>
+				<table class="c3">
+					<tr>
+						<th>状态</th><td>status</td>
+						<th>选中</th><td>selected/sel/on</td>
+						<th>当前</th><td>current/cur/active</td>
+					</tr>
+					<tr>
+						<th>显示</th><td>show</td>
+						<th>隐藏</th><td>hide/hidden</td>
+						<th>打开</th><td>open</td>
+					</tr>
+					<tr>
+						<th>关闭</th><td>close</td>
+						<th>滚动</th><td>scroll</td>
+						<th>出错</th><td>error/err</td>
+					</tr>
+					<tr>
+						<th>不可用</th><td>disabled</td>
+						<th>首个</th><td>first</td>
+						<th>末个</th><td>last</td>
+					</tr>
+				</table>
+			</li>
+			<li>
+				<h4>常用的CSS前缀</h4>
+				<dl class="dl-w50">
+					<dt><em>.ico-</em></dt>
+					<dd>可用于图标定义。</dd>
+					<dt><em>.btn-</em></dt>
+					<dd>可用于input[type=button]或button按钮定义，相应命名的选择器，可以用于css定义，也可以用于JS程序中查找元素对象使用。</dd>
+					<dt><em>.txt-</em></dt>
+					<dd>可用于input[type=text]或textarea文本输入框定义，相应命名的选择器，可以用于css定义，也可以用于JS程序中查找元素对象使用。</dd>
+					<dt><em>.sel-</em></dt>
+					<dd>可用于select下拉空间定义，相应命名的选择器，可以用于css定义，也可以用于JS程序中查找元素对象使用。</dd>
+					<dt><em>.chk-</em></dt>
+					<dd>可用于input[type=checkbox]单选/多选控件定义，相应命名的选择器，可以用于css定义，也可以用于JS程序中查找元素对象使用。</dd>
+					<dt><em>.mod-</em></dt>
+					<dd>可用于定义页面模块，特别是通用型的可在不同页面上共用的模块。</dd>
+				</dl>
+			</li>
+		</ol>
+	</li>
+</ul>		
