@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.methods .explain .expList dd {width: 48%;}
+		.methods .explain .expList dd pre {
+		    margin-left: -605px;
+		}
+		.methods .explain .expList dd pre {
+		    margin-left: -556px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		    line-height: 18px;
+		}
+		.propertys {
+		    width: 1140px;
+		}
+		</style>
+
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="sliderScroll.source.js" class="bold uline  tag" target="_blank">/static/js/libs/sliderScroll.js</a></p>
+				<p>	PS：该对象在CY.<b>sliderScroll</b> 对象下；<br/>
+					1、上下滑动窗口，暂停(锁定), 恢复正常，滑动到固定位置等；<br/>
+					2、视例结构:<br/>
+					&lt;div id="myScroll"&gt;<br/>
+					&nbsp;&nbsp;&lt;div class="content"&gt;<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;复旦附中模<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;拟政协小组的6名同学，<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;经过三个月精心准备，<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;通过实地走访、<br/>
+					&nbsp;&nbsp;&nbsp;&nbsp;问卷调查<br/>					
+					&nbsp;&nbsp;&lt;/div&gt;<br/>
+					&lt;/div&gt;<br/>
+
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 720px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 695px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import sliderScroll from "cy_static/sliderScroll";
+								// ====使用====
+								// 用法一
+								sliderScroll({
+									elem : "#myScroll",// 窗口元素--要设置高度
+									content : ".content",
+									pullDown:{// 顶部加载
+										callback : function () {
+											console.log("调用下拉加载数据方法");
+										}
+									},// 底部加载
+									pushDown:{
+										callback : function () {
+											console.log("调用上拉加载数据方法");
+										}
+									},// 超出窗口
+									onOverflow: function(height) {
+										console.log("超出窗口===" + height);
+									},// 已到底部
+									onTopOrBottom: function() {
+										console.log("已到底部");
+									},// 拖动开始
+									onStart: function(left) {
+										console.log("拖动开始===" + left);
+									},// 拖动中
+									onMove: function(left) {
+										console.log("拖动中===" + left);
+									},// 滚动中
+									onScroll: function(left) {
+									 //   console.log("'%c滚动中-----" + left,'color:#f00;');
+									}, // 拖动结束
+									onStop: function(left) {
+										console.log("拖动结束===" + left);
+									}
+								});
+							</pre>
+							</dd>
+							<dd style="height: 710px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 690px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs([ "/static/js/libs/sliderScroll.js" ], function(sliderScroll) {
+										sliderScroll({
+											elem : "#myScroll",// 窗口元素--要设置高度
+											content : ".content",
+											pullDown:{// 顶部加载
+												callback : function () {
+													console.log("调用下拉加载数据方法");
+												}
+											},// 底部加载
+											pushDown:{
+												callback : function () {
+													console.log("调用上拉加载数据方法");
+												}
+											},// 超出窗口
+											onOverflow: function(height) {
+												console.log("超出窗口===" + height);
+											},// 已到底部
+											onTopOrBottom: function() {
+												console.log("已到底部");
+											},// 拖动开始
+											onStart: function(left) {
+												console.log("拖动开始===" + left);
+											},// 拖动中
+											onMove: function(left) {
+												console.log("拖动中===" + left);
+											},// 滚动中
+											onScroll: function(left) {
+											 //   console.log("'%c滚动中-----" + left,'color:#f00;');
+											}, // 拖动结束
+											onStop: function(left) {
+												console.log("拖动结束===" + left);
+											}
+										});
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 710px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 690px;">
+									&lt;script type="text/javascript" src="/static/js/libs/sliderScroll.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										<b>CY.</b>sliderScroll({
+											elem : "#myScroll",// 窗口元素--要设置高度
+											content : ".content",
+											pullDown:{// 顶部加载
+												callback : function () {
+													console.log("调用下拉加载数据方法");
+												}
+											},// 底部加载
+											pushDown:{
+												callback : function () {
+													console.log("调用上拉加载数据方法");
+												}
+											},// 超出窗口
+											onOverflow: function(height) {
+												console.log("超出窗口===" + height);
+											},// 已到底部
+											onTopOrBottom: function() {
+												console.log("已到底部");
+											},// 拖动开始
+											onStart: function(left) {
+												console.log("拖动开始===" + left);
+											},// 拖动中
+											onMove: function(left) {
+												console.log("拖动中===" + left);
+											},// 滚动中
+											onScroll: function(left) {
+											 //   console.log("'%c滚动中-----" + left,'color:#f00;');
+											}, // 拖动结束
+											onStop: function(left) {
+												console.log("拖动结束===" + left);
+											}
+										});
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>sliderScroll</a>(params : Object) : <a>Object</a></p>
+						<p>上下滑动窗口，暂停(锁定), 恢复正常，滑动到固定位置等；</p>
+						<div class="explain isShow">
+							<div class="detail">									
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>elem</td>
+										<td>String||Object</td>
+										<td>""</td>
+										<td>窗口元素</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>content</td>
+										<td>String||Object</td>
+										<td>""</td>
+										<td>窗口子元素</td>
+										<td>Y</td>
+									</tr>
+									<tr>
+										<td>time</td>
+										<td>Number</td>
+										<td>1000</td>
+										<td>滑动时间(毫秒)</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>drag</td>
+										<td>Number</td>
+										<td>0.6</td>
+										<td>阻尔糸数</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>scrollTop</td>
+										<td>Number</td>
+										<td>0</td>
+										<td>默认滚动条位置</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>isSpring</td>
+										<td>Boolean</td>
+										<td>true</td>
+										<td>启动弹性吸附效果</td>
+										<td>N</td>
+									</tr> 
+									<tr>
+										<td>isTopEffect</td>
+										<td>Boolean</td>
+										<td>false</td>
+										<td>顶部动画效果</td>
+										<td>N</td>
+									</tr> 
+									<tr>
+										<td>isBotEffect</td>
+										<td>Boolean</td>
+										<td>true</td>
+										<td>底部动画效果</td>
+										<td>N</td>
+									</tr> 
+									<tr>
+										<td>hasScrollbar</td>
+										<td>Boolean</td>
+										<td>true</td>
+										<td>显示滚动条</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>pullDown</td>
+										<td>Object</td>
+										<td>null</td>
+										<td>下拉刷新(顶部刷新加载)对象{}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>pushDown</td>
+										<td>Object</td>
+										<td>null</td>
+										<td>上拉刷新(底部刷新加载)对象{}</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>onOverflow</td>
+										<td>Function</td>
+										<td>function (height) {}</td>
+										<td>滑动超出窗口高度</td>
+										<td>N</td>
+									</tr>  
+									<tr>
+										<td>onTopOrBottom</td>
+										<td>Function</td>
+										<td>function (height, event, params) {}</td>
+										<td>已到顶部OR底部</td>
+										<td>N</td>
+									</tr> 
+									<tr>
+										<td>onStart</td>
+										<td>Function</td>
+										<td>function (height, event, params) {}</td>
+										<td>拖动开始</td>
+										<td>N</td>
+									</tr>  
+									<tr>
+										<td>onScroll</td>
+										<td>Function</td>
+										<td>function (height) {}</td>
+										<td>滚动事件</td>
+										<td>N</td>
+									</tr>  
+									<tr>
+										<td>onMove</td>
+										<td>Function</td>
+										<td>function (height, event, params) {}</td>
+										<td>拖动中</td>
+										<td>N</td>
+									</tr>  
+									<tr>
+										<td>onStop</td>
+										<td>Function</td>
+										<td>function (height, event, params) {}</td>
+										<td>拖动结束</td>
+										<td>N</td>
+									</tr>  
+								</table>
+								<div class="br"></div>
+									<dl class="expList" style="width: 1177px;">
+										<dd style="height: 300px;">
+											<pre class="prettyprint" data-lang="script" style="height: 280px;">
+										// pullDown选项说明 
+										{// 下拉刷新(顶部刷新加载)对象{}
+											height:30,//可选,默认50.触发下拉刷新拖动距离,
+											onShowCss: "onShow",// 默认样式
+											onReadCss: "onRead",// 超出拖动距离样式
+											onLoadCss: "onLoad",// 加载中的样式
+											onEndCss: "onEnd",// 加载结束样式
+											onShow: "上拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+											onRead:"释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+											onLoad: "正在加载...",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+											onEnd: "已经到底啦!",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+										}
+											</pre>
+										</dd>
+										<dd style="height: 300px;">
+											<pre class="prettyprint" data-lang="script" style="height: 280px;">
+										// pushDown选项说明 
+										{// 上拉刷新(底部刷新加载)对象{}
+											height:30,//可选,默认50.触发下拉刷新拖动距离,
+											onShowCss: "onShow",// 默认样式
+											onReadCss: "onRead",// 超出拖动距离样式
+											onLoadCss: "onLoad",// 加载中的样式
+											onEndCss: "onEnd",// 加载结束样式
+											onShow: "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+											onRead:"释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+											onLoad: "正在加载...",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+											onEnd: "已经到底啦!",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+										}
+											</pre>
+										</dd>
+									</dl>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>pause</a>() : <a>Void</a></p>
+						<p>禁止滑动；</p>
+					</li>
+					<li>
+						<p><a>play</a>() : <a>Void</a></p>
+						<p>启动滑动；</p>
+					</li>
+					<li>
+						<p><a>scrollTop</a>(index : Number) : <a>Void</a></p>
+						<p>把滚动条滑动到固定位置；</p>
+					</li>
+					<li>
+						<p><a>endPull</a>(isEnd : Boolean) : <a>Void</a></p>
+						<p>滚动加载异步数据时，用于设置滚动内容加载状态(加载完还是还有下一页)</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

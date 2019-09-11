@@ -118,6 +118,18 @@
 				url : "../libs/jsonp.html",
 				title : "jsonp方式请求数据",
 				method:"CY.jsonp"
+			}, {
+				url : "../libs/sliderTab.html",
+				title : "tab标签菜单",
+				method:"CY.sliderTab"
+			}, {
+				url : "../libs/sliderWin.html",
+				title : "窗口切换",
+				method:"CY.sliderWin"
+			}, {
+				url : "../libs/sliderScroll.html",
+				title : "上下滚动窗口",
+				method:"CY.sliderScroll"
 			}]
 		}, {
 			title : "工具类utils",
