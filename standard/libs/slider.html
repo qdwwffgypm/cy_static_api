@@ -38,11 +38,11 @@
 		<article class="menuCon">
 			<div class="listmod">
 				<h3 class="conTitle"></h3>
-				<p>查看源码： <a href="sliderTab.source.js" class="bold uline  tag" target="_blank">/static/js/libs/sliderTab.js</a></p>
-				<p>	PS：该对象在CY.<b>sliderTab</b> 对象下；<br/>
-					1、tab标签菜单，支持滑动切换、点击回调，动态改变当前选中值并居中显示；<br/>
+				<p>查看源码： <a href="slider.source.js" class="bold uline  tag" target="_blank">/static/js/libs/slider.js</a></p>
+				<p>	PS：该对象在CY.<b>slider</b> 对象下；<br/>
+					1、图片轮播，支持定位特定图片；<br/>
 					2、视例结构:<br/>
-					&lt;div id="myTab"&gt;<br/>
+					&lt;div id="mySlider"&gt;<br/>
 					&nbsp;&nbsp;&lt;div class="content"&gt;<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="item"&gt;热门&lt;/div&gt;<br/>
 					&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="item"&gt;美食餐饮&lt;/div&gt;<br/>						
@@ -60,16 +60,12 @@
 							<pre class="prettyprint" data-lang="script" style="height: 465px;margin-left: -450px;">
 								// ====安装&引入====
 								npm install cy_static
-								import sliderTab from "cy_static/sliderTab";
+								import slider from "cy_static/slider";
 								// ====使用====
 								// 用法一
-								sliderTab({
-									elem: "#myTab",		    
-									currIndex: 0,// 窗口元素--要设置高度
-									content: ".content",// 滚动元素
-									onClick: function(index) {
-										console.log("当前===" + index);
-									},// 拖动开始
+								slider({
+									elem : "#mySlider",// 窗口元素--要设置高度
+									content : ".content",
 									onStart: function(left) {
 										console.log("拖动开始===" + left);
 									},// 拖动中
@@ -77,10 +73,13 @@
 										console.log("拖动中===" + left);
 									},// 滚动中
 									onScroll: function(left) {
-										console.log("'%c滚动中-----" + left,'color:#f00;')
+									   console.log("'%c滚动中-----" + left,'color:#f00;');
 									}, // 拖动结束
 									onStop: function(left) {
 										console.log("拖动结束===" + left);
+									},
+									onChange: function(index) {
+										console.log("当前第几个===" + index);
 									}
 								});
 							</pre>
@@ -92,14 +91,11 @@
 							<pre class="prettyprint" data-lang="script" style="height: 460px;margin-left: -450px;">
 								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
 								&lt;script type="text/javascript"&gt;
-									requirejs([ "/static/js/libs/sliderTab.js" ], function(sliderTab) {
-										sliderTab({
-											elem: "#myTab",		    
-											currIndex: 0,// 窗口元素--要设置高度
-											content: ".content",// 滚动元素
-											onClick: function(index) {
-												console.log("当前===" + index);
-											},// 拖动开始
+									requirejs([ "/static/js/libs/slider.js" ], function(slider) {
+										slider({
+											elem : "#mySlider",// 窗口元素--要设置高度
+											content : ".content",
+											drag:0.9,// 拖动开始
 											onStart: function(left) {
 												console.log("拖动开始===" + left);
 											},// 拖动中
@@ -107,10 +103,13 @@
 												console.log("拖动中===" + left);
 											},// 滚动中
 											onScroll: function(left) {
-												console.log("'%c滚动中-----" + left,'color:#f00;')
+											   console.log("'%c滚动中-----" + left,'color:#f00;');
 											}, // 拖动结束
 											onStop: function(left) {
 												console.log("拖动结束===" + left);
+											},
+											onChange: function(index) {
+												console.log("当前第几个===" + index);
 											}
 										});
 									});
@@ -122,15 +121,12 @@
 									引用方式三、
 								</p>
 								<pre class="prettyprint" data-lang="script" style="height: 460px;">
-									&lt;script type="text/javascript" src="/static/js/libs/sliderTab.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript" src="/static/js/libs/slider.js"&gt;&lt;/script&gt;
 									&lt;script type="text/javascript"&gt;
-										<b>CY.</b>sliderTab({
-											elem: "#myTab",		    
-											currIndex: 0,// 窗口元素--要设置高度
-											content: ".content",// 滚动元素
-											onClick: function(index) {
-												console.log("当前===" + index);
-											},// 拖动开始
+										<b>CY.</b>slider({
+											elem : "#mySlider",// 窗口元素--要设置高度
+											content : ".content",
+											drag:0.9,// 拖动开始
 											onStart: function(left) {
 												console.log("拖动开始===" + left);
 											},// 拖动中
@@ -138,10 +134,13 @@
 												console.log("拖动中===" + left);
 											},// 滚动中
 											onScroll: function(left) {
-												console.log("'%c滚动中-----" + left,'color:#f00;')
+											   console.log("'%c滚动中-----" + left,'color:#f00;');
 											}, // 拖动结束
 											onStop: function(left) {
 												console.log("拖动结束===" + left);
+											},
+											onChange: function(index) {
+												console.log("当前第几个===" + index);
 											}
 										});
 									&lt;/script&gt;
@@ -153,8 +152,8 @@
 				<h3>构造方法</h3>
 				<ul class="methods">
 					<li>
-						<p><a>sliderTab</a>(params : Object) : <a>Object</a></p>
-						<p>tab标签菜单，支持滑动切换、点击回调，动态改变当前选中值并居中显示；</p>
+						<p><a>slider</a>(params : Object) : <a>Object</a></p>
+						<p>图片轮播，支持定位特定图片；</p>
 						<div class="explain isShow">
 							<div class="detail">									
 								<table class="propertys">
@@ -225,16 +224,16 @@
 										<td>currIndex</td>
 										<td>Number</td>
 										<td>0</td>
-										<td>默认选中的窗口</td>
+										<td>默认选中的图片</td>
 										<td>N</td>
-									</tr>
+									</tr>									
 									<tr>
-										<td>isOverMove</td>
+										<td>hasNavMenu</td>
 										<td>Boolean</td>
 										<td>true</td>
-										<td>超过窗口是否能滑动</td>
+										<td>拥有导航菜单</td>
 										<td>N</td>
-									</tr>  
+									</tr>
 									<tr>
 										<td>onStart</td>
 										<td>Function</td>
@@ -264,10 +263,10 @@
 										<td>N</td>
 									</tr>  
 									<tr>
-										<td>onClick</td>
+										<td>onChange</td>
 										<td>Function</td>
-										<td>function (index) {}</td>
-										<td>tab点击事件</td>
+										<td>function (index, dom) {}</td>
+										<td>图片定位改变事件</td>
 										<td>N</td>
 									</tr>
 								</table>
@@ -284,14 +283,6 @@
 					<li>
 						<p><a>play</a>() : <a>Void</a></p>
 						<p>启动滑动；</p>
-					</li>
-					<li>
-						<p><a>reset</a>() : <a>Void</a></p>
-						<p>重置操作/让已选中的Tab显示在可视窗口内；</p>
-					</li>
-					<li>
-						<p><a>setCss</a>(index : Number) : <a>Void</a></p>
-						<p>单纯的把index设置为选中样式；多用于窗口滑动时临时选中用；</p>
 					</li>	
 					<li>
 						<p><a>destroy</a>() : <a>Void</a></p>
@@ -299,7 +290,7 @@
 					</li>
 					<li>
 						<p><a>setCurrIndex</a>(index : Number) : <a>Void</a></p>
-						<p>设置要选中Tab下标（从0开始）；并在可视窗口中显示</p>
+						<p>设置要选中图片下标（从0开始）；</p>
 					</li>
 				</ul>
 			</div>

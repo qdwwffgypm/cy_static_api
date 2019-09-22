@@ -73,8 +73,8 @@
 									onMove: function(left) {
 										console.log("拖动中===" + left);
 									},// 滚动中
-									onScroll: function(index, bfb) {
-										console.log("'%c滚动中-----" + index+"====已滚动百分比:" + bfb,'color:#f00;')
+									onScroll: function(index, dom, left) {
+										console.log("'%c滚动中-----" + index+"====已滚动比例:" + left,'color:#f00;')
 									}, // 拖动结束
 									onStop: function(left) {
 										console.log("拖动结束===" + left);
@@ -103,8 +103,8 @@
 											onMove: function(left) {
 												console.log("拖动中===" + left);
 											},// 滚动中
-											onScroll: function(index, bfb) {
-											    console.log("'%c滚动中-----" + index+"====已滚动百分比:" + bfb,'color:#f00;')
+											onScroll: function(index, dom, left) {
+											    console.log("'%c滚动中-----" + index+"====已滚动比例:" + left,'color:#f00;')
 											}, // 拖动结束
 											onStop: function(left) {
 												console.log("拖动结束===" + left);
@@ -134,8 +134,8 @@
 											onMove: function(left) {
 												console.log("拖动中===" + left);
 											},// 滚动中
-											onScroll: function(index, bfb) {
-											    console.log("'%c滚动中-----" + index+"====已滚动百分比:" + bfb,'color:#f00;')
+											onScroll: function(index, dom, left) {
+											    console.log("'%c滚动中-----" + index+"====已滚动比例:" + left,'color:#f00;')
 											}, // 拖动结束
 											onStop: function(left) {
 												console.log("拖动结束===" + left);
@@ -186,8 +186,8 @@
 									<tr>
 										<td>resetWidth</td>
 										<td>Number</td>
-										<td>10</td>
-										<td>重置复位宽度(米)</td>
+										<td>40</td>
+										<td>重置复位宽度(px)</td>
 										<td>N</td>
 									</tr>
 									<tr>
@@ -214,7 +214,7 @@
 									<tr>
 										<td>onScroll</td>
 										<td>Function</td>
-										<td>function (left) {}</td>
+										<td>function (index, dom, left) {}</td>
 										<td>滚动事件</td>
 										<td>N</td>
 									</tr>  
@@ -255,8 +255,37 @@
 						<p>启动滑动；</p>
 					</li>
 					<li>
+						<p><a>getCurrIndex</a>() : <a>Number</a></p>
+						<p>获得当前激活的窗口</p>
+					</li>	
+					<li>
+						<p><a>destroy</a>() : <a>Void</a></p>
+						<p>销毁实例里所有事件；</p>
+					</li>
+					<li>
 						<p><a>setCurrIndex</a>(index : Number) : <a>Void</a></p>
 						<p>设置要选中窗口下标（从0开始）；并在可视窗口中显示</p>
+					</li>
+				</ul>
+				<h3>设置TAB进度条</h3>
+				<ul class="methods">
+					<li>
+						<pre>
+							// 获得进度
+							var setProgress = function(index, left) {
+								var _left = 0;
+								for (var i = 0; i < index; i++) {
+									_left += tabItems[i].offsetWidth;
+								}
+								_left += (left - index) * tabItems[index].offsetWidth;
+				
+								m.myTab.setCss(Math.round(left));
+								Object.assign(progress.style, {
+									left: _left + "px",
+									width: tabItems[index].offsetWidth + "px"
+								})
+						  };
+						</pre>
 					</li>
 				</ul>
 			</div>

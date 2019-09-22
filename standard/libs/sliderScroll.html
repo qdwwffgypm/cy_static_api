@@ -70,12 +70,12 @@
 									elem : "#myScroll",// 窗口元素--要设置高度
 									content : ".content",
 									pullDown:{// 顶部加载
-										callback : function () {
+										callback : function (params, content) {
 											console.log("调用下拉加载数据方法");
 										}
 									},// 底部加载
 									pushDown:{
-										callback : function () {
+										callback : function (params, content) {
 											console.log("调用上拉加载数据方法");
 										}
 									},// 超出窗口
@@ -112,12 +112,12 @@
 											elem : "#myScroll",// 窗口元素--要设置高度
 											content : ".content",
 											pullDown:{// 顶部加载
-												callback : function () {
+												callback : function (params, content) {
 													console.log("调用下拉加载数据方法");
 												}
 											},// 底部加载
 											pushDown:{
-												callback : function () {
+												callback : function (params, content) {
 													console.log("调用上拉加载数据方法");
 												}
 											},// 超出窗口
@@ -155,12 +155,12 @@
 											elem : "#myScroll",// 窗口元素--要设置高度
 											content : ".content",
 											pullDown:{// 顶部加载
-												callback : function () {
+												callback : function (params, content) {
 													console.log("调用下拉加载数据方法");
 												}
 											},// 底部加载
 											pushDown:{
-												callback : function () {
+												callback : function (params, content) {
 													console.log("调用上拉加载数据方法");
 												}
 											},// 超出窗口
@@ -266,7 +266,14 @@
 										<td>true</td>
 										<td>显示滚动条</td>
 										<td>N</td>
-									</tr>
+									</tr> 
+									<tr>
+										<td>isLockfull</td>
+										<td>Boolean</td>
+										<td>false</td>
+										<td>锁定全屏状态(取消系统默认滚动)</td>
+										<td>N</td>
+									</tr>									
 									<tr>
 										<td>pullDown</td>
 										<td>Object</td>
@@ -339,6 +346,7 @@
 											onRead:"释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
 											onLoad: "正在加载...",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
 											onEnd: "已经到底啦!",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+											callback: function(params, content) {}// 加载数据
 										}
 											</pre>
 										</dd>
@@ -355,6 +363,7 @@
 											onRead:"释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
 											onLoad: "正在加载...",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
 											onEnd: "已经到底啦!",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+											callback: function(params, content) {}// 加载数据
 										}
 											</pre>
 										</dd>
@@ -363,6 +372,13 @@
 						</div>
 					</li>
 				</ul>
+				<h3>事件</h3>
+				<ul class="methods">
+					<li>
+						<p><a>scroll</a>() : <a>Void</a></p>
+						<p>触发绑定在content滚动事件；</p>
+					</li>
+				</ul>	
 				<h3>实例方法</h3>
 				<ul class="methods">
 					<li>
@@ -378,8 +394,28 @@
 						<p>把滚动条滑动到固定位置；</p>
 					</li>
 					<li>
-						<p><a>endPull</a>(isEnd : Boolean) : <a>Void</a></p>
-						<p>滚动加载异步数据时，用于设置滚动内容加载状态(加载完还是还有下一页)</p>
+						<p><a>setLockfull</a>(isLock : Boolean) : <a>Void</a></p>
+						<p>设置全屏锁定状态；</p>
+					</li>
+					<li>
+						<p><a>setLockTopSpace</a>(isLock: Boolean) : <a>Void</a></p>
+						<p>锁定必须滚动top到顶再释放默认事件；</p>
+					</li>
+					<li>
+						<p><a>setLockBotSpace</a>(isLockf : Boolean) : <a>Void</a></p>
+						<p>锁定必须滚动bottom到底再释放默认事件；</p>
+					</li>	
+					<li>
+						<p><a>destroy</a>() : <a>Void</a></p>
+						<p>销毁实例里所有事件；</p>
+					</li>									
+					<li>
+						<p><a>isEndPull</a>(isEnd : Boolean) : <a>Void</a></p>
+						<p>下拉滚动加载异步数据时，用于设置滚动内容加载状态(加载完还是还有下一页)超时15秒自动设置为还有下一页</p>
+					</li>									
+					<li>
+						<p><a>isEndPush</a>(isEnd : Boolean) : <a>Void</a></p>
+						<p>上拉滚动加载异步数据时，用于设置滚动内容加载状态(加载完还是还有下一页)超时15秒自动设置为还有下一页</p>
 					</li>
 				</ul>
 			</div>

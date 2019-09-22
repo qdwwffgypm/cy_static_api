@@ -118,6 +118,10 @@
 				url : "../libs/jsonp.html",
 				title : "jsonp方式请求数据",
 				method:"CY.jsonp"
+			} , {
+				url : "../libs/slider.html",
+				title : "图片轮播滑动",
+				method:"CY.slider"
 			}, {
 				url : "../libs/sliderTab.html",
 				title : "tab标签菜单",
@@ -155,7 +159,7 @@
 				method:"CY.serverUtil"
 			} , {
 				url : "../utils/sliderUtil.html",
-				title : "图片轮播滑动",
+				title : "图片轮播滑动(旧)",
 				method:"CY.sliderUtil"
 			},{
 				url : "../utils/floatNav.html",
