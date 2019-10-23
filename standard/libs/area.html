@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><script type="text/javascript">var __startTime = new Date().getTime();</script>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/global.css" type="text/css"></link>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jend.js"></script>
+		<style type="text/css">
+		.methods .explain .expList dd {width: 48%;}
+		.methods .explain .expList dd pre {
+		    margin-left: -605px;
+		}
+		.methods .explain .expList dd pre {
+		    margin-left: -556px;
+		}
+		.methods li.explain .expList{
+		    width: 1160px;
+		}
+		.methods li.explain .expList dd{
+		    width: 49%;
+		}
+		.methods li.explain .expList dd pre {
+		    margin-left: -510px;
+		    line-height: 18px;
+		}
+		.propertys {
+		    width: 1140px;
+		}
+		</style>
+
+	</head>
+	<body>
+		<header>
+			vue项目规范
+		</header>
+		<aside class="menu"></aside>
+		<article class="menuCon">
+			<div class="listmod">
+				<h3 class="conTitle"></h3>
+				<p>查看源码： <a href="area.source.js" class="bold uline  tag" target="_blank">/static/js/libs/area.js</a></p>
+				<p>	PS：该对象在CY.<b>area</b> 对象下；<br/>
+					1、支持级联滑动（如地区）与非级联滑动(日期选择)；<br/>					
+
+				<h3>引用方式</h3>
+				<ul class="methods">
+					<li class="explain">
+						<dl class="expList">
+							<dd style="height: 520px;width: 99%;">
+							<p>
+								引用方式一、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 495px;margin-left: -450px;">
+								// ====安装&引入====
+								npm install cy_static
+								import area from "cy_static/area";
+								// ====使用====
+								// 用法一
+								var insarea = CY.area({
+									elem: "#area",
+									maxNum: 3,
+									items: [{
+										"id": "aa",
+										"value": "0"
+									}, {
+										"id": "bb",
+										"value": "0"
+									}, {
+										"id": "cc",
+										"value": "0"
+									}],
+									isArea: false,// 级别关联
+									data: [
+										[{text: "年",value: "年"}],
+										[{text: "月",value: "月"}],
+										[{text: "日",value: "日"}],
+									]
+								});
+								insarea.show();								
+							</pre>
+							</dd>
+							<dd style="height: 510px;">
+							<p>
+								引用方式二、
+							</p>
+							<pre class="prettyprint" data-lang="script" style="height: 490px;margin-left: -450px;">
+								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
+								&lt;script type="text/javascript"&gt;
+									requirejs([ "/static/js/libs/area.js" ], function(area) {
+										var insarea = CY.area({
+											elem: "#area",
+											maxNum: 3,
+											items: [{
+												"id": "aa",
+												"value": "0"
+											}, {
+												"id": "bb",
+												"value": "0"
+											}, {
+												"id": "cc",
+												"value": "0"
+											}],
+											isArea: false,// 级别关联
+											data: [
+												[{text: "年",value: "年"}],
+												[{text: "月",value: "月"}],
+												[{text: "日",value: "日"}],
+											]
+										});
+										insarea.show()										
+									});
+								&lt;/script&gt;
+							</pre>
+							</dd>
+							<dd style="height: 510px;">
+								<p>
+									引用方式三、
+								</p>
+								<pre class="prettyprint" data-lang="script" style="height: 490px;">
+									&lt;script type="text/javascript" src="/static/js/libs/area.js"&gt;&lt;/script&gt;
+									&lt;script type="text/javascript"&gt;
+										var insarea = <b>CY.</b>area({
+											elem: "#area",
+											maxNum: 3,
+											items: [{
+												"id": "aa",
+												"value": "0"
+											}, {
+												"id": "bb",
+												"value": "0"
+											}, {
+												"id": "cc",
+												"value": "0"
+											}],
+											isArea: false,// 级别关联
+											data: [
+												[{text: "年",value: "年"}],
+												[{text: "月",value: "月"}],
+												[{text: "日",value: "日"}],
+											]
+										});
+										insarea.show()
+										
+									&lt;/script&gt;
+								</pre>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				<h3>构造方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>area</a>(params : Object) : <a>Object</a></p>
+						<p>支持级联滑动（如地区）与非级联滑动(日期选择)等；</p>
+						<div class="explain isShow">
+							<div class="detail">									
+								<table class="propertys">
+									<tr>
+										<th>参数名</th>
+										<th>类型</th>
+										<th>默认值</th>
+										<th>描述</th>
+										<th>必需</th>
+									</tr>
+									<tr>
+										<td>elem</td>
+										<td>String||Object</td>
+										<td>""</td>
+										<td>绑定点击显示元素</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>isArea</td>
+										<td>Boolean</td>
+										<td>true</td>
+										<td>是否级联查询</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>data</td>
+										<td>Array</td>
+										<td>[]</td>
+										<td>非常级联时的数据</td>
+										<td>N</td>
+									</tr>		
+									<tr>
+										<td>emptyNum</td>
+										<td>Number</td>
+										<td>2</td>
+										<td>选择item前面空几个选项</td>
+										<td>N</td>
+									</tr>	
+									<tr>
+										<td>maxNum</td>
+										<td>Number</td>
+										<td>100</td>
+										<td>最大显示级联数量</td>
+										<td>N</td>
+									</tr>	
+									<tr>
+										<td>text</td>
+										<td>String</td>
+										<td>text</td>
+										<td>数量文本属性</td>
+										<td>N</td>
+									</tr>	
+									<tr>
+										<td>value</td>
+										<td>String</td>
+										<td>value</td>
+										<td>数量值属性</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>items</td>
+										<td>Array</td>
+										<td>[]</td>
+										<td>各级联项属性</td>
+										<td>N</td>
+									</tr>
+									<tr>
+										<td>ajaxFun</td>
+										<td>Function</td>
+										<td>null</td>
+										<td>级联时查询数据调用的方法</td>
+										<td>N</td>
+									</tr>									
+									<tr>
+										<td>onShow</td>
+										<td>Function</td>
+										<td>null</td>
+										<td>插件显示时的回调</td>
+										<td>N</td>
+									</tr> 									
+									<tr>
+										<td>onCancel</td>
+										<td>Function</td>
+										<td>null</td>
+										<td>点击取消时的回调</td>
+										<td>N</td>
+									</tr> 									
+									<tr>
+										<td>onSubmit</td>
+										<td>Function</td>
+										<td>null</td>
+										<td>点击确认时的回调</td>
+										<td>N</td>
+									</tr> 
+								</table>
+								<div class="br"></div>
+									<dl class="expList" style="width: 1177px;">
+										<dd style="height: 190px;">
+											<pre class="prettyprint" data-lang="script" style="height: 180px;">
+										// items选项说明 
+										{//  
+											id : "", // 当前项对应的input选择器
+											value : "",// 当前项对应的input默认选中值
+											css: "",// 当前项样式类
+											readonly: false// 当前项是否只读
+										}
+											</pre>
+										</dd>
+										<dd style="height: 190px;">
+											<pre class="prettyprint" data-lang="script" style="height: 180px;">
+										// ajaxFun选项说明 
+										{//  
+											params:{
+												index: 0,// 当前第几项
+							        			value: 0// 当前选中项的值
+											},// 
+											callback: Function,// 设置回调用数据
+										}
+											</pre>
+										</dd>
+									</dl>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<h3>实例方法</h3>
+				<ul class="methods">
+					<li>
+						<p><a>show</a>() : <a>Void</a></p>
+						<p>显示插件；</p>
+					</li>
+					<li>
+						<p><a>hide</a>() : <a>Void</a></p>
+						<p>隐藏插件；</p>
+					</li>		
+					<li>
+						<p><a>setActivated</a>(isActivated) : <a>Void</a></p>
+						<p>是否激活；</p>
+					</li>
+					<li>
+						<p><a>scrollTop</a>(index : Number) : <a>Void</a></p>
+						<p>把滚动条滑动到固定位置；</p>
+					</li>
+					<li>
+						<p><a>onShow</a>(func : Function) : <a>Void</a></p>
+						<p>把滚动条滑动到固定位置；</p>
+					</li>
+					<li>
+						<p><a>onCancel</a>(func : Function) : <a>Void</a></p>
+						<p>把滚动条滑动到固定位置；</p>
+					</li>
+					<li>
+						<p><a>onSubmit</a>(func : Function) : <a>Void</a></p>
+						<p>把滚动条滑动到固定位置；</p>
+					</li>
+					<li>
+						<p><a>ajaxFun</a>(func : Function) : <a>Void</a></p>
+						<p>把滚动条滑动到固定位置；</p>
+					</li>
+					<li>
+						<p><a>destroy</a>() : <a>Void</a></p>
+						<p>销毁实例里所有事件；</p>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<script type="text/javascript" src="../js/menu.js"></script>		
+	</body>
+</html>

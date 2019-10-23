@@ -134,6 +134,10 @@
 				url : "../libs/sliderScroll.html",
 				title : "上下滚动窗口",
 				method:"CY.sliderScroll"
+			}, {
+				url : "../libs/area.html",
+				title : "级联滑动",
+				method:"CY.area"
 			}]
 		}, {
 			title : "工具类utils",
@@ -165,6 +169,10 @@
 				url : "../utils/floatNav.html",
 				title : "浮动固定元素",
 				method:"CY.floatNav"
+			},{
+				url : "../utils/floatMenu.html",
+				title : "浮动固定元素",
+				method:"CY.floatMenu"
 			},{
 				url : "../utils/lazyloadUtil.html",
 				title : "延迟加载图片",

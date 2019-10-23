@@ -234,7 +234,14 @@
 										<td>true</td>
 										<td>超过窗口是否能滑动</td>
 										<td>N</td>
-									</tr>  
+									</tr> 
+									<tr>
+										<td>toInnerIndex</td>
+										<td>Number</td>
+										<td>1</td>
+										<td>选中TAB向内显示</td>
+										<td>N</td>
+									</tr>  									
 									<tr>
 										<td>onStart</td>
 										<td>Function</td>
@@ -292,6 +299,10 @@
 					<li>
 						<p><a>setCss</a>(index : Number) : <a>Void</a></p>
 						<p>单纯的把index设置为选中样式；多用于窗口滑动时临时选中用；</p>
+					</li>	
+					<li>
+						<p><a>setActivated</a>(isActivated) : <a>Void</a></p>
+						<p>是否激活；</p>
 					</li>	
 					<li>
 						<p><a>destroy</a>() : <a>Void</a></p>

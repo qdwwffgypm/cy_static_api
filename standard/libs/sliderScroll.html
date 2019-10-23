@@ -247,6 +247,13 @@
 										<td>N</td>
 									</tr>
 									<tr>
+										<td>itemHeight</td>
+										<td>Number</td>
+										<td>0</td>
+										<td>整格滑动的高度</td>
+										<td>N</td>
+									</tr>
+									<tr>
 										<td>isSpring</td>
 										<td>Boolean</td>
 										<td>true</td>
@@ -259,7 +266,7 @@
 										<td>false</td>
 										<td>顶部动画效果</td>
 										<td>N</td>
-									</tr> 
+									</tr> 									
 									<tr>
 										<td>isBotEffect</td>
 										<td>Boolean</td>
@@ -411,7 +418,15 @@
 					<li>
 						<p><a>setLockBotSpace</a>(isLockf : Boolean) : <a>Void</a></p>
 						<p>锁定必须滚动bottom到底再释放默认事件；</p>
-					</li>	
+					</li>		
+					<li>
+						<p><a>setActivated</a>(isActivated) : <a>Void</a></p>
+						<p>是否激活；</p>
+					</li>		
+					<li>
+						<p><a>setItemHeight</a>(itemHeight) : <a>Void</a></p>
+						<p>设置整格移动的高度；</p>
+					</li>
 					<li>
 						<p><a>destroy</a>() : <a>Void</a></p>
 						<p>销毁实例里所有事件；</p>

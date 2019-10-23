@@ -25,7 +25,7 @@
 		    line-height: 18px;
 		}
 		.propertys {
-		    width: 925px;
+		    width: 1140px;
 		}
 		</style>
 
@@ -38,34 +38,39 @@
 		<article class="menuCon">
 			<div class="listmod">
 				<h3 class="conTitle"></h3>
-				<p>查看源码： <a href="slider.source.js" class="bold uline  tag" target="_blank">/static/js/libs/slider.js</a></p>
-				<p>	PS：该对象在CY.<b>slider</b> 对象下；<br/>
-					1、图片轮播，支持定位特定图片；<br/>
+				<p>查看源码： <a href="sliderToTop.source.js" class="bold uline  tag" target="_blank">/static/js/libs/sliderToTop.js</a></p>
+				<p>	PS：该对象在CY.<b>sliderToTop</b> 对象下；<br/>
+					1、把正常元素滑动到固定位置的顶部；<br/>
 					2、视例结构:<br/>
-					&lt;div id="mySlider"&gt;<br/>
-					&nbsp;&nbsp;&lt;div class="content"&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="item"&gt;热门&lt;/div&gt;<br/>
-					&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="item"&gt;美食餐饮&lt;/div&gt;<br/>						
-					&nbsp;&nbsp;&lt;/div&gt;<br/>
+					内容内容<br/>
+					内容内容<br/>
+					&lt;div id="myScroll"&gt;<br/>
+					&nbsp;&nbsp;&lt;div id="resetElem"&gt;复旦附中模&lt;/div&gt;<br/>
+					&nbsp;&nbsp;拟政协小组的6名同学，<br/>
+					&nbsp;&nbsp;经过三个月精心准备，<br/>
+					&nbsp;&nbsp;通过实地走访、<br/>
+					&nbsp;&nbsp;问卷调查<br/>	
 					&lt;/div&gt;<br/>
 
 				<h3>引用方式</h3>
 				<ul class="methods">
 					<li class="explain">
 						<dl class="expList">
-							<dd style="height: 490px;width: 99%;">
+							<dd style="height: 460px;width: 99%;">
 							<p>
 								引用方式一、
 							</p>
-							<pre class="prettyprint" data-lang="script" style="height: 465px;margin-left: -450px;">
+							<pre class="prettyprint" data-lang="script" style="height: 435px;margin-left: -450px;">
 								// ====安装&引入====
 								npm install cy_static
-								import slider from "cy_static/slider";
+								import sliderToTop from "cy_static/sliderToTop";
 								// ====使用====
 								// 用法一
-								slider({
-									elem : "#mySlider",// 窗口元素--要设置高度
-									content : ".content",
+								sliderToTop({
+									top:0,
+									elem : "#myScroll",// 窗口元素--要设置高度
+									resetElem : "#resetElem",//复位元素--存在的话只有他能复位
+									// 拖动开始
 									onStart: function(left) {
 										console.log("拖动开始===" + left);
 									},// 拖动中
@@ -73,29 +78,27 @@
 										console.log("拖动中===" + left);
 									},// 滚动中
 									onScroll: function(left) {
-									   console.log("'%c滚动中-----" + left,'color:#f00;');
+									 //   console.log("'%c滚动中-----" + left,'color:#f00;');
 									}, // 拖动结束
 									onStop: function(left) {
 										console.log("拖动结束===" + left);
-									},
-									onChange: function(index) {
-										console.log("当前第几个===" + index);
 									}
 								});
 							</pre>
 							</dd>
-							<dd style="height: 480px;">
+							<dd style="height: 460px;">
 							<p>
 								引用方式二、
 							</p>
-							<pre class="prettyprint" data-lang="script" style="height: 460px;margin-left: -450px;">
+							<pre class="prettyprint" data-lang="script" style="height: 435px;margin-left: -450px;">
 								&lt;script type="text/javascript" src="/static/js/libs/require2.3.6.js"&gt;&lt;/script&gt;
 								&lt;script type="text/javascript"&gt;
-									requirejs([ "/static/js/libs/slider.js" ], function(slider) {
-										slider({
-											elem : "#mySlider",// 窗口元素--要设置高度
-											content : ".content",
-											drag:0.9,// 拖动开始
+									requirejs([ "/static/js/libs/sliderToTop.js" ], function(sliderToTop) {
+										sliderToTop({
+											top:0,
+											elem : "#myScroll",// 窗口元素--要设置高度
+											resetElem : "#resetElem",//复位元素--存在的话只有他能复位
+											// 拖动开始
 											onStart: function(left) {
 												console.log("拖动开始===" + left);
 											},// 拖动中
@@ -103,30 +106,28 @@
 												console.log("拖动中===" + left);
 											},// 滚动中
 											onScroll: function(left) {
-											   console.log("'%c滚动中-----" + left,'color:#f00;');
+											 //   console.log("'%c滚动中-----" + left,'color:#f00;');
 											}, // 拖动结束
 											onStop: function(left) {
 												console.log("拖动结束===" + left);
-											},
-											onChange: function(index) {
-												console.log("当前第几个===" + index);
 											}
 										});
 									});
 								&lt;/script&gt;
 							</pre>
 							</dd>
-							<dd style="height: 480px;">
+							<dd style="height: 460px;">
 								<p>
 									引用方式三、
 								</p>
-								<pre class="prettyprint" data-lang="script" style="height: 460px;">
-									&lt;script type="text/javascript" src="/static/js/libs/slider.js"&gt;&lt;/script&gt;
+								<pre class="prettyprint" data-lang="script" style="height:435px;">
+									&lt;script type="text/javascript" src="/static/js/libs/sliderToTop.js"&gt;&lt;/script&gt;
 									&lt;script type="text/javascript"&gt;
-										<b>CY.</b>slider({
-											elem : "#mySlider",// 窗口元素--要设置高度
-											content : ".content",
-											drag:0.9,// 拖动开始
+										<b>CY.</b>sliderToTop({
+											top:0,
+											elem : "#myScroll",// 窗口元素--要设置高度
+											resetElem : "#resetElem",//复位元素--存在的话只有他能复位
+											// 拖动开始
 											onStart: function(left) {
 												console.log("拖动开始===" + left);
 											},// 拖动中
@@ -134,13 +135,10 @@
 												console.log("拖动中===" + left);
 											},// 滚动中
 											onScroll: function(left) {
-											   console.log("'%c滚动中-----" + left,'color:#f00;');
+											 //   console.log("'%c滚动中-----" + left,'color:#f00;');
 											}, // 拖动结束
 											onStop: function(left) {
 												console.log("拖动结束===" + left);
-											},
-											onChange: function(index) {
-												console.log("当前第几个===" + index);
 											}
 										});
 									&lt;/script&gt;
@@ -152,8 +150,8 @@
 				<h3>构造方法</h3>
 				<ul class="methods">
 					<li>
-						<p><a>slider</a>(params : Object) : <a>Object</a></p>
-						<p>图片轮播，支持定位特定图片；</p>
+						<p><a>sliderToTop</a>(params : Object) : <a>Object</a></p>
+						<p>把正常元素滑动到固定位置的顶部；</p>
 						<div class="explain isShow">
 							<div class="detail">									
 								<table class="propertys">
@@ -172,120 +170,65 @@
 										<td>Y</td>
 									</tr>
 									<tr>
-										<td>content</td>
+										<td>resetElem</td>
 										<td>String||Object</td>
 										<td>""</td>
-										<td>窗口子元素</td>
-										<td>Y</td>
+										<td>复位元素--存在的话只有他能复位</td>
+										<td>N</td>
 									</tr>
 									<tr>
 										<td>time</td>
 										<td>Number</td>
-										<td>1000</td>
+										<td>400</td>
 										<td>滑动时间(毫秒)</td>
 										<td>N</td>
 									</tr>
 									<tr>
-										<td>drag</td>
-										<td>Number</td>
-										<td>0.1</td>
-										<td>阻尔糸数</td>
-										<td>N</td>
-									</tr>
-									<tr>
-										<td>autoTime</td>
+										<td>top</td>
 										<td>Number</td>
 										<td>0</td>
-										<td>自动轮播(毫秒)</td>
+										<td>离顶部的距离</td>
 										<td>N</td>
 									</tr>
-									<tr>
-										<td>moveInt</td>
-										<td>Boolean</td>
-										<td>true</td>
-										<td>移动整格</td>
-										<td>N</td>
-									</tr>
-									<tr>
-										<td>isSpring</td>
-										<td>Boolean</td>
-										<td>true</td>
-										<td>启动弹性吸附效果</td>
-										<td>N</td>
-									</tr> 
 									<tr>
 										<td>resetWidth</td>
 										<td>Number</td>
-										<td>10</td>
-										<td>重置复位宽度(米)</td>
+										<td>30</td>
+										<td>重置复位高度</td>
 										<td>N</td>
-									</tr>
-									<tr>
-										<td>currCss</td>
-										<td>String</td>
-										<td>"curr"</td>
-										<td>默认选中样式</td>
-										<td>N</td>
-									</tr> 
-									<tr>
-										<td>currIndex</td>
-										<td>Number</td>
-										<td>0</td>
-										<td>默认选中的图片</td>
-										<td>N</td>
-									</tr>									
-									<tr>
-										<td>hasNavMenu</td>
-										<td>Boolean</td>
-										<td>true</td>
-										<td>拥有导航菜单</td>
-										<td>N</td>
-									</tr>
+									</tr>									  
 									<tr>
 										<td>onStart</td>
 										<td>Function</td>
-										<td>function (left, event, params) {}</td>
+										<td>function (height, event, params) {}</td>
 										<td>拖动开始</td>
 										<td>N</td>
 									</tr>  
 									<tr>
 										<td>onScroll</td>
 										<td>Function</td>
-										<td>function (left) {}</td>
+										<td>function (height) {}</td>
 										<td>滚动事件</td>
 										<td>N</td>
 									</tr>  
 									<tr>
 										<td>onMove</td>
 										<td>Function</td>
-										<td>function (left, event, params) {}</td>
+										<td>function (height, event, params) {}</td>
 										<td>拖动中</td>
 										<td>N</td>
 									</tr>  
 									<tr>
 										<td>onStop</td>
 										<td>Function</td>
-										<td>function (left, event, params) {}</td>
+										<td>function (height, event, params) {}</td>
 										<td>拖动结束</td>
 										<td>N</td>
 									</tr>  
-									<tr>
-										<td>onChange</td>
-										<td>Function</td>
-										<td>function (index, dom) {}</td>
-										<td>图片定位改变事件</td>
-										<td>N</td>
-									</tr>
 								</table>
+								<div class="br"></div>									
 							</div>
 						</div>
-					</li>
-				</ul>
-				<h3>事件</h3>
-				<ul class="methods">
-					<li>
-						<p><a>scroll</a>() : <a>Void</a></p>
-						<p>触发绑定在content滚动事件；</p>
 					</li>
 				</ul>
 				<h3>实例方法</h3>
@@ -297,18 +240,18 @@
 					<li>
 						<p><a>play</a>() : <a>Void</a></p>
 						<p>启动滑动；</p>
-					</li>		
+					</li>					
 					<li>
-						<p><a>setActivated</a>(isActivated) : <a>Void</a></p>
-						<p>是否激活；</p>
+						<p><a>onArriveTop</a>(func: Function) : <a>Void</a></p>
+						<p>滑动到顶回调；</p>
+					</li>
+					<li>
+						<p><a>onArriveBot</a>(func: Function) : <a>Void</a></p>
+						<p>滑动到底回调；</p>
 					</li>
 					<li>
 						<p><a>destroy</a>() : <a>Void</a></p>
 						<p>销毁实例里所有事件；</p>
-					</li>
-					<li>
-						<p><a>setCurrIndex</a>(index : Number) : <a>Void</a></p>
-						<p>设置要选中图片下标（从0开始）；</p>
 					</li>
 				</ul>
 			</div>
